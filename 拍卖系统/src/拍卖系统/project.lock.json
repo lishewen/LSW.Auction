@@ -4247,7 +4247,7 @@
       ]
     },
     "LSW.Weixin/1.2.2": {
-      "sha512": "Og8rLTVggvHItgF4GWaFD0Efe80L9AXss+yxF3LbFH2D0/OZKB48OheJhNTjeiD6K38W5BdC6MMMEm7xfEU3rA==",
+      "sha512": "eHHnoOpwNw/40eOQ3RmM/V/DK4Hwhiq9aENDJY9vaUetLSV6PNp6HGlmDMJ1alaEJHceUOoS00Es7R5UmhwLXg==",
       "type": "package",
       "files": [
         "LSW.Weixin.1.2.2.nupkg.sha512",
