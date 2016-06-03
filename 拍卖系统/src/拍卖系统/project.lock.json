@@ -41,6 +41,41 @@
           }
         }
       },
+      "LSW.Weixin/1.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0-rc2-final",
+          "NETStandard.Library": "1.5.0-rc2-24027",
+          "Newtonsoft.Json": "8.0.3",
+          "System.Dynamic.Runtime": "4.0.11-rc2-24027",
+          "System.Threading.Thread": "4.0.0-rc2-24027",
+          "System.Xml.XmlSerializer": "4.0.11-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.5/LSW.Weixin.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/LSW.Weixin.dll": {}
+        }
+      },
+      "LSW.Weixin.MP/1.4.7": {
+        "type": "package",
+        "dependencies": {
+          "LSW.Weixin": "1.2.2",
+          "Microsoft.AspNetCore.Http": "1.0.0-rc2-final",
+          "NETStandard.Library": "1.5.0-rc2-24027",
+          "System.Collections.NonGeneric": "4.0.1-rc2-24027",
+          "System.ComponentModel.Annotations": "4.1.0-rc2-24027",
+          "System.Xml.XPath.XmlDocument": "4.0.1-rc2-24027",
+          "System.Xml.XmlDocument": "4.0.1-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.5/LSW.Weixin.MP.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/LSW.Weixin.MP.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/1.0.0-rc2-final": {
         "type": "package",
         "dependencies": {
@@ -795,6 +830,51 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.AspNetCore.Server.Kestrel.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Messaging/0.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1-rc2-24027",
+          "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
+          "Microsoft.Extensions.Options": "1.0.0-rc2-final",
+          "System.Collections.Concurrent": "4.0.12-rc2-24027",
+          "System.Diagnostics.Tools": "4.0.1-rc2-24027",
+          "System.Dynamic.Runtime": "4.0.11-rc2-24027",
+          "System.Linq.Expressions": "4.0.11-rc2-24027",
+          "System.Reflection.Emit": "4.0.1-rc2-24027",
+          "System.Reflection.Emit.ILGeneration": "4.0.1-rc2-24027",
+          "System.Reflection.Extensions": "4.0.1-rc2-24027",
+          "System.Reflection.Primitives": "4.0.1-rc2-24027",
+          "System.Security.Cryptography.Algorithms": "4.1.0-rc2-24027",
+          "System.Text.Encoding.Extensions": "4.0.11-rc2-24027",
+          "System.Threading.Thread": "4.0.0-rc2-24027",
+          "System.Threading.ThreadPool": "4.0.10-rc2-24027",
+          "System.Threading.Timer": "4.0.1-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.5/Microsoft.AspNetCore.SignalR.Messaging.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/Microsoft.AspNetCore.SignalR.Messaging.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.SignalR.Server/0.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.DataProtection": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Http.Extensions": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.SignalR.Messaging": "0.1.0",
+          "Microsoft.Extensions.DependencyModel": "1.0.0-rc2-final",
+          "Newtonsoft.Json": "8.0.3",
+          "System.Runtime.Serialization.Primitives": "4.1.1-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.5/Microsoft.AspNetCore.SignalR.Server.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/Microsoft.AspNetCore.SignalR.Server.dll": {}
         }
       },
       "Microsoft.AspNetCore.StaticFiles/1.0.0-rc2-final": {
@@ -3245,7 +3325,7 @@
           "System.Runtime": "4.1.0-rc2-24027"
         },
         "compile": {
-          "ref/netstandard1.1/_._": {}
+          "ref/netstandard1.1/System.Reflection.Emit.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.dll": {}
@@ -3259,7 +3339,7 @@
           "System.Runtime": "4.1.0-rc2-24027"
         },
         "compile": {
-          "ref/netstandard1.0/_._": {}
+          "ref/netstandard1.0/System.Reflection.Emit.ILGeneration.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {}
@@ -4038,10 +4118,39 @@
           "System.Xml.ReaderWriter": "4.0.11-rc2-24027"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
+        }
+      },
+      "System.Xml.XmlSerializer/4.0.11-rc2-24027": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11-rc2-24027",
+          "System.Diagnostics.Debug": "4.0.11-rc2-24027",
+          "System.Globalization": "4.0.11-rc2-24027",
+          "System.IO": "4.1.0-rc2-24027",
+          "System.Linq": "4.1.0-rc2-24027",
+          "System.Reflection": "4.1.0-rc2-24027",
+          "System.Reflection.Emit": "4.0.1-rc2-24027",
+          "System.Reflection.Emit.ILGeneration": "4.0.1-rc2-24027",
+          "System.Reflection.Extensions": "4.0.1-rc2-24027",
+          "System.Reflection.Primitives": "4.0.1-rc2-24027",
+          "System.Reflection.TypeExtensions": "4.1.0-rc2-24027",
+          "System.Resources.ResourceManager": "4.0.1-rc2-24027",
+          "System.Runtime": "4.1.0-rc2-24027",
+          "System.Runtime.Extensions": "4.1.0-rc2-24027",
+          "System.Text.RegularExpressions": "4.0.12-rc2-24027",
+          "System.Threading": "4.0.11-rc2-24027",
+          "System.Xml.ReaderWriter": "4.0.11-rc2-24027",
+          "System.Xml.XmlDocument": "4.0.1-rc2-24027"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Xml.XmlSerializer.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
       "System.Xml.XPath/4.0.1-rc2-24027": {
@@ -4058,7 +4167,7 @@
           "System.Xml.ReaderWriter": "4.0.11-rc2-24027"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XPath.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.dll": {}
@@ -4082,6 +4191,27 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
+        }
+      },
+      "System.Xml.XPath.XmlDocument/4.0.1-rc2-24027": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11-rc2-24027",
+          "System.Globalization": "4.0.11-rc2-24027",
+          "System.IO": "4.1.0-rc2-24027",
+          "System.Resources.ResourceManager": "4.0.1-rc2-24027",
+          "System.Runtime": "4.1.0-rc2-24027",
+          "System.Runtime.Extensions": "4.1.0-rc2-24027",
+          "System.Threading": "4.0.11-rc2-24027",
+          "System.Xml.ReaderWriter": "4.0.11-rc2-24027",
+          "System.Xml.XPath": "4.0.1-rc2-24027",
+          "System.Xml.XmlDocument": "4.0.1-rc2-24027"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       }
     }
@@ -4114,6 +4244,26 @@
         "runtimes/win7-x64/native/libuv.dll",
         "runtimes/win7-x86/native/libuv.dll",
         "thirdpartynotices.txt"
+      ]
+    },
+    "LSW.Weixin/1.2.2": {
+      "sha512": "Og8rLTVggvHItgF4GWaFD0Efe80L9AXss+yxF3LbFH2D0/OZKB48OheJhNTjeiD6K38W5BdC6MMMEm7xfEU3rA==",
+      "type": "package",
+      "files": [
+        "LSW.Weixin.1.2.2.nupkg.sha512",
+        "LSW.Weixin.nuspec",
+        "lib/net461/LSW.Weixin.dll",
+        "lib/netstandard1.5/LSW.Weixin.dll"
+      ]
+    },
+    "LSW.Weixin.MP/1.4.7": {
+      "sha512": "HZC+DwEL4DOqt4nlWHY/VGf/WOcrrkdfW5j74CcOWK9eXRECHina2jMOrQrzGdEykuWT1MV+inhxcEvWkftshA==",
+      "type": "package",
+      "files": [
+        "LSW.Weixin.MP.1.4.7.nupkg.sha512",
+        "LSW.Weixin.MP.nuspec",
+        "lib/net461/LSW.Weixin.MP.dll",
+        "lib/netstandard1.5/LSW.Weixin.MP.dll"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/1.0.0-rc2-final": {
@@ -4637,6 +4787,26 @@
         "lib/net451/Microsoft.AspNetCore.Server.Kestrel.xml",
         "lib/netstandard1.3/Microsoft.AspNetCore.Server.Kestrel.dll",
         "lib/netstandard1.3/Microsoft.AspNetCore.Server.Kestrel.xml"
+      ]
+    },
+    "Microsoft.AspNetCore.SignalR.Messaging/0.1.0": {
+      "sha512": "a8/kfSChVhK4oB0M9HzHMsYj2WfHXfNJxE6ZwIWkcCw+UEBDR8x/h38iRSSayXhNi5LgJIQC4g+r4wS2ekxrOg==",
+      "type": "package",
+      "files": [
+        "Microsoft.AspNetCore.SignalR.Messaging.0.1.0.nupkg.sha512",
+        "Microsoft.AspNetCore.SignalR.Messaging.nuspec",
+        "lib/net461/Microsoft.AspNetCore.SignalR.Messaging.dll",
+        "lib/netstandard1.5/Microsoft.AspNetCore.SignalR.Messaging.dll"
+      ]
+    },
+    "Microsoft.AspNetCore.SignalR.Server/0.1.0": {
+      "sha512": "Loyb7FyGsdb/XQZ/UKtxSufDbgRc3umMJlYHBAHsUnzrduqFXWJ1FCHL4VvkNpn34eXitfbNLssNE8FgouRFbQ==",
+      "type": "package",
+      "files": [
+        "Microsoft.AspNetCore.SignalR.Server.0.1.0.nupkg.sha512",
+        "Microsoft.AspNetCore.SignalR.Server.nuspec",
+        "lib/net461/Microsoft.AspNetCore.SignalR.Server.dll",
+        "lib/netstandard1.5/Microsoft.AspNetCore.SignalR.Server.dll"
       ]
     },
     "Microsoft.AspNetCore.StaticFiles/1.0.0-rc2-final": {
@@ -10319,6 +10489,74 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
+    "System.Xml.XmlSerializer/4.0.11-rc2-24027": {
+      "sha512": "pbajpRk7iPkxSCrrjzVFpWGk54uBUu4BqrOFtUNXR5pqwKkGtW/8xeHDXnFW7RiP6wKO57cmkOlb7+PxCTpTPw==",
+      "type": "package",
+      "files": [
+        "System.Xml.XmlSerializer.4.0.11-rc2-24027.nupkg.sha512",
+        "System.Xml.XmlSerializer.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Xml.XmlSerializer.dll",
+        "lib/netstandard1.3/System.Xml.XmlSerializer.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Xml.XmlSerializer.dll",
+        "ref/netcore50/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/de/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/es/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/fr/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/it/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/ja/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/ko/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/ru/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/zh-hans/System.Xml.XmlSerializer.xml",
+        "ref/netcore50/zh-hant/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/System.Xml.XmlSerializer.dll",
+        "ref/netstandard1.0/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/de/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/es/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/fr/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/it/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/ja/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/ko/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/ru/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/zh-hans/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.0/zh-hant/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/System.Xml.XmlSerializer.dll",
+        "ref/netstandard1.3/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/de/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/es/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/fr/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/it/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/ja/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/ko/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/ru/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/zh-hans/System.Xml.XmlSerializer.xml",
+        "ref/netstandard1.3/zh-hant/System.Xml.XmlSerializer.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll"
+      ]
+    },
     "System.Xml.XPath/4.0.1-rc2-24027": {
       "sha512": "HlYEV5eowxhA9GQHC0sIAKo7Hhpa2soYkBezc1/7qK1bt0bNnXDdNQXqaSDklxpAJz3xvpkOgdeid44Z/nrGxA==",
       "type": "package",
@@ -10390,10 +10628,45 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
       ]
+    },
+    "System.Xml.XPath.XmlDocument/4.0.1-rc2-24027": {
+      "sha512": "GdJQT1ZhshTesXRq46Nu//c1JcB9QgONNO+0BH8dAFLMJ2YHHgCnYOMsdbhhbk0nx+1d8JOjG1BQNZJOUaAzzw==",
+      "type": "package",
+      "files": [
+        "System.Xml.XPath.XmlDocument.4.0.1-rc2-24027.nupkg.sha512",
+        "System.Xml.XPath.XmlDocument.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netstandard1.3/System.Xml.XPath.XmlDocument.dll",
+        "ref/netstandard1.3/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/de/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/es/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/fr/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/it/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/ja/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/ko/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/ru/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/zh-hans/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/zh-hant/System.Xml.XPath.XmlDocument.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
+      "LSW.Weixin.MP >= 1.4.7",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0-rc2-final",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0-rc2-final",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.0.0-rc2-final",
@@ -10402,6 +10675,7 @@
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview1-final",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.0.0-rc2-final",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.0-rc2-final",
+      "Microsoft.AspNetCore.SignalR.Server >= 0.1.0",
       "Microsoft.AspNetCore.StaticFiles >= 1.0.0-rc2-final",
       "Microsoft.EntityFrameworkCore.SqlServer >= 1.0.0-rc2-final",
       "Microsoft.EntityFrameworkCore.Tools >= 1.0.0-preview1-final",
