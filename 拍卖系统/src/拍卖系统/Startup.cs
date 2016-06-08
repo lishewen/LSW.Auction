@@ -73,6 +73,7 @@ namespace 拍卖系统
 			}
 
 			app.UseStaticFiles();
+			app.UseWebSockets();
 			app.UseSignalR();
 			app.UseIdentity();
 

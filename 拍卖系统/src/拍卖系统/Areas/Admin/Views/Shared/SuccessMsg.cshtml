@@ -1,0 +1,21 @@
+﻿@model SuccessMsg
+@{
+}
+<div class="topmenu"></div>
+<div class="jumbotron clearfix alert alert-success">
+	<div class="row">
+		<div class="col-xs-12 col-sm-3 col-lg-2">
+			<i class="fa fa-5x fa-check-circle"></i>
+		</div>
+		<div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+			<h2></h2>
+			<p>@Model.Message</p>
+			<p><a href="@Model.ReturnUrl">如果你的浏览器没有自动跳转，请点击此链接</a></p>
+			<script type="text/javascript">
+				setTimeout(function () {
+					location.href = "@Model.ReturnUrl";
+				}, 3000);
+			</script>
+		</div>
+	</div>
+</div>
