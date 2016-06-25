@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using 拍卖系统.Data;
+using Microsoft.Extensions.Configuration;
+using LSW.Weixin.MP.CommonAPIs;
+using LSW.Weixin.MP.AdvancedAPIs.OAuth;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+
+namespace 拍卖系统.Controllers
+{
+	public class ControllerBase : Controller
+	{
+		protected ApplicationDbContext db;
+		private readonly IConfiguration _config;
+		public string AppId;
+		public string AppSecret;
+		public static string AccessToken;
+		public string JsapiTicket;
+		public OAuthAccessTokenResult OAuth
+		{
+			get
+			{
+				if (string.IsNullOrWhiteSpace(HttpContext.Session.GetString("OAuth")))
+					return null;
+				else
+					return JsonConvert.DeserializeObject<OAuthAccessTokenResult>(HttpContext.Session.GetString("OAuth"));
+			}
+			set
+			{
+				HttpContext.Session.SetString("OAuth", JsonConvert.SerializeObject(value));
+			}
+		}
+		public ControllerBase(ApplicationDbContext context)
+		{
+			db = context;
+			if (_config == null)
+				_config = Startup.Configuration;
+			AppId = _config["AppId"];
+			AppSecret = _config["AppSecret"];
+			AccessToken = AccessTokenContainer.TryGetAccessToken(AppId, AppSecret);
+			//获取JS票据
+			JsapiTicket = JsApiTicketContainer.TryGetJsApiTicket(AppId, AppSecret);
+		}
+		protected override void Dispose(bool disposing)
+		{
+			if (db != null)
+				db.Dispose();
+
+			base.Dispose(disposing);
+		}
+	}
+}
