@@ -1,0 +1,49 @@
+﻿@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<header class="main-header">
+	<!-- Logo -->
+	<a href="@Url.Action("Index", "Home")" class="logo">
+		<!-- mini logo for sidebar mini 50x50 pixels -->
+		<span class="logo-mini">PM</span>
+		<!-- logo for regular state and mobile devices -->
+		<span class="logo-lg"><b>拍卖系统</b></span>
+	</a>
+
+	<!-- Header Navbar: style can be found in header.less -->
+	<nav class="navbar navbar-static-top">
+		<!-- Sidebar toggle button-->
+		<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+			<span class="sr-only">Toggle navigation</span>
+		</a>
+		<!-- Navbar Right Menu -->
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+				<!-- User Account: style can be found in dropdown.less -->
+				@if (SignInManager.IsSignedIn(User))
+				{
+					<li class="dropdown user user-menu">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span class="hidden-xs">@UserManager.GetUserName(User)</span>
+						</a>
+						<ul class="dropdown-menu">
+							<!-- Menu Footer-->
+							<li class="user-footer">
+								<div class="pull-left">
+									@Html.ActionLink("用户中心", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "btn btn-default btn-flat" })
+								</div>
+								<div class="pull-right">
+									@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+									{
+										@Html.AntiForgeryToken()
+										<a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">注销</a>
+									}
+								</div>
+							</li>
+						</ul>
+					</li>
+				}
+			</ul>
+		</div>
+
+	</nav>
+</header>

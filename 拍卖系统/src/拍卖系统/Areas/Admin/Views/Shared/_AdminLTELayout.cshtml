@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html ng-app="lswapp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@ViewData["Title"]</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<meta name="viewport" content="minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta content="telephone=no" name="format-detection" />
+	<environment names="Development">
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="~/lib/Ionicons/css/ionicons.css" />
+		<link rel="stylesheet" href="~/css/site.css" />
+	</environment>
+	<environment names="Staging,Production">
+		<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+			  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"
+			  asp-fallback-href="~/lib/font-awesome/css/font-awesome.min.css"
+			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+			  asp-fallback-href="~/lib/Ionicons/css/ionicons.min.css"
+			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+		<link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+	</environment>
+	<link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+	<!-- Theme style -->
+	<link rel="stylesheet" href="~/lib/AdminLTE/dist/css/AdminLTE.min.css">
+	<!-- AdminLTE Skins. Choose a skin from the css/skins
+		 folder instead of downloading all of them to reduce the load. -->
+	<link rel="stylesheet" href="~/lib/AdminLTE/dist/css/skins/_all-skins.min.css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	@RenderSection("css", required: false)
+</head>
+<body class="hold-transition skin-blue sidebar-mini @ViewData["sidebar-collapse"]">
+	@Html.Partial("_AdminLTEHeader")
+	@Html.Partial("_AdminLTESidebar")
+	<div class="wrapper">
+		<div class="content-wrapper">
+			@RenderBody()
+		</div>
+	</div>
+	@Html.Partial("_AdminLTEFooter")
+	<environment names="Development">
+		<script src="~/lib/jquery/dist/jquery.js"></script>
+		<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="~/js/site.js" asp-append-version="true"></script>
+	</environment>
+	<environment names="Staging,Production">
+		<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.4.min.js"
+				asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+				asp-fallback-test="window.jQuery">
+		</script>
+		<script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+				asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+				asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+		</script>
+		<script src="~/js/site.min.js" asp-append-version="true"></script>
+	</environment>
+	<script src="~/lib/signalr/jquery.signalR.min.js"></script>
+	<script src="/signalr/js"></script>
+	<script src="~/lib/toastr/toastr.min.js"></script>
+	<script src="~/lib/AdminLTE/dist/js/app.min.js"></script>
+	@if (ViewBag.CommMessage != null)
+	{
+		<script type="text/javascript">
+		toastr.options.positionClass = 'toast-top-center';
+		toastr.success('@ViewBag.CommMessage');
+		</script>
+	}
+
+	@if (ViewBag.ErrMessage != null)
+	{
+		<script type="text/javascript">
+		toastr.options.positionClass = 'toast-top-center';
+		toastr.error('@ViewBag.ErrMessage');
+		</script>
+	}
+	@if (User.Identity.IsAuthenticated)
+	{
+		<script>
+		var messagehub = $.connection.messageHub;
+		messagehub.client.showMessage = function (msg, type) {
+			toastr.options.positionClass = 'toast-top-full-width';
+			toastr.options.closeButton = true;
+			toastr.options.newestOnTop = true;
+			toastr.options.timeOut = 0;
+			toastr.options.extendedTimeOut = 0;
+			toastr[type](msg);
+		};
+		$.connection.hub.start();
+		</script>
+	}
+	@RenderSection("scripts", required: false)
+</body>
+</html>
