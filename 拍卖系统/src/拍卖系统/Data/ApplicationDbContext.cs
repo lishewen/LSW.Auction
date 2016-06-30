@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using 拍卖系统.Models;
+using 拍卖系统.Areas.Admin.Models;
 
 namespace 拍卖系统.Data
 {
@@ -38,5 +39,13 @@ namespace 拍卖系统.Data
 		/// 拍卖出价记录表
 		/// </summary>
 		public DbSet<AuctionRecord> AuctionRecords { get; set; }
+		/// <summary>
+		/// 一级菜单表
+		/// </summary>
+		public DbSet<MenuModel> Menus { get; set; }
+		/// <summary>
+		/// 二级菜单表
+		/// </summary>
+		public DbSet<Groupitem> MenuItems { get; set; }
 	}
 }

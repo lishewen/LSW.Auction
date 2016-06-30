@@ -13,7 +13,7 @@ namespace 拍卖系统.Data.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rc2-20901")
+                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -123,6 +123,62 @@ namespace 拍卖系统.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Groupitem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("ItemDesc");
+
+                    b.Property<string>("ItemICO");
+
+                    b.Property<string>("ItemIDX");
+
+                    b.Property<string>("ItemName");
+
+                    b.Property<string>("ItemURL");
+
+                    b.Property<int?>("MenuModelId");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuModelId");
+
+                    b.ToTable("MenuItems");
+                });
+
+            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.MenuModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<string>("GroupICO");
+
+                    b.Property<string>("GroupIDX");
+
+                    b.Property<string>("GroupName");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Menus");
+                });
+
             modelBuilder.Entity("拍卖系统.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id");
@@ -166,6 +222,7 @@ namespace 拍卖系统.Data.Migrations
                         .HasName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
+                        .IsUnique()
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
@@ -338,7 +395,7 @@ namespace 拍卖系统.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
-                        .WithMany()
+                        .WithMany("Claims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -346,7 +403,7 @@ namespace 拍卖系统.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
                     b.HasOne("拍卖系统.Models.ApplicationUser")
-                        .WithMany()
+                        .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -354,7 +411,7 @@ namespace 拍卖系统.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
                     b.HasOne("拍卖系统.Models.ApplicationUser")
-                        .WithMany()
+                        .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -362,14 +419,21 @@ namespace 拍卖系统.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("拍卖系统.Models.ApplicationUser")
-                        .WithMany()
+                        .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Groupitem", b =>
+                {
+                    b.HasOne("拍卖系统.Areas.Admin.Models.MenuModel")
+                        .WithMany("GroupItems")
+                        .HasForeignKey("MenuModelId");
                 });
         }
     }

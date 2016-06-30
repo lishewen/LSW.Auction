@@ -10,6 +10,24 @@ namespace 拍卖系统.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Menus",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreateTime = table.Column<DateTime>(nullable: false),
+                    GroupICO = table.Column<string>(nullable: true),
+                    GroupIDX = table.Column<string>(nullable: true),
+                    GroupName = table.Column<string>(nullable: true),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Menus", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Auctions",
                 columns: table => new
                 {
@@ -116,10 +134,46 @@ namespace 拍卖系统.Data.Migrations
                 {
                     table.PrimaryKey("PK_Members", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "MenuItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreateTime = table.Column<DateTime>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    ItemDesc = table.Column<string>(nullable: true),
+                    ItemICO = table.Column<string>(nullable: true),
+                    ItemIDX = table.Column<string>(nullable: true),
+                    ItemName = table.Column<string>(nullable: true),
+                    ItemURL = table.Column<string>(nullable: true),
+                    MenuModelId = table.Column<int>(nullable: true),
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenuItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MenuItems_Menus_MenuModelId",
+                        column: x => x.MenuModelId,
+                        principalTable: "Menus",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MenuItems_MenuModelId",
+                table: "MenuItems",
+                column: "MenuModelId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "MenuItems");
+
             migrationBuilder.DropTable(
                 name: "Auctions");
 
@@ -131,6 +185,9 @@ namespace 拍卖系统.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Members");
+
+            migrationBuilder.DropTable(
+                name: "Menus");
         }
     }
 }
