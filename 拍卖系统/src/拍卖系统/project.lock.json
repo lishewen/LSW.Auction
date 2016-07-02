@@ -43,39 +43,39 @@
           }
         }
       },
-      "LSW.Weixin/1.2.2": {
+      "LSW.Weixin/1.2.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0-rc2-final",
-          "NETStandard.Library": "1.5.0-rc2-24027",
-          "Newtonsoft.Json": "8.0.3",
-          "System.Dynamic.Runtime": "4.0.11-rc2-24027",
-          "System.Threading.Thread": "4.0.0-rc2-24027",
-          "System.Xml.XmlSerializer": "4.0.11-rc2-24027"
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Threading.Thread": "4.0.0",
+          "System.Xml.XmlSerializer": "4.0.11"
         },
         "compile": {
-          "lib/netstandard1.5/LSW.Weixin.dll": {}
+          "lib/netstandard1.6/LSW.Weixin.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.5/LSW.Weixin.dll": {}
+          "lib/netstandard1.6/LSW.Weixin.dll": {}
         }
       },
-      "LSW.Weixin.MP/1.4.8": {
+      "LSW.Weixin.MP/1.4.9": {
         "type": "package",
         "dependencies": {
-          "LSW.Weixin": "1.2.2",
-          "Microsoft.AspNetCore.Http": "1.0.0-rc2-final",
-          "NETStandard.Library": "1.5.0-rc2-24027",
-          "System.Collections.NonGeneric": "4.0.1-rc2-24027",
-          "System.ComponentModel.Annotations": "4.1.0-rc2-24027",
-          "System.Xml.XPath.XmlDocument": "4.0.1-rc2-24027",
-          "System.Xml.XmlDocument": "4.0.1-rc2-24027"
+          "LSW.Weixin": "1.2.3",
+          "Microsoft.AspNetCore.Http": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "System.Collections.NonGeneric": "4.0.1",
+          "System.ComponentModel.Annotations": "4.1.0",
+          "System.Xml.XPath.XmlDocument": "4.0.1",
+          "System.Xml.XmlDocument": "4.0.1"
         },
         "compile": {
-          "lib/netstandard1.5/LSW.Weixin.MP.dll": {}
+          "lib/netstandard1.6/LSW.Weixin.MP.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.5/LSW.Weixin.MP.dll": {}
+          "lib/netstandard1.6/LSW.Weixin.MP.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/1.0.0": {
@@ -4396,27 +4396,26 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "System.Xml.XmlSerializer/4.0.11-rc2-24027": {
+      "System.Xml.XmlSerializer/4.0.11": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.0.11-rc2-24027",
-          "System.Diagnostics.Debug": "4.0.11-rc2-24027",
-          "System.Globalization": "4.0.11-rc2-24027",
-          "System.IO": "4.1.0-rc2-24027",
-          "System.Linq": "4.1.0-rc2-24027",
-          "System.Reflection": "4.1.0-rc2-24027",
-          "System.Reflection.Emit": "4.0.1-rc2-24027",
-          "System.Reflection.Emit.ILGeneration": "4.0.1-rc2-24027",
-          "System.Reflection.Extensions": "4.0.1-rc2-24027",
-          "System.Reflection.Primitives": "4.0.1-rc2-24027",
-          "System.Reflection.TypeExtensions": "4.1.0-rc2-24027",
-          "System.Resources.ResourceManager": "4.0.1-rc2-24027",
-          "System.Runtime": "4.1.0-rc2-24027",
-          "System.Runtime.Extensions": "4.1.0-rc2-24027",
-          "System.Text.RegularExpressions": "4.0.12-rc2-24027",
-          "System.Threading": "4.0.11-rc2-24027",
-          "System.Xml.ReaderWriter": "4.0.11-rc2-24027",
-          "System.Xml.XmlDocument": "4.0.1-rc2-24027"
+          "System.Collections": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.Linq": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Emit": "4.0.1",
+          "System.Reflection.Emit.ILGeneration": "4.0.1",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XmlDocument": "4.0.1"
         },
         "compile": {
           "ref/netstandard1.3/System.Xml.XmlSerializer.dll": {}
@@ -4465,19 +4464,19 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "System.Xml.XPath.XmlDocument/4.0.1-rc2-24027": {
+      "System.Xml.XPath.XmlDocument/4.0.1": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.0.11-rc2-24027",
-          "System.Globalization": "4.0.11-rc2-24027",
-          "System.IO": "4.1.0-rc2-24027",
-          "System.Resources.ResourceManager": "4.0.1-rc2-24027",
-          "System.Runtime": "4.1.0-rc2-24027",
-          "System.Runtime.Extensions": "4.1.0-rc2-24027",
-          "System.Threading": "4.0.11-rc2-24027",
-          "System.Xml.ReaderWriter": "4.0.11-rc2-24027",
-          "System.Xml.XPath": "4.0.1-rc2-24027",
-          "System.Xml.XmlDocument": "4.0.1-rc2-24027"
+          "System.Collections": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XPath": "4.0.1",
+          "System.Xml.XmlDocument": "4.0.1"
         },
         "compile": {
           "ref/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
@@ -4507,25 +4506,26 @@
         "runtimes/win7-x86/native/libuv.dll"
       ]
     },
-    "LSW.Weixin/1.2.2": {
-      "sha512": "eHHnoOpwNw/40eOQ3RmM/V/DK4Hwhiq9aENDJY9vaUetLSV6PNp6HGlmDMJ1alaEJHceUOoS00Es7R5UmhwLXg==",
+    "LSW.Weixin/1.2.3": {
+      "sha512": "iKLop3008GI4Gfx+S/i+E60GOgG2toc7OuVkaalDFcLHxTJc1s4i4xmQnbinjDcyLCe0UWfYzCRWetsPaxxcLQ==",
       "type": "package",
+      "path": "LSW.Weixin/1.2.3",
       "files": [
-        "LSW.Weixin.1.2.2.nupkg.sha512",
+        "LSW.Weixin.1.2.3.nupkg.sha512",
         "LSW.Weixin.nuspec",
         "lib/net461/LSW.Weixin.dll",
-        "lib/netstandard1.5/LSW.Weixin.dll"
+        "lib/netstandard1.6/LSW.Weixin.dll"
       ]
     },
-    "LSW.Weixin.MP/1.4.8": {
-      "sha512": "aEU/CH8+SE+Vi2PxTKihln13eo5dFelSmNznlzDAKZzTptOxUfEauPUDIbgDscDbRIC1T/u4nz368RkSKCZiIQ==",
+    "LSW.Weixin.MP/1.4.9": {
+      "sha512": "xqmPNt9N6HIT0d9u0b5WqAoid4FWBtkHnrkoYPYtd7h6jGSH2//35LcirGI32LLXKP3eNnurUSW+pr24X1Zr6Q==",
       "type": "package",
-      "path": "LSW.Weixin.MP/1.4.8",
+      "path": "LSW.Weixin.MP/1.4.9",
       "files": [
-        "LSW.Weixin.MP.1.4.8.nupkg.sha512",
+        "LSW.Weixin.MP.1.4.9.nupkg.sha512",
         "LSW.Weixin.MP.nuspec",
         "lib/net461/LSW.Weixin.MP.dll",
-        "lib/netstandard1.5/LSW.Weixin.MP.dll"
+        "lib/netstandard1.6/LSW.Weixin.MP.dll"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/1.0.0": {
@@ -11102,11 +11102,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "System.Xml.XmlSerializer/4.0.11-rc2-24027": {
-      "sha512": "pbajpRk7iPkxSCrrjzVFpWGk54uBUu4BqrOFtUNXR5pqwKkGtW/8xeHDXnFW7RiP6wKO57cmkOlb7+PxCTpTPw==",
+    "System.Xml.XmlSerializer/4.0.11": {
+      "sha512": "FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw==",
       "type": "package",
+      "path": "System.Xml.XmlSerializer/4.0.11",
       "files": [
-        "System.Xml.XmlSerializer.4.0.11-rc2-24027.nupkg.sha512",
+        "System.Xml.XmlSerializer.4.0.11.nupkg.sha512",
         "System.Xml.XmlSerializer.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -11244,11 +11245,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "System.Xml.XPath.XmlDocument/4.0.1-rc2-24027": {
-      "sha512": "GdJQT1ZhshTesXRq46Nu//c1JcB9QgONNO+0BH8dAFLMJ2YHHgCnYOMsdbhhbk0nx+1d8JOjG1BQNZJOUaAzzw==",
+    "System.Xml.XPath.XmlDocument/4.0.1": {
+      "sha512": "Zm2BdeanuncYs3NhCj4c9e1x3EXFzFBVv2wPEc/Dj4ZbI9R8ecLSR5frAsx4zJCPBtKQreQ7Q/KxJEohJZbfzA==",
       "type": "package",
+      "path": "System.Xml.XPath.XmlDocument/4.0.1",
       "files": [
-        "System.Xml.XPath.XmlDocument.4.0.1-rc2-24027.nupkg.sha512",
+        "System.Xml.XPath.XmlDocument.4.0.1.nupkg.sha512",
         "System.Xml.XPath.XmlDocument.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -11281,7 +11283,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "LSW.Weixin.MP >= 1.4.8",
+      "LSW.Weixin.MP >= 1.4.9",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.0.0",
@@ -11310,11 +11312,11 @@
   },
   "tools": {
     ".NETCoreApp,Version=v1.0": {
-      "BundlerMinifier.Core/2.0.238": {
+      "BundlerMinifier.Core/2.1.258": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.App": "1.0.0",
-          "NUglify": "1.5.0",
+          "NUglify": "1.5.1",
           "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
@@ -11411,7 +11413,7 @@
   },
   "projectFileToolGroups": {
     ".NETCoreApp,Version=v1.0": [
-      "BundlerMinifier.Core >= 2.0.238",
+      "BundlerMinifier.Core >= 2.1.258",
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview2-final",
       "Microsoft.AspNetCore.Server.IISIntegration.Tools >= 1.0.0-preview2-final",
       "Microsoft.EntityFrameworkCore.Tools >= 1.0.0-preview2-final",

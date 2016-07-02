@@ -1,4 +1,4 @@
-﻿{
+{
 	"userSecretsId": "aspnet-拍卖系统-a4fa3744-3e1e-404f-95df-259705684532",
 
 	"dependencies": {
@@ -39,12 +39,12 @@
 			"type": "build"
 		},
 		"Microsoft.AspNetCore.SignalR.Server": "0.2.3",
-		"LSW.Weixin.MP": "1.4.8",
-		"Microsoft.AspNetCore.WebSockets.Server": "0.1.0"
+    "LSW.Weixin.MP": "1.4.9",
+    "Microsoft.AspNetCore.WebSockets.Server": "0.1.0"
 	},
 
 	"tools": {
-		"BundlerMinifier.Core": "2.0.238",
+		"BundlerMinifier.Core": "2.1.258",
 		"Microsoft.AspNetCore.Razor.Tools": "1.0.0-preview2-final",
 		"Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final",
 		"Microsoft.EntityFrameworkCore.Tools": "1.0.0-preview2-final",
