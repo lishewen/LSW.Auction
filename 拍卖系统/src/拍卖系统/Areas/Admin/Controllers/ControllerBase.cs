@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using 拍卖系统.Data;
 namespace 拍卖系统.Areas.Admin.Controllers
 {
 	[Area("Admin")]
+	[Authorize]
 	public class ControllerBase : Controller
 	{
 		protected ApplicationDbContext db;

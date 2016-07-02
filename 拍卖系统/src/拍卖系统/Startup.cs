@@ -43,8 +43,15 @@ namespace 拍卖系统
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-			services.AddIdentity<ApplicationUser, IdentityRole>()
-				.AddEntityFrameworkStores<ApplicationDbContext>()
+			//配置密码规则
+			services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+			{
+				options.Password.RequiredLength = 6;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Password.RequireDigit = false;
+				options.Password.RequireLowercase = false;
+				options.Password.RequireUppercase = false;
+			}).AddEntityFrameworkStores<ApplicationDbContext>()
 				.AddDefaultTokenProviders();
 
 			services.AddMvc();
