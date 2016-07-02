@@ -20,6 +20,7 @@ namespace 拍卖系统.Models
 		/// <summary>
 		/// 名称
 		/// </summary>
+		[Display(Name = "名称")]
 		[Required(ErrorMessage = "不能为空")]
 		public string Name { get; set; }
 		/// <summary>
