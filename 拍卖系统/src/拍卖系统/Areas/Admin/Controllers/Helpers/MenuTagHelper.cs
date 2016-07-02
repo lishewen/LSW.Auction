@@ -21,13 +21,9 @@ namespace 拍卖系统.Areas.Admin.Controllers.Helpers
 		public IEnumerable<MenuModel> Items { get; set; }
 		[ViewContext]
 		public ViewContext ViewContext { get; set; }
-
-		public IUrlHelper _UrlHelper { get; set; }
 		public ApplicationDbContext db { get; set; }
-
-		public MenuTagHelper(IUrlHelper urlHelper, ApplicationDbContext context)
+		public MenuTagHelper(ApplicationDbContext context)
 		{
-			_UrlHelper = urlHelper;
 			db = context;
 		}
 		public override void Process(TagHelperContext context, TagHelperOutput output)

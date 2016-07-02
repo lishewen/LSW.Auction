@@ -72,11 +72,11 @@
 	<script src="/signalr/js"></script>
 	<script src="~/lib/toastr/toastr.min.js"></script>
 	<script src="~/lib/AdminLTE/dist/js/app.min.js"></script>
-	@if (ViewBag.CommMessage != null)
+	@if (ViewData["CommMessage"] != null)
 	{
 		<script type="text/javascript">
 		toastr.options.positionClass = 'toast-top-center';
-		toastr.success('@ViewBag.CommMessage');
+		toastr.success('@ViewData["CommMessage"]');
 		</script>
 	}
 
@@ -85,21 +85,6 @@
 		<script type="text/javascript">
 		toastr.options.positionClass = 'toast-top-center';
 		toastr.error('@ViewBag.ErrMessage');
-		</script>
-	}
-	@if (User.Identity.IsAuthenticated)
-	{
-		<script>
-		var messagehub = $.connection.messageHub;
-		messagehub.client.showMessage = function (msg, type) {
-			toastr.options.positionClass = 'toast-top-full-width';
-			toastr.options.closeButton = true;
-			toastr.options.newestOnTop = true;
-			toastr.options.timeOut = 0;
-			toastr.options.extendedTimeOut = 0;
-			toastr[type](msg);
-		};
-		$.connection.hub.start();
 		</script>
 	}
 	@RenderSection("scripts", required: false)

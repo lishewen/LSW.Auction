@@ -1,0 +1,78 @@
+@model 拍卖系统.Areas.Admin.Models.MenuModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>MenuModel</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ControllerName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ControllerName" class="form-control" />
+                <span asp-validation-for="ControllerName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreateTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CreateTime" class="form-control" />
+                <span asp-validation-for="CreateTime" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GroupICO" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GroupICO" class="form-control" />
+                <span asp-validation-for="GroupICO" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GroupIDX" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GroupIDX" class="form-control" />
+                <span asp-validation-for="GroupIDX" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GroupName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GroupName" class="form-control" />
+                <span asp-validation-for="GroupName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="IsDelete" />
+                    <label asp-for="IsDelete"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

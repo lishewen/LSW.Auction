@@ -1,0 +1,60 @@
+@model 拍卖系统.Areas.Admin.Models.MenuModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MenuModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ControllerName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ControllerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupICO)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GroupICO)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupIDX)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GroupIDX)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GroupName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDelete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
