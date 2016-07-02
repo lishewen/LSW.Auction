@@ -43,14 +43,15 @@
 	@RenderSection("css", required: false)
 </head>
 <body class="hold-transition skin-blue sidebar-mini @ViewData["sidebar-collapse"]">
-	@Html.Partial("_AdminLTEHeader")
-	@Html.Partial("_AdminLTESidebar")
 	<div class="wrapper">
+		@Html.Partial("_AdminLTEHeader")
+		@Html.Partial("_AdminLTESidebar")
 		<div class="content-wrapper">
 			@RenderBody()
+			<div class="clearfix"></div>
 		</div>
+		@Html.Partial("_AdminLTEFooter")
 	</div>
-	@Html.Partial("_AdminLTEFooter")
 	<environment names="Development">
 		<script src="~/lib/jquery/dist/jquery.js"></script>
 		<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
