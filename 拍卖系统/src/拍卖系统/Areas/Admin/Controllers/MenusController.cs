@@ -33,8 +33,8 @@ namespace 拍卖系统.Areas.Admin.Controllers
 			{
 				return NotFound();
 			}
-
-			return View(menuModel);
+			ViewData["GroupId"] = menuModel.Id;
+			return View(menuModel.GroupItems);
 		}
 
 		// GET: Menus/Create
@@ -59,6 +59,33 @@ namespace 拍卖系统.Areas.Admin.Controllers
 				return RedirectToAction("Index");
 			}
 			return View(menuModel);
+		}
+
+		public IActionResult CreateItem(int id)
+		{
+			ViewData["GroupId"] = id;
+			return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> CreateItem(int id, Groupitem model)
+		{
+			var menuModel = await db.Menus.SingleOrDefaultAsync(m => m.Id == id);
+			if (menuModel == null)
+			{
+				return NotFound();
+			}
+
+			if (ModelState.IsValid)
+			{
+				model.ItemName = model.Name;
+				model.ItemIDX = Guid.NewGuid().ToString();
+				menuModel.GroupItems.Add(model);
+				await db.SaveChangesAsync();
+				return RedirectToAction("Index");
+			}
+			return View(model);
 		}
 
 		// GET: Menus/Edit/5

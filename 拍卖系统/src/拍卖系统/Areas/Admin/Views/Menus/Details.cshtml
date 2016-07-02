@@ -1,60 +1,47 @@
-@model 拍卖系统.Areas.Admin.Models.MenuModel
+@model IEnumerable<拍卖系统.Areas.Admin.Models.Groupitem>
 
 @{
-    ViewData["Title"] = "Details";
+	ViewData["Title"] = "菜单子项列表";
 }
-
-<h2>Details</h2>
-
-<div>
-    <h4>MenuModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ControllerName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ControllerName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CreateTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.GroupICO)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.GroupICO)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.GroupIDX)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.GroupIDX)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.GroupName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.GroupName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDelete)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsDelete)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<section class="content-header">
+	<h1>菜单子项列表</h1>
+	<small><a asp-action="CreateItem" asp-route-id="@ViewData["GroupId"]">新建菜单子项</a></small>
+</section>
+<section class="content">
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.ActionName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.ItemICO)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.ItemName)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.ActionName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ItemICO)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.ItemName)
+					</td>
+					<td>
+						<a asp-action="EditItem" asp-route-id="@item.Id">编辑</a> |
+						<a asp-action="DeleteItem" asp-route-id="@item.Id">删除</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</section>

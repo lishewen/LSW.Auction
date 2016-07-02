@@ -1,0 +1,44 @@
+@model 拍卖系统.Areas.Admin.Models.Groupitem
+
+@{
+	ViewData["Title"] = "新建菜单子项";
+}
+<section class="content-header">
+	<h1>新建菜单子项</h1>
+</section>
+<section class="content">
+	<form asp-action="CreateItem" asp-route-id="@ViewData["GroupId"]">
+		<div class="form-horizontal">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Name" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="Name" class="form-control" />
+					<span asp-validation-for="Name" class="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label asp-for="ItemICO" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="ItemICO" class="form-control" />
+					<span asp-validation-for="ItemICO" class="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label asp-for="ActionName" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="ActionName" class="form-control" />
+					<span asp-validation-for="ActionName" class="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Create" class="btn btn-default" />
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

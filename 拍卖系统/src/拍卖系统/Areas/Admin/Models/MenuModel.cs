@@ -30,7 +30,9 @@ namespace 拍卖系统.Areas.Admin.Models
 		public string ItemName { get; set; }
 		public string ItemDesc { get; set; }
 		public string ItemURL { get; set; }
+		[Display(Name = "图标")]
 		public string ItemICO { get; set; }
+		[Display(Name = "动作名")]
 		public string ActionName { get; set; }
 	}
 }
