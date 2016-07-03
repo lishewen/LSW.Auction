@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using 拍卖系统.Data;
 
-namespace 拍卖系统.Data.Migrations
+namespace 拍卖系统.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160702024529_Menu")]
-    partial class Menu
+    [Migration("20160703022804_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -124,40 +124,7 @@ namespace 拍卖系统.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Groupitem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ActionName");
-
-                    b.Property<DateTime>("CreateTime");
-
-                    b.Property<int?>("GroupId");
-
-                    b.Property<bool>("IsDelete");
-
-                    b.Property<string>("ItemDesc");
-
-                    b.Property<string>("ItemICO");
-
-                    b.Property<string>("ItemIDX");
-
-                    b.Property<string>("ItemName");
-
-                    b.Property<string>("ItemURL");
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
-
-                    b.ToTable("MenuItems");
-                });
-
-            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.MenuModel", b =>
+            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Menu", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -180,6 +147,39 @@ namespace 拍卖系统.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Menus");
+                });
+
+            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Menuitem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ActionName");
+
+                    b.Property<DateTime>("CreateTime");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<int>("ItemDesc");
+
+                    b.Property<string>("ItemICO");
+
+                    b.Property<string>("ItemIDX");
+
+                    b.Property<string>("ItemName");
+
+                    b.Property<string>("ItemURL");
+
+                    b.Property<int>("MenuId");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("MenuItems");
                 });
 
             modelBuilder.Entity("拍卖系统.Models.ApplicationUser", b =>
@@ -432,11 +432,12 @@ namespace 拍卖系统.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Groupitem", b =>
+            modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Menuitem", b =>
                 {
-                    b.HasOne("拍卖系统.Areas.Admin.Models.MenuModel", "Group")
-                        .WithMany("GroupItems")
-                        .HasForeignKey("GroupId");
+                    b.HasOne("拍卖系统.Areas.Admin.Models.Menu", "Menu")
+                        .WithMany("MenuItems")
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

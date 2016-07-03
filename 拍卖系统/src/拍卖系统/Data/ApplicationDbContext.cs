@@ -42,10 +42,10 @@ namespace 拍卖系统.Data
 		/// <summary>
 		/// 一级菜单表
 		/// </summary>
-		public DbSet<MenuModel> Menus { get; set; }
+		public DbSet<Menu> Menus { get; set; }
 		/// <summary>
 		/// 二级菜单表
 		/// </summary>
-		public DbSet<Groupitem> MenuItems { get; set; }
+		public DbSet<Menuitem> MenuItems { get; set; }
 	}
 }

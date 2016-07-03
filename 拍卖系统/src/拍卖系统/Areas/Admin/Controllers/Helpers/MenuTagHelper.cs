@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using 拍卖系统.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace 拍卖系统.Areas.Admin.Controllers.Helpers
 {
@@ -18,7 +19,7 @@ namespace 拍卖系统.Areas.Admin.Controllers.Helpers
 	public class MenuTagHelper : TagHelper
 	{
 		[HtmlAttributeName("items")]
-		public IEnumerable<MenuModel> Items { get; set; }
+		public IEnumerable<Menu> Items { get; set; }
 		[ViewContext]
 		public ViewContext ViewContext { get; set; }
 		public ApplicationDbContext db { get; set; }
@@ -29,7 +30,7 @@ namespace 拍卖系统.Areas.Admin.Controllers.Helpers
 		public override void Process(TagHelperContext context, TagHelperOutput output)
 		{
 			if (Items == null)
-				Items = db.Menus;
+				Items = db.Menus.Include(m => m.MenuItems);
 
 			output.TagName = "ul";
 			output.Attributes.Add("class", "sidebar-menu");
@@ -52,16 +53,18 @@ namespace 拍卖系统.Areas.Admin.Controllers.Helpers
 				sb.AppendLine("<i class=\"fa fa-angle-left pull-right\"></i>");
 				sb.AppendLine("</a>");
 				sb.AppendLine("<ul class=\"treeview-menu\">");
-				foreach (var g in i.GroupItems)
+
+				foreach (var g in i.MenuItems)
 				{
 					if (string.Equals(currentAction as string, g.ActionName, StringComparison.OrdinalIgnoreCase) &&
-						string.Equals(currentController as string, g.Group.ControllerName, StringComparison.OrdinalIgnoreCase))
+						string.Equals(currentController as string, g.Menu.ControllerName, StringComparison.OrdinalIgnoreCase))
 						sb.AppendLine("<li class=\"active\">");
 					else
 						sb.AppendLine("<li>");
 					sb.AppendLine($"<a href=\"{g.ItemURL}\"><i class=\"{g.ItemICO}\"></i>{g.ItemName}</a>");
 					sb.AppendLine("</li>");
 				}
+
 				sb.AppendLine("</ul>");
 				sb.AppendLine("</li>");
 			}

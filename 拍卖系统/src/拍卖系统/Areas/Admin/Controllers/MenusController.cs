@@ -28,13 +28,13 @@ namespace 拍卖系统.Areas.Admin.Controllers
 				return NotFound();
 			}
 
-			var menuModel = await db.Menus.SingleOrDefaultAsync(m => m.Id == id);
+			var menuModel = await db.Menus.Include(m => m.MenuItems).SingleOrDefaultAsync(m => m.Id == id);
 			if (menuModel == null)
 			{
 				return NotFound();
 			}
 			ViewData["GroupId"] = menuModel.Id;
-			return View(menuModel.GroupItems);
+			return View(menuModel.MenuItems);
 		}
 
 		// GET: Menus/Create
@@ -48,7 +48,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create(MenuModel menuModel)
+		public async Task<IActionResult> Create(Menu menuModel)
 		{
 			if (ModelState.IsValid)
 			{
@@ -61,17 +61,17 @@ namespace 拍卖系统.Areas.Admin.Controllers
 			return View(menuModel);
 		}
 
-		public IActionResult CreateItem(int id)
+		public IActionResult CreateItem(int groupid)
 		{
-			ViewData["GroupId"] = id;
+			ViewData["GroupId"] = groupid;
 			return View();
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> CreateItem(int id, Groupitem model)
+		public async Task<IActionResult> CreateItem(int groupid, Menuitem model)
 		{
-			var menuModel = await db.Menus.SingleOrDefaultAsync(m => m.Id == id);
+			var menuModel = await db.Menus.Include(m => m.MenuItems).SingleOrDefaultAsync(m => m.Id == groupid);
 			if (menuModel == null)
 			{
 				return NotFound();
@@ -81,7 +81,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 			{
 				model.ItemName = model.Name;
 				model.ItemIDX = Guid.NewGuid().ToString();
-				menuModel.GroupItems.Add(model);
+				menuModel.MenuItems.Add(model);
 				await db.SaveChangesAsync();
 				return RedirectToAction("Index");
 			}
@@ -109,7 +109,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, MenuModel menuModel)
+		public async Task<IActionResult> Edit(int id, Menu menuModel)
 		{
 			if (id != menuModel.Id)
 			{

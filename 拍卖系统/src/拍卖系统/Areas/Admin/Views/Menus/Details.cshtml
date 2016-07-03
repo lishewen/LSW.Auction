@@ -1,11 +1,11 @@
-@model IEnumerable<拍卖系统.Areas.Admin.Models.Groupitem>
+@model IEnumerable<拍卖系统.Areas.Admin.Models.Menuitem>
 
 @{
 	ViewData["Title"] = "菜单子项列表";
 }
 <section class="content-header">
 	<h1>菜单子项列表</h1>
-	<small><a asp-action="CreateItem" asp-route-id="@ViewData["GroupId"]">新建菜单子项</a></small>
+	<small><a asp-action="CreateItem" asp-route-groupid="@ViewData["GroupId"]">新建菜单子项</a></small>
 </section>
 <section class="content">
 	<table class="table table-bordered table-hover">
