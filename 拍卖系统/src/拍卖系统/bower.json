@@ -6,6 +6,6 @@
     "jquery": "2.2.4",
     "jquery-validation": "1.15.0",
     "jquery-validation-unobtrusive": "3.2.6",
-    "adminlte": "2.3.4"
+    "adminlte": "2.3.5"
   }
 }
