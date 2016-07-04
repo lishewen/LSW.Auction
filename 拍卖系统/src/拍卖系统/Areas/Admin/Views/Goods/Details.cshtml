@@ -1,0 +1,72 @@
+@model 拍卖系统.Models.Good
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Good</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDelete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Picture)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
