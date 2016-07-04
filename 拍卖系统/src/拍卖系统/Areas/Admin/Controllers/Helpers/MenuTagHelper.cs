@@ -41,9 +41,13 @@ namespace 拍卖系统.Areas.Admin.Controllers.Helpers
 			var currentController = routeData["controller"];
 			var currentAction = routeData["action"];
 
+			var viewData = ViewContext.ViewData;
+			var menuKey = viewData["MenuKey"] as string;
+
 			foreach (var i in Items)
 			{
-				if (string.Equals(i.ControllerName, currentController as string, StringComparison.OrdinalIgnoreCase))
+				if (string.Equals(i.ControllerName, currentController as string, StringComparison.OrdinalIgnoreCase) ||
+					string.Equals(i.GroupIDX, menuKey, StringComparison.OrdinalIgnoreCase))
 					sb.AppendLine("<li class=\"treeview active\">");
 				else
 					sb.AppendLine("<li class=\"treeview\">");
@@ -56,8 +60,9 @@ namespace 拍卖系统.Areas.Admin.Controllers.Helpers
 
 				foreach (var g in i.MenuItems.OrderBy(m => m.ItemDesc))
 				{
-					if (string.Equals(currentAction as string, g.ActionName, StringComparison.OrdinalIgnoreCase) &&
-						string.Equals(currentController as string, g.Menu.ControllerName, StringComparison.OrdinalIgnoreCase))
+					if ((string.Equals(currentAction as string, g.ActionName, StringComparison.OrdinalIgnoreCase) &&
+						string.Equals(currentController as string, g.Menu.ControllerName, StringComparison.OrdinalIgnoreCase)) ||
+						string.Equals(g.ItemIDX, menuKey, StringComparison.OrdinalIgnoreCase))
 						sb.AppendLine("<li class=\"active\">");
 					else
 						sb.AppendLine("<li>");
