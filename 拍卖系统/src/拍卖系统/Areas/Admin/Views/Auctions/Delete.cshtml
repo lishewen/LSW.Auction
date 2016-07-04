@@ -1,0 +1,112 @@
+@model 拍卖系统.Models.Auction
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Auction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BidCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BidCount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bidnb)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bidnb)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndStatus)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Gid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDelete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NowPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NowPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Onset)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Onset)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StepSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StepSize)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>
