@@ -60,7 +60,7 @@
           "lib/netstandard1.6/LSW.Weixin.dll": {}
         }
       },
-      "LSW.Weixin.MP/1.4.9": {
+      "LSW.Weixin.MP/1.5.0": {
         "type": "package",
         "dependencies": {
           "LSW.Weixin": "1.2.3",
@@ -4517,12 +4517,12 @@
         "lib/netstandard1.6/LSW.Weixin.dll"
       ]
     },
-    "LSW.Weixin.MP/1.4.9": {
-      "sha512": "xqmPNt9N6HIT0d9u0b5WqAoid4FWBtkHnrkoYPYtd7h6jGSH2//35LcirGI32LLXKP3eNnurUSW+pr24X1Zr6Q==",
+    "LSW.Weixin.MP/1.5.0": {
+      "sha512": "CAosrtY3dKkZUQBpzpQXHXBr7cZal7WYQusOKVe24XYDpEDch+sQm6DTiif9FedXqtbcm6PhEjvdtxMIZJOM5Q==",
       "type": "package",
-      "path": "LSW.Weixin.MP/1.4.9",
+      "path": "LSW.Weixin.MP/1.5.0",
       "files": [
-        "LSW.Weixin.MP.1.4.9.nupkg.sha512",
+        "LSW.Weixin.MP.1.5.0.nupkg.sha512",
         "LSW.Weixin.MP.nuspec",
         "lib/net461/LSW.Weixin.MP.dll",
         "lib/netstandard1.6/LSW.Weixin.MP.dll"
@@ -11283,7 +11283,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "LSW.Weixin.MP >= 1.4.9",
+      "LSW.Weixin.MP >= 1.5.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.0.0",

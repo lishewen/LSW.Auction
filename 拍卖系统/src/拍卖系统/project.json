@@ -39,7 +39,7 @@
 			"type": "build"
 		},
 		"Microsoft.AspNetCore.SignalR.Server": "0.2.3",
-    "LSW.Weixin.MP": "1.4.9",
+    "LSW.Weixin.MP": "1.5.0",
     "Microsoft.AspNetCore.WebSockets.Server": "0.1.0"
 	},
 
