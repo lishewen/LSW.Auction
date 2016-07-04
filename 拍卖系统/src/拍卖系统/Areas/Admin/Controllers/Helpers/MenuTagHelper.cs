@@ -54,7 +54,7 @@ namespace 拍卖系统.Areas.Admin.Controllers.Helpers
 				sb.AppendLine("</a>");
 				sb.AppendLine("<ul class=\"treeview-menu\">");
 
-				foreach (var g in i.MenuItems)
+				foreach (var g in i.MenuItems.OrderBy(m => m.ItemDesc))
 				{
 					if (string.Equals(currentAction as string, g.ActionName, StringComparison.OrdinalIgnoreCase) &&
 						string.Equals(currentController as string, g.Menu.ControllerName, StringComparison.OrdinalIgnoreCase))

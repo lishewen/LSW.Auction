@@ -140,6 +140,53 @@ namespace 拍卖系统.Areas.Admin.Controllers
 			return View(menuModel);
 		}
 
+		public async Task<IActionResult> EditItem(int? id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
+
+			var menuModel = await db.MenuItems.SingleOrDefaultAsync(m => m.Id == id);
+			if (menuModel == null)
+			{
+				return NotFound();
+			}
+			return View(menuModel);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> EditItem(int id, Menuitem model)
+		{
+			if (id != model.Id)
+			{
+				return NotFound();
+			}
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					model.ItemName = model.Name;
+					db.Update(model);
+					await db.SaveChangesAsync();
+				}
+				catch (DbUpdateConcurrencyException)
+				{
+					if (!MenuModelExists(model.Id))
+					{
+						return NotFound();
+					}
+					else
+					{
+						throw;
+					}
+				}
+				return RedirectToAction("Index");
+			}
+			return View(model);
+		}
+
 		// GET: Menus/Delete/5
 		public async Task<IActionResult> Delete(int? id)
 		{
@@ -164,6 +211,14 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		{
 			var menuModel = await db.Menus.SingleOrDefaultAsync(m => m.Id == id);
 			db.Menus.Remove(menuModel);
+			await db.SaveChangesAsync();
+			return RedirectToAction("Index");
+		}
+
+		public async Task<IActionResult> DeleteItem(int id)
+		{
+			var menuModel = await db.MenuItems.SingleOrDefaultAsync(m => m.Id == id);
+			db.MenuItems.Remove(menuModel);
 			await db.SaveChangesAsync();
 			return RedirectToAction("Index");
 		}
