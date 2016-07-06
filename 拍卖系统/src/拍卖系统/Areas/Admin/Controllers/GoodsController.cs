@@ -10,6 +10,7 @@ using 拍卖系统.Models;
 using Microsoft.Net.Http.Headers;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using 拍卖系统.Areas.Admin.Controllers.Helpers;
 
 namespace 拍卖系统.Areas.Admin.Controllers
 {
@@ -66,13 +67,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 					extName = extName.Substring(i);
 					string fileName = Guid.NewGuid() + extName;
 					var filePath = _hostingEnvironment.WebRootPath + @"\upload\" + fileName;
-					//保存文件
-					using (var fileStream = new FileStream(filePath, FileMode.Create))
-					{
-						var inputStream = good.picdata.OpenReadStream();
-						await inputStream.CopyToAsync(fileStream);
-					}
-					//await model.picdata.SaveAsAsync(filePath);
+					await good.picdata.SaveAsAsync(filePath);
 					good.Picture = $"/upload/{fileName}";
 				}
 
@@ -123,13 +118,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 						extName = extName.Substring(i);
 						string fileName = Guid.NewGuid() + extName;
 						var filePath = _hostingEnvironment.WebRootPath + @"\upload\" + fileName;
-						//保存文件
-						using (var fileStream = new FileStream(filePath, FileMode.Create))
-						{
-							var inputStream = good.picdata.OpenReadStream();
-							await inputStream.CopyToAsync(fileStream);
-						}
-						//await model.picdata.SaveAsAsync(filePath);
+						await good.picdata.SaveAsAsync(filePath);
 						good.Picture = $"/upload/{fileName}";
 					}
 
