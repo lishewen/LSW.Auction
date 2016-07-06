@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,8 +33,11 @@ namespace 拍卖系统.Models
 		/// <summary>
 		/// 商品图片
 		/// </summary>
-		[Display(Name = "首图")]
 		public string Picture { get; set; }
+		[Display(Name = "首图")]
+		[NotMapped]
+		[JsonIgnore]
+		public IFormFile picdata { get; set; }
 		/// <summary>
 		/// 更新时间
 		/// </summary>
