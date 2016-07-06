@@ -35,6 +35,7 @@ namespace 拍卖系统.Areas.Admin.Models
 		public string ItemName { get; set; }
 		[Display(Name = "排序")]
 		public int ItemDesc { get; set; }
+		[Display(Name = "超链接")]
 		public string ItemURL { get; set; }
 		[Display(Name = "图标")]
 		public string ItemICO { get; set; }

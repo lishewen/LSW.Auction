@@ -32,6 +32,13 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label asp-for="ItemURL" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="ItemURL" class="form-control" />
+					<span asp-validation-for="ItemURL" class="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
 				<label asp-for="ItemDesc" class="col-md-2 control-label"></label>
 				<div class="col-md-10">
 					<input asp-for="ItemDesc" class="form-control" />

@@ -10,19 +10,14 @@ using 拍卖系统.Models;
 
 namespace 拍卖系统.Areas.Admin.Controllers
 {
-    public class GoodsController : Controller
+    public class GoodsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-
-        public GoodsController(ApplicationDbContext context)
-        {
-            _context = context;    
-        }
+        public GoodsController(ApplicationDbContext context) : base(context) { }
 
         // GET: Goods
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Goods.ToListAsync());
+            return View(await db.Goods.ToListAsync());
         }
 
         // GET: Goods/Details/5
@@ -33,7 +28,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var good = await _context.Goods.SingleOrDefaultAsync(m => m.Id == id);
+            var good = await db.Goods.SingleOrDefaultAsync(m => m.Id == id);
             if (good == null)
             {
                 return NotFound();
@@ -53,12 +48,13 @@ namespace 拍卖系统.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Content,CreateTime,Description,IsDelete,Name,Picture,Price,UpdateTime,UserId")] Good good)
+        public async Task<IActionResult> Create(Good good)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(good);
-                await _context.SaveChangesAsync();
+				good.UserId = User.Identity.Name;
+                db.Add(good);
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(good);
@@ -72,7 +68,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var good = await _context.Goods.SingleOrDefaultAsync(m => m.Id == id);
+            var good = await db.Goods.SingleOrDefaultAsync(m => m.Id == id);
             if (good == null)
             {
                 return NotFound();
@@ -96,8 +92,8 @@ namespace 拍卖系统.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(good);
-                    await _context.SaveChangesAsync();
+                    db.Update(good);
+                    await db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -123,7 +119,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var good = await _context.Goods.SingleOrDefaultAsync(m => m.Id == id);
+            var good = await db.Goods.SingleOrDefaultAsync(m => m.Id == id);
             if (good == null)
             {
                 return NotFound();
@@ -137,15 +133,15 @@ namespace 拍卖系统.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var good = await _context.Goods.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Goods.Remove(good);
-            await _context.SaveChangesAsync();
+            var good = await db.Goods.SingleOrDefaultAsync(m => m.Id == id);
+            db.Goods.Remove(good);
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool GoodExists(int id)
         {
-            return _context.Goods.Any(e => e.Id == id);
+            return db.Goods.Any(e => e.Id == id);
         }
     }
 }
