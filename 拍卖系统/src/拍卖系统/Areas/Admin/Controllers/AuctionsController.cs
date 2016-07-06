@@ -10,19 +10,14 @@ using 拍卖系统.Models;
 
 namespace 拍卖系统.Areas.Admin.Controllers
 {
-    public class AuctionsController : Controller
+    public class AuctionsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-
-        public AuctionsController(ApplicationDbContext context)
-        {
-            _context = context;    
-        }
+		public AuctionsController(ApplicationDbContext context) : base(context) { }
 
         // GET: Auctions
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Auctions.ToListAsync());
+            return View(await db.Auctions.ToListAsync());
         }
 
         // GET: Auctions/Details/5
@@ -33,7 +28,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var auction = await _context.Auctions.SingleOrDefaultAsync(m => m.Id == id);
+            var auction = await db.Auctions.SingleOrDefaultAsync(m => m.Id == id);
             if (auction == null)
             {
                 return NotFound();
@@ -57,8 +52,8 @@ namespace 拍卖系统.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(auction);
-                await _context.SaveChangesAsync();
+                db.Add(auction);
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(auction);
@@ -72,7 +67,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var auction = await _context.Auctions.SingleOrDefaultAsync(m => m.Id == id);
+            var auction = await db.Auctions.SingleOrDefaultAsync(m => m.Id == id);
             if (auction == null)
             {
                 return NotFound();
@@ -96,8 +91,8 @@ namespace 拍卖系统.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(auction);
-                    await _context.SaveChangesAsync();
+                    db.Update(auction);
+                    await db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -123,7 +118,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var auction = await _context.Auctions.SingleOrDefaultAsync(m => m.Id == id);
+            var auction = await db.Auctions.SingleOrDefaultAsync(m => m.Id == id);
             if (auction == null)
             {
                 return NotFound();
@@ -137,15 +132,15 @@ namespace 拍卖系统.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var auction = await _context.Auctions.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Auctions.Remove(auction);
-            await _context.SaveChangesAsync();
+            var auction = await db.Auctions.SingleOrDefaultAsync(m => m.Id == id);
+            db.Auctions.Remove(auction);
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         private bool AuctionExists(int id)
         {
-            return _context.Auctions.Any(e => e.Id == id);
+            return db.Auctions.Any(e => e.Id == id);
         }
     }
 }

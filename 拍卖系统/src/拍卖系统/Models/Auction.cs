@@ -61,7 +61,8 @@ namespace 拍卖系统.Models
 	}
 	public enum EndStatus
 	{
-		无状态,
+		未开始,
+		进行中,
 		成交,
 		流拍
 	}
