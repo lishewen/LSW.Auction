@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "添加商品";
 }
+@section css{
+	<link rel="stylesheet" href="~/js/themes/default/css/umeditor.min.css" />
+}
 <section class="content-header">
 	<h1>添加商品</h1>
 </section>
@@ -41,8 +44,7 @@
 			<div class="form-group">
 				<label asp-for="Content" class="col-md-2 control-label"></label>
 				<div class="col-md-10">
-					<input asp-for="Content" class="form-control" />
-					<span asp-validation-for="Content" class="text-danger" />
+					<textarea asp-for="Content" class="form-control" rows="10" style="height:300px"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
@@ -55,4 +57,11 @@
 </section>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	<script src="~/js/umeditor.config.js"></script>
+	<script src="~/js/umeditor.min.js"></script>
+	<script src="~/js/lang/zh-cn/zh-cn.js"></script>
+	<script>
+		//实例化编辑器
+		var um = UM.getEditor('Content');
+	</script>
 }
