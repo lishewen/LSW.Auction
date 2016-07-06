@@ -9,6 +9,7 @@
 /// <reference path="js/lang/en/en.js" />
 /// <reference path="js/lang/zh-cn/zh-cn.js" />
 /// <reference path="js/site.js" />
+/// <reference path="js/umeditor.config.js" />
 /// <reference path="js/umeditor.js" />
 /// <reference path="lib/AdminLTE/dist/js/app.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
