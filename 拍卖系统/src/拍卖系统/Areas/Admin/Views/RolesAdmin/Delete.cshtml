@@ -1,0 +1,32 @@
+﻿@model ApplicationRole
+
+@{
+	ViewBag.Title = "删除角色";
+}
+
+<h2>删除角色</h2>
+
+<h3>你确认要删除此角色？？ </h3>
+<p>该操作只能删除角色，但不会删除角色内的用户。</p>
+<div>
+	<h4>Role.</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.Label("将要删除的角色名称")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+	</dl>
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-actions no-color">
+			<input type="submit" value="删除角色" class="btn btn-default" /> |
+			@Html.ActionLink("返回角色列表", "Index")
+		</div>
+	}
+</div>

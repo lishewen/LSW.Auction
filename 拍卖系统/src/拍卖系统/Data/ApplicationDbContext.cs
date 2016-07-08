@@ -9,7 +9,7 @@ using 拍卖系统.Areas.Admin.Models;
 
 namespace 拍卖系统.Data
 {
-	public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+	public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 			: base(options)
