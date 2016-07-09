@@ -1,0 +1,45 @@
+﻿@model EditUserViewModel
+@{
+	ViewBag.Title = "编辑用户";
+}
+<section class="content-header">
+	<h1>编辑用户</h1>
+</section>
+<section class="content">
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken();
+		<div class="form-horizontal">
+			@Html.ValidationSummary(true)
+			@Html.HiddenFor(model => model.Id)
+
+			<div class="form-group">
+				@Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+				<div class="col-md-10">
+					@Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+					@Html.ValidationMessageFor(model => model.Email)
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">角色组</label>
+				<span class="col-md-10">
+					@foreach (var item in Model.RolesList)
+				{
+						<input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
+						<label class="control-label">@item.Value</label>
+				}
+				</span>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="保存" class="btn btn-default">
+				</div>
+			</div>
+		</div>
+
+	}
+</section>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

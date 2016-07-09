@@ -1,0 +1,39 @@
+﻿@model ApplicationUser
+@{
+	ViewBag.Title = "用户详情";
+}
+
+<h2>用户详情</h2>
+
+<div>
+	<h4>用户</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.Label("用户名称：")
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.UserName)
+		</dd>
+	</dl>
+</div>
+<h4>该用户所在的角色：</h4>
+@if (ViewBag.RoleNames.Count == 0)
+{
+	<hr />
+	<p>这个用户没有设置角色</p>
+}
+<table class="table">
+	@foreach (var item in ViewBag.RoleNames)
+	{
+		<tr>
+			<td>
+				@item
+			</td>
+		</tr>
+	}
+</table>
+<p>
+	@Html.ActionLink("编辑用户", "Edit", new { id = Model.Id })
+	@Html.ActionLink("返回用户列表", "Index")
+</p>

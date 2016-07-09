@@ -1,0 +1,54 @@
+﻿@model 拍卖系统.Models.AccountViewModels.RegisterViewModel
+@{
+	ViewBag.Title = "创建用户";
+}
+<section class="content-header">
+	<h1>创建用户</h1>
+</section>
+<section class="content">
+	@using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+	{
+		@Html.AntiForgeryToken()
+
+		@Html.ValidationSummary("", new { @class = "text-error" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Email, new { @class = "col-md-2 control-label" })
+			<div class="col-md-10">
+				@Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Password, new { @class = "col-md-2 control-label" })
+			<div class="col-md-10">
+				@Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.ConfirmPassword, new { @class = "col-md-2 control-label" })
+			<div class="col-md-10">
+				@Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label">
+				编辑用户角色
+			</label>
+			<div class="col-md-10">
+				@foreach (var item in (SelectList)ViewBag.RoleId)
+				{
+					<input type="button" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
+					<label class="control-label">@item.Value</label>
+				}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" class="btn btn-default" />
+			</div>
+		</div>
+	}
+</section>
+
+@section Scripts{
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
