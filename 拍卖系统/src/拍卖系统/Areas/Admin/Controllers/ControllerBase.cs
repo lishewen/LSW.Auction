@@ -32,5 +32,13 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		{
 			ViewData["CommMessage"] = msg;
 		}
+		/// <summary>
+		/// 全局错误提示方法
+		/// </summary>
+		/// <param name="msg"></param>
+		public void ShowErrMessage(string msg)
+		{
+			ViewData["ErrMessage"] = msg;
+		}
 	}
 }

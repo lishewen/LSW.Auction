@@ -82,7 +82,7 @@
 	{
 		<script type="text/javascript">
 		toastr.options.positionClass = 'toast-top-center';
-		toastr.error('@ViewBag.ErrMessage');
+		toastr.error('@ViewData["ErrMessage"]');
 		</script>
 	}
 	@RenderSection("scripts", required: false)

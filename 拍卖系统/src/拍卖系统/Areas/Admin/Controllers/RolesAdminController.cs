@@ -59,7 +59,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		//异步写入角色创建
 		// POST: /Roles/Create
 		[HttpPost]
-		public async Task<ActionResult> Create(RoleViewModel roleViewModel)
+		public async Task<IActionResult> Create(RoleViewModel roleViewModel)
 		{
 			if (ModelState.IsValid)
 			{
@@ -77,7 +77,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 
 		//异步读取角色编辑
 		// GET: /Roles/Edit/Admin
-		public async Task<ActionResult> Edit(string id)
+		public async Task<IActionResult> Edit(string id)
 		{
 			if (id == null)
 			{
@@ -96,7 +96,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		// POST: /Roles/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Edit(RoleViewModel roleModel)
+		public async Task<IActionResult> Edit(RoleViewModel roleModel)
 		{
 			if (ModelState.IsValid)
 			{
@@ -111,7 +111,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		//
 		//异步读取角色删除
 		// GET: /Roles/Delete/5
-		public async Task<ActionResult> Delete(string id)
+		public async Task<IActionResult> Delete(string id)
 		{
 			if (id == null)
 			{
@@ -129,7 +129,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		// POST: /Roles/Delete/5
 		[HttpPost, ActionName("Delete")]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> DeleteConfirmed(string id, string deleteUser)
+		public async Task<IActionResult> DeleteConfirmed(string id, string deleteUser)
 		{
 			if (ModelState.IsValid)
 			{
