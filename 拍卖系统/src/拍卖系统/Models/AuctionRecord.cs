@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace 拍卖系统.Models
 		/// 拍品id
 		/// </summary>
 		public int Gid { get; set; }
+		[ForeignKey("Gid")]
+		public virtual Auction Auction { get; set; }
 		/// <summary>
 		/// 用户id
 		/// </summary>
