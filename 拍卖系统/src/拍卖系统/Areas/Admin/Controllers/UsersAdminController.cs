@@ -145,25 +145,19 @@ namespace 拍卖系统.Areas.Admin.Controllers
 				user.UserName = editUser.Email;
 
 				await db.SaveChangesAsync();
-				//只有Admin能修改组成员
-				if (User.IsInRole("Admin"))
+
+				var userRoles = await _userManager.GetRolesAsync(user);
+				selectedRole = selectedRole ?? new string[] { };
+
+				await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRole).ToArray<string>());
+
+				var result = await _userManager.AddToRolesAsync(user, selectedRole.Except(userRoles).ToArray<string>());
+				if (!result.Succeeded)
 				{
-					var userRoles = await _userManager.GetRolesAsync(user);
-					selectedRole = selectedRole ?? new string[] { };
-
-					//从全部权限中撤销权限
-					//if (userRoles.Count == RoleManager.Roles.Count())
-					//{
-					await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRole).ToArray<string>());
-					//}
-
-					var result = await _userManager.AddToRolesAsync(user, selectedRole.Except(userRoles).ToArray<string>());
-					if (!result.Succeeded)
-					{
-						ModelState.AddModelError("", result.Errors.First().Description);
-						return View();
-					}
+					ModelState.AddModelError("", result.Errors.First().Description);
+					return View();
 				}
+
 				return RedirectToAction("Index");
 			}
 			ModelState.AddModelError("", "操作失败。");

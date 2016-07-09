@@ -44,7 +44,7 @@ namespace 拍卖系统
 				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 			//配置密码规则
-			services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+			services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 			{
 				options.Password.RequiredLength = 6;
 				options.Password.RequireNonAlphanumeric = false;
