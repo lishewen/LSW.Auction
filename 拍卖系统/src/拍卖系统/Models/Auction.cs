@@ -12,6 +12,11 @@ namespace 拍卖系统.Models
 	/// </summary>
 	public class Auction : EntityBase<int>
 	{
+		public Auction()
+		{
+			if (AuctionRecords == null)
+				AuctionRecords = new List<AuctionRecord>();
+		}
 		/// <summary>
 		/// 商品id
 		/// </summary>
@@ -70,6 +75,7 @@ namespace 拍卖系统.Models
 		/// </summary>
 		[Display(Name = "状态")]
 		public EndStatus EndStatus { get; set; }
+		public virtual ICollection<AuctionRecord> AuctionRecords { get; set; }
 	}
 	public enum EndStatus
 	{
