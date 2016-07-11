@@ -27,6 +27,7 @@
 			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 	</environment>
 	<link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+	@RenderSection("css", required: false)
 	<!-- Theme style -->
 	<link rel="stylesheet" href="~/lib/AdminLTE/dist/css/AdminLTE.min.css">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -38,7 +39,6 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-	@RenderSection("css", required: false)
 </head>
 <body class="hold-transition skin-blue sidebar-mini @ViewData["sidebar-collapse"]">
 	<div class="wrapper">

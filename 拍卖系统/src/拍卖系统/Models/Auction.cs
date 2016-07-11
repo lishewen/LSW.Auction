@@ -27,7 +27,7 @@ namespace 拍卖系统.Models
 		/// 状态
 		/// </summary>
 		[Display(Name = "状态")]
-		public bool Status { get; set; }
+		public bool Status { get; set; } = true;
 		/// <summary>
 		/// 起拍价
 		/// </summary>
@@ -56,7 +56,7 @@ namespace 拍卖系统.Models
 		/// 价格浮动
 		/// </summary>
 		[Display(Name = "价格浮动")]
-		public decimal StepSize { get; set; }
+		public decimal StepSize { get; set; } = 1;
 		/// <summary>
 		/// 当前出价人id
 		/// </summary>
@@ -68,6 +68,7 @@ namespace 拍卖系统.Models
 		/// <summary>
 		/// 结束状态
 		/// </summary>
+		[Display(Name = "状态")]
 		public EndStatus EndStatus { get; set; }
 	}
 	public enum EndStatus

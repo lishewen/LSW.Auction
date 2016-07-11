@@ -38,9 +38,10 @@ namespace 拍卖系统.Areas.Admin.Controllers
         }
 
         // GET: Auctions/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int gid)
         {
-            return View();
+			var good = await db.Goods.FirstOrDefaultAsync(g => g.Id == gid);
+			return View(new Auction { Gid = gid, Good = good, Name = good.Name });
         }
 
         // POST: Auctions/Create
@@ -48,7 +49,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,BidCount,Bidnb,CreateTime,EndStatus,EndTime,Gid,IsDelete,Mid,Name,NowPrice,Onset,Price,StartTime,Status,StepSize")] Auction auction)
+        public async Task<IActionResult> Create(Auction auction)
         {
             if (ModelState.IsValid)
             {

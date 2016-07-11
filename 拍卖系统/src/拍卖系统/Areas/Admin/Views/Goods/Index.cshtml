@@ -34,27 +34,28 @@
 		<tbody>
 			@foreach (var item in Model)
 			{
-				<tr>
-					<td>
-						@Html.DisplayFor(modelItem => item.Id)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Name)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Description)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Price)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.UserId)
-					</td>
-					<td>
-						<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-						<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-					</td>
-				</tr>
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Id)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Description)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Price)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.UserId)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+					<a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+					<a asp-action="Create" asp-controller="Auctions" asp-route-gid="@item.Id">创建拍卖</a>
+				</td>
+			</tr>
 			}
 		</tbody>
 	</table>

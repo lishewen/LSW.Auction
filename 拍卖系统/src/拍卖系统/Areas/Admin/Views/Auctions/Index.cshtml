@@ -5,43 +5,22 @@
 }
 <section class="content-header">
 	<h1>拍卖管理</h1>
-	<small>
-		<a asp-action="Create">新建拍卖</a>
-	</small>
 </section>
 <section class="content">
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th>
-					@Html.DisplayNameFor(model => model.BidCount)
+					@Html.DisplayNameFor(model => model.Name)
 				</th>
 				<th>
 					@Html.DisplayNameFor(model => model.Bidnb)
 				</th>
 				<th>
-					@Html.DisplayNameFor(model => model.CreateTime)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.EndStatus)
+					@Html.DisplayNameFor(model => model.StartTime)
 				</th>
 				<th>
 					@Html.DisplayNameFor(model => model.EndTime)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Gid)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.IsDelete)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Mid)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Name)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.NowPrice)
 				</th>
 				<th>
 					@Html.DisplayNameFor(model => model.Onset)
@@ -50,13 +29,10 @@
 					@Html.DisplayNameFor(model => model.Price)
 				</th>
 				<th>
-					@Html.DisplayNameFor(model => model.StartTime)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.Status)
-				</th>
-				<th>
 					@Html.DisplayNameFor(model => model.StepSize)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.EndStatus)
 				</th>
 				<th></th>
 			</tr>
@@ -66,34 +42,16 @@
 			{
 				<tr>
 					<td>
-						@Html.DisplayFor(modelItem => item.BidCount)
+						@Html.DisplayFor(modelItem => item.Name)
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => item.Bidnb)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.CreateTime)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.EndStatus)
+						@Html.DisplayFor(modelItem => item.StartTime)
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => item.EndTime)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Gid)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.IsDelete)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Mid)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Name)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.NowPrice)
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => item.Onset)
@@ -102,13 +60,10 @@
 						@Html.DisplayFor(modelItem => item.Price)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.StartTime)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.Status)
-					</td>
-					<td>
 						@Html.DisplayFor(modelItem => item.StepSize)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.EndStatus)
 					</td>
 					<td>
 						<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
