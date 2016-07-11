@@ -20,6 +20,8 @@ namespace 拍卖系统.Controllers
 		public string AppSecret;
 		public static string AccessToken;
 		public string JsapiTicket;
+		protected string Token = "car0774";//对应微信后台设置的Token，建议设置地复杂一些
+		protected string EncodingAESKey;
 		public OAuthAccessTokenResult OAuth
 		{
 			get
@@ -41,6 +43,8 @@ namespace 拍卖系统.Controllers
 				_config = Startup.Configuration;
 			AppId = _config["AppId"];
 			AppSecret = _config["AppSecret"];
+			Token = _config["Token"];
+			EncodingAESKey = _config["EncodingAESKey"];
 			AccessToken = AccessTokenContainer.TryGetAccessToken(AppId, AppSecret);
 			//获取JS票据
 			JsapiTicket = JsApiTicketContainer.TryGetJsApiTicket(AppId, AppSecret);

@@ -60,7 +60,7 @@
           "lib/netstandard1.6/LSW.Weixin.dll": {}
         }
       },
-      "LSW.Weixin.MP/1.5.0": {
+      "LSW.Weixin.MP/1.5.1": {
         "type": "package",
         "dependencies": {
           "LSW.Weixin": "1.2.3",
@@ -76,6 +76,19 @@
         },
         "runtime": {
           "lib/netstandard1.6/LSW.Weixin.MP.dll": {}
+        }
+      },
+      "LSW.Weixin.MP.MvcExtension/1.2.2": {
+        "type": "package",
+        "dependencies": {
+          "LSW.Weixin": "1.2.3",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/1.0.0": {
@@ -4517,15 +4530,26 @@
         "lib/netstandard1.6/LSW.Weixin.dll"
       ]
     },
-    "LSW.Weixin.MP/1.5.0": {
-      "sha512": "CAosrtY3dKkZUQBpzpQXHXBr7cZal7WYQusOKVe24XYDpEDch+sQm6DTiif9FedXqtbcm6PhEjvdtxMIZJOM5Q==",
+    "LSW.Weixin.MP/1.5.1": {
+      "sha512": "DRTvQcuai5NurjPEEFnDIjpqtptza5e94ysK85/D0jk//EVvcVlJ+rmor5WBDNhWPADpq2dJeCfYyOZiNgklNw==",
       "type": "package",
-      "path": "LSW.Weixin.MP/1.5.0",
+      "path": "LSW.Weixin.MP/1.5.1",
       "files": [
-        "LSW.Weixin.MP.1.5.0.nupkg.sha512",
+        "LSW.Weixin.MP.1.5.1.nupkg.sha512",
         "LSW.Weixin.MP.nuspec",
         "lib/net461/LSW.Weixin.MP.dll",
         "lib/netstandard1.6/LSW.Weixin.MP.dll"
+      ]
+    },
+    "LSW.Weixin.MP.MvcExtension/1.2.2": {
+      "sha512": "2zLnPQJt2dgK59Ej0FiLm+cxmb7eWUQD+ITjBDNvqRrtgq2QIcCRb3Tatq2I1uLNUNEvRrk2wPLQBhjm7Xi6JA==",
+      "type": "package",
+      "path": "LSW.Weixin.MP.MvcExtension/1.2.2",
+      "files": [
+        "LSW.Weixin.MP.MvcExtension.1.2.2.nupkg.sha512",
+        "LSW.Weixin.MP.MvcExtension.nuspec",
+        "lib/net461/LSW.Weixin.MP.MvcExtension.dll",
+        "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/1.0.0": {
@@ -11283,7 +11307,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "LSW.Weixin.MP >= 1.5.0",
+      "LSW.Weixin.MP >= 1.5.1",
+      "LSW.Weixin.MP.MvcExtension >= 1.2.2",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.0.0",
