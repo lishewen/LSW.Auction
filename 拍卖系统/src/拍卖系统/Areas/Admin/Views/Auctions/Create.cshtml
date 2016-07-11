@@ -1,7 +1,11 @@
 @model 拍卖系统.Models.Auction
 
 @{
-    ViewData["Title"] = "创建拍卖";
+	ViewData["Title"] = "创建拍卖";
+}
+@section css{
+	<!-- daterange picker -->
+	<link rel="stylesheet" href="~/lib/bootstrap-daterangepicker/daterangepicker.css" />
 }
 <section class="content-header">
 	<h1>创建拍卖</h1>
@@ -12,6 +16,8 @@
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<input type="hidden" asp-for="CreateTime" />
 			<input type="hidden" asp-for="Gid" />
+			<input type="hidden" asp-for="StartTime" />
+			<input type="hidden" asp-for="EndTime" />
 			<div class="form-group">
 				<label asp-for="Name" class="col-md-2 control-label"></label>
 				<div class="col-md-10">
@@ -26,19 +32,18 @@
 					<span asp-validation-for="Bidnb" class="text-danger" />
 				</div>
 			</div>
+			<!-- Date and time range -->
 			<div class="form-group">
-				<label asp-for="StartTime" class="col-md-2 control-label"></label>
+				<label class="col-md-2 control-label">拍卖时间</label>
 				<div class="col-md-10">
-					<input asp-for="StartTime" class="form-control" />
-					<span asp-validation-for="StartTime" class="text-danger" />
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-clock-o"></i>
+						</div>
+						<input type="text" class="form-control pull-right" id="reservationtime" autocomplete="off" />
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label asp-for="EndTime" class="col-md-2 control-label"></label>
-				<div class="col-md-10">
-					<input asp-for="EndTime" class="form-control" />
-					<span asp-validation-for="EndTime" class="text-danger" />
-				</div>
+				<!-- /.input group -->
 			</div>
 			<div class="form-group">
 				<label asp-for="Onset" class="col-md-2 control-label"></label>
@@ -71,5 +76,9 @@
 </section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	<!-- date-range-picker -->
+	<script src="~/lib/moment/min/moment.min.js"></script>
+	<script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="~/js/auctiondatetime.js"></script>
 }

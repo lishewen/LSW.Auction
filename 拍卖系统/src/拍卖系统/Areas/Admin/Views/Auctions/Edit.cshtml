@@ -1,136 +1,85 @@
 @model 拍卖系统.Models.Auction
 
 @{
-    ViewData["Title"] = "Edit";
+	ViewData["Title"] = "编辑拍卖";
 }
-
-<h2>Edit</h2>
-
-<form asp-action="Edit">
-    <div class="form-horizontal">
-        <h4>Auction</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-        <div class="form-group">
-            <label asp-for="BidCount" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="BidCount" class="form-control" />
-                <span asp-validation-for="BidCount" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Bidnb" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Bidnb" class="form-control" />
-                <span asp-validation-for="Bidnb" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="CreateTime" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="CreateTime" class="form-control" />
-                <span asp-validation-for="CreateTime" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EndStatus" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="EndStatus" class="form-control"></select>
-                <span asp-validation-for="EndStatus" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="EndTime" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="EndTime" class="form-control" />
-                <span asp-validation-for="EndTime" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Gid" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Gid" class="form-control" />
-                <span asp-validation-for="Gid" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="IsDelete" />
-                    <label asp-for="IsDelete"></label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Mid" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Mid" class="form-control" />
-                <span asp-validation-for="Mid" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="NowPrice" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="NowPrice" class="form-control" />
-                <span asp-validation-for="NowPrice" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Onset" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Onset" class="form-control" />
-                <span asp-validation-for="Onset" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Price" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="StartTime" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="StartTime" class="form-control" />
-                <span asp-validation-for="StartTime" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="Status" />
-                    <label asp-for="Status"></label>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="StepSize" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="StepSize" class="form-control" />
-                <span asp-validation-for="StepSize" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-</form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@section css{
+	<!-- daterange picker -->
+	<link rel="stylesheet" href="~/lib/bootstrap-daterangepicker/daterangepicker.css" />
+}
+<section class="content-header">
+	<h1>编辑拍卖</h1>
+</section>
+<section class="content">
+	<form asp-action="Edit">
+		<div class="form-horizontal">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Id" />
+			<input type="hidden" asp-for="CreateTime" />
+			<input type="hidden" asp-for="Gid" />
+			<input type="hidden" asp-for="StartTime" />
+			<input type="hidden" asp-for="EndTime" />
+			<div class="form-group">
+				<label asp-for="Name" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="Name" class="form-control" />
+					<span asp-validation-for="Name" class="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label asp-for="Bidnb" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="Bidnb" class="form-control" />
+					<span asp-validation-for="Bidnb" class="text-danger" />
+				</div>
+			</div>
+			<!-- Date and time range -->
+			<div class="form-group">
+				<label class="col-md-2 control-label">拍卖时间</label>
+				<div class="col-md-10">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="fa fa-clock-o"></i>
+						</div>
+						<input type="text" class="form-control pull-right" id="reservationtime">
+					</div>
+				</div>
+				<!-- /.input group -->
+			</div>
+			<div class="form-group">
+				<label asp-for="Onset" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="Onset" class="form-control" />
+					<span asp-validation-for="Onset" class="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label asp-for="Price" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="Price" class="form-control" />
+					<span asp-validation-for="Price" class="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label asp-for="StepSize" class="col-md-2 control-label"></label>
+				<div class="col-md-10">
+					<input asp-for="StepSize" class="form-control" />
+					<span asp-validation-for="StepSize" class="text-danger" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Save" class="btn btn-default" />
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	<!-- date-range-picker -->
+	<script src="~/lib/moment/min/moment.min.js"></script>
+	<script src="~/lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="~/js/auctiondatetime.js"></script>
 }

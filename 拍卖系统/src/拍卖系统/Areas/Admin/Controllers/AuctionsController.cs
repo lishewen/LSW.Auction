@@ -81,7 +81,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BidCount,Bidnb,CreateTime,EndStatus,EndTime,Gid,IsDelete,Mid,Name,NowPrice,Onset,Price,StartTime,Status,StepSize")] Auction auction)
+        public async Task<IActionResult> Edit(int id, Auction auction)
         {
             if (id != auction.Id)
             {
