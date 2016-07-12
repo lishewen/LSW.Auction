@@ -10,6 +10,13 @@ var Auction;
             $scope.dobid = function () {
                 controller.postAuctionRecords($scope.myauctionrecord, function () {
                     controller.Init($scope);
+                }, function (data) {
+                    if (data.Message)
+                        alert(data.Message);
+                    else
+                        alert(data);
+                    controller.refreshAuctionRecords($scope);
+                    controller.Init($scope);
                 });
             };
         }
@@ -31,14 +38,11 @@ var Auction;
                 successCallback(data);
             });
         };
-        Controller.prototype.postAuctionRecords = function (model, successCallback) {
+        Controller.prototype.postAuctionRecords = function (model, successCallback, errorCallback) {
             this.httpService.post('/api/AuctionRecords', model).success(function (data, status) {
                 successCallback(data);
             }).error(function (data) {
-                if (data.Message)
-                    alert(data.Message);
-                else
-                    alert(data);
+                errorCallback(data);
             });
         };
         return Controller;

@@ -7,14 +7,15 @@
 		<div class="thumbnail">
 			<img src="@Model.Good.Picture" alt="@Model.Name">
 			<div class="caption">
-				<h3>@Model.Onset</h3>
 				<p>@Html.Raw(Model.Good.Content)</p>
+				<h3>起拍价：@Model.Onset</h3>
 			</div>
 		</div>
 	</div>
 	@if (Model.StartTime <= DateTime.Now && Model.EndTime > DateTime.Now)
 	{
 		<div class="col-md-12">
+			<h4>出价记录：</h4>
 			<div class="media" ng-repeat="r in auctionrecords|limitTo:5">
 				<div class="media-left">
 					<a href="#">
@@ -28,6 +29,7 @@
 			</div>
 		</div>
 		<div class="col-md-12">
+			<h4>我要出价：</h4>
 			<form class="form-inline">
 				<div class="form-group">
 					<label class="sr-only" for="exampleInputAmount">我要出价</label>

@@ -23,6 +23,13 @@ namespace Auction {
 			$scope.dobid = () => {
 				controller.postAuctionRecords($scope.myauctionrecord, () => {
 					controller.Init($scope);
+				}, (data) => {
+					if (data.Message)
+						alert(data.Message);
+					else
+						alert(data);
+					controller.refreshAuctionRecords($scope);
+					controller.Init($scope);
 				});
 			}
 		}
@@ -48,14 +55,11 @@ namespace Auction {
 			});
 		}
 
-		postAuctionRecords(model: Models.AuctionRecord, successCallback: Function): void {
+		postAuctionRecords(model: Models.AuctionRecord, successCallback: Function, errorCallback: Function): void {
 			this.httpService.post('/api/AuctionRecords', model).success(function (data, status) {
 				successCallback(data);
 			}).error(function (data) {
-				if (data.Message)
-					alert(data.Message);
-				else
-					alert(data);
+				errorCallback(data);
 			});
 		}
 	}
