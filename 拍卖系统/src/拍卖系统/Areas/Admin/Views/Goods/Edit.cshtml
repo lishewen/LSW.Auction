@@ -10,7 +10,7 @@
 	<h1>编辑商品</h1>
 </section>
 <section class="content">
-	<form asp-action="Edit">
+	<form asp-action="Edit" method="post" enctype="multipart/form-data" asp-antiforgery="true">
 		<div class="form-horizontal">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<input type="hidden" asp-for="Id" />

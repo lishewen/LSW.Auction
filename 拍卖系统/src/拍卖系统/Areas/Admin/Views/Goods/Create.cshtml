@@ -10,7 +10,7 @@
 	<h1>添加商品</h1>
 </section>
 <section class="content">
-	<form asp-action="Create">
+	<form asp-action="Create" method="post" enctype="multipart/form-data" asp-antiforgery="true">
 		<div class="form-horizontal">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
