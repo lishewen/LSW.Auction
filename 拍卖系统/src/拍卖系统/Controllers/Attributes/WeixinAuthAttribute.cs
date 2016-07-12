@@ -22,8 +22,8 @@ namespace 拍卖系统.Controllers.Attributes
 			if (c.OAuth == null)
 			{
 				var state = c.Request.Query["state"];
-				if (state != "car0774")
-					context.Result = c.Redirect(OAuthApi.GetAuthorizeUrl(c.AppId, "http://" + c.Request.Host + c.Request.Path, "car0774", OAuthScope.snsapi_base));
+				if (state != c.Token)
+					context.Result = c.Redirect(OAuthApi.GetAuthorizeUrl(c.AppId, "http://" + c.Request.Host + c.Request.Path, c.Token, OAuthScope.snsapi_base));
 				else
 				{
 					var code = c.Request.Query["code"];

@@ -20,7 +20,7 @@ namespace 拍卖系统.Controllers
 		public string AppSecret;
 		public static string AccessToken;
 		public string JsapiTicket;
-		protected string Token = "car0774";//对应微信后台设置的Token，建议设置地复杂一些
+		public string Token;//对应微信后台设置的Token，建议设置地复杂一些
 		protected string EncodingAESKey;
 		public OAuthAccessTokenResult OAuth
 		{

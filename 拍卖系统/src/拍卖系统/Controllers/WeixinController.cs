@@ -79,8 +79,8 @@ namespace 拍卖系统.Controllers
 			};
 			subButton.sub_button.Add(new SingleViewButton()
 			{
-				url = OAuthApi.GetAuthorizeUrl(AppId, "http://lishewen.azurewebsites.net/Weixin/BindMemberCard", "car0774", OAuthScope.snsapi_base),
-				name = "拍卖中心"
+				url = OAuthApi.GetAuthorizeUrl(AppId, "http://lishewen.azurewebsites.net/Weixin/BindMemberCard", Token, OAuthScope.snsapi_base),
+				name = "会员首页"
 			});
 			subButton.sub_button.Add(new SingleViewButton()
 			{
