@@ -1,1 +1,31 @@
-﻿<h2>会员中心</h2>
+﻿@model Member
+@{
+	IEnumerable<Auction> list = ViewData["List"] as IEnumerable<Auction>;
+}
+<h2>会员中心</h2>
+<div class="weui_panel_bd">
+	<div class="weui_media_box weui_media_appmsg">
+		<div class="weui_media_hd">
+			<img class="weui_media_appmsg_thumb" src="@Model.Avatar" alt="">
+		</div>
+		<div class="weui_media_bd">
+			<h4 class="weui_media_title">@Model.NickName</h4>
+			<p class="weui_media_desc">欢迎回来</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	@foreach (var a in list)
+	{
+		<div class="col-xs-6 col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="@a.Good.Picture" alt="@a.Name">
+				<div class="caption">
+					<h3>@a.Name</h3>
+					<p>@a.Good.Description</p>
+					<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+				</div>
+			</div>
+		</div>
+	}
+</div>
