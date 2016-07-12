@@ -31,7 +31,7 @@ namespace 拍卖系统.Controllers.Attributes
 				}
 			}
 #else
-			c.OAuth = new OAuthAccessTokenResult { openid = "o3vTkwWREjtcPiHDYTT78SHvPHmY" };
+			c.OAuth = new OAuthAccessTokenResult { openid = "ojzrsw27vVFZur75YmukfcMnMpak" };
 #endif
 			base.OnActionExecuting(context);
 		}

@@ -42,7 +42,8 @@
 		"LSW.Weixin.MP": "1.5.1",
 		"Microsoft.AspNetCore.WebSockets.Server": "0.1.0",
     "LSW.Weixin.MP.MvcExtension": "1.2.2",
-    "Microsoft.AspNetCore.Session": "1.0.0"
+    "Microsoft.AspNetCore.Session": "1.0.0",
+    "Microsoft.AspNetCore.Mvc.WebApiCompatShim": "1.0.0"
 	},
 
 	"tools": {

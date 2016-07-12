@@ -9,6 +9,9 @@ using LSW.Weixin.MP.CommonAPIs;
 using LSW.Weixin.MP.AdvancedAPIs.OAuth;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
+using System.Web.Http;
+using System.Net;
+using System.Net.Http;
 
 namespace 拍卖系统.Controllers
 {
@@ -64,6 +67,16 @@ namespace 拍卖系统.Controllers
 		public void ShowErrMessage(string msg)
 		{
 			ViewData["ErrMessage"] = msg;
+		}
+		/// <summary>
+		/// 抛出一个JSON异常，对应js error callback
+		/// </summary>
+		/// <param name="msg">错误信息</param>
+		protected void ThrowHttpResponseException(string msg)
+		{
+			var ex = new HttpResponseException(HttpStatusCode.InternalServerError);
+			ex.Response.Content = new StringContent(msg);
+			throw ex;
 		}
 		protected override void Dispose(bool disposing)
 		{
