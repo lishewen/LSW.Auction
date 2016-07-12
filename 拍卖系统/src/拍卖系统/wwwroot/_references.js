@@ -13,6 +13,7 @@
 /// <reference path="js/umeditor.config.js" />
 /// <reference path="js/umeditor.js" />
 /// <reference path="lib/AdminLTE/dist/js/app.js" />
+/// <reference path="lib/angular/angular.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/bootstrap-daterangepicker/daterangepicker.js" />
 /// <reference path="lib/jquery/dist/jquery.js" />
