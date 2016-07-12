@@ -54,6 +54,7 @@ namespace 拍卖系统
 			}).AddEntityFrameworkStores<ApplicationDbContext>()
 				.AddDefaultTokenProviders();
 
+			services.AddSession();
 			services.AddMvc();
 			services.AddSignalR();
 
@@ -80,6 +81,7 @@ namespace 拍卖系统
 				app.UseExceptionHandler("/Home/Error");
 			}
 
+			app.UseSession();
 			app.UseStaticFiles();
 			app.UseWebSockets();
 			app.UseSignalR();
