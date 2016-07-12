@@ -15,12 +15,17 @@ using LSW.Weixin.MP.CommonAPIs;
 using 拍卖系统.Controllers.Attributes;
 using 拍卖系统.Models;
 using Microsoft.EntityFrameworkCore;
+using 拍卖系统.Services;
 
 namespace 拍卖系统.Controllers
 {
 	public class WeixinController : ControllerBase
 	{
-		public WeixinController(ApplicationDbContext context) : base(context) { }
+		IWeixinSender sender;
+		public WeixinController(ApplicationDbContext context, IWeixinSender weixinsender) : base(context)
+		{
+			sender = weixinsender;
+		}
 		/// <summary>
 		/// 微信后台验证地址（使用Get），微信后台的“接口配置信息”的Url填写如：http://wx.car0774.com/weixin
 		/// </summary>
@@ -128,6 +133,8 @@ namespace 拍卖系统.Controllers
 				Avatar = info.headimgurl
 			});
 			await db.SaveChangesAsync();
+
+			await sender.SendWeixinAsync(member.OpenId, "恭喜您成为TJ会员");
 
 			return RedirectToAction("Index", "Member");
 		}
