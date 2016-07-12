@@ -23,6 +23,8 @@ namespace 拍卖系统.Models
 		/// 用户id
 		/// </summary>
 		public int Mid { get; set; }
+		[ForeignKey("Mid")]
+		public virtual Member Member { get; set; }
 		/// <summary>
 		/// 出价金额
 		/// </summary>

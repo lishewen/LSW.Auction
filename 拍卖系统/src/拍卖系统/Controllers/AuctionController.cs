@@ -19,6 +19,8 @@ namespace 拍卖系统.Controllers
 			if (member == null)
 				return RedirectToAction("BindMemberCard", "Weixin");
 
+			ViewData["Mid"] = member.Id;
+
 			var auction = await db.Auctions.Include(a => a.Good).SingleOrDefaultAsync(a => a.Id == id);
 			if (auction == null)
 				return NotFound();

@@ -27,6 +27,14 @@ var Models;
         return Auction;
     }(EntityBase));
     Models.Auction = Auction;
+    var Member = (function (_super) {
+        __extends(Member, _super);
+        function Member() {
+            _super.apply(this, arguments);
+        }
+        return Member;
+    }(EntityBase));
+    Models.Member = Member;
     (function (EndStatus) {
         EndStatus[EndStatus["未开始"] = 0] = "未开始";
         EndStatus[EndStatus["进行中"] = 1] = "进行中";

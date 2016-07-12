@@ -1,4 +1,4 @@
-﻿@model Auction 
+﻿@model Auction
 <div class="page-header">
 	<h1>@Model.Name <small>@Model.Bidnb</small></h1>
 </div>
@@ -12,26 +12,47 @@
 			</div>
 		</div>
 	</div>
-	<div class="media">
-		<div class="media-left">
-			<a href="#">
-				<img class="media-object" src="..." alt="...">
-			</a>
-		</div>
-		<div class="media-body">
-			<h4 class="media-heading">出价</h4>
-			...
-		</div>
-	</div>
-	<form class="form-inline">
-		<div class="form-group">
-			<label class="sr-only" for="exampleInputAmount">我要出价</label>
-			<div class="input-group">
-				<div class="input-group-addon">￥</div>
-				<input type="number" class="form-control" id="exampleInputAmount" placeholder="@Model.Price">
-				<div class="input-group-addon">.00</div>
+	@if (Model.StartTime <= DateTime.Now && Model.EndTime > DateTime.Now)
+	{
+		<div class="col-md-12">
+			<div class="media" ng-repeat="r in auctionrecords|limitTo:5">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object" ng-src="r.Member.Avatar">
+					</a>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">{{r.Member.NickName}}出价</h4>
+					￥{{r.Money}}<small>{{r.CreateTime}}</small>
+				</div>
 			</div>
 		</div>
-		<button type="button" class="btn btn-primary">出价</button>
-	</form>
+		<div class="col-md-12">
+			<form class="form-inline">
+				<div class="form-group">
+					<label class="sr-only" for="exampleInputAmount">我要出价</label>
+					<div class="input-group">
+						<div class="input-group-addon">￥</div>
+						<input type="number" class="form-control" id="exampleInputAmount" placeholder="@Model.Price" ng-model="myauctionrecord.Money">
+						<div class="input-group-addon">.00</div>
+					</div>
+				</div>
+				<button type="button" class="btn btn-primary" ng-click="dobid()">出价</button>
+			</form>
+		</div>
+	}
+	else
+	{
+		<h3>拍卖将于 @Model.StartTime 开始，请稍后刷新页面</h3>
+	}
 </div>
+@section scripts{
+	<script>
+		var id=@Model.Id;
+		var mid=@ViewData["Mid"];
+	</script>
+	<script src="~/lib/angular/angular.min.js"></script>
+	<script src="~/js/angular-signalr-hub.min.js"></script>
+	<script src="~/js/models/models.js"></script>
+	<script src="~/js/controllers/auctioncontroller.js"></script>
+}

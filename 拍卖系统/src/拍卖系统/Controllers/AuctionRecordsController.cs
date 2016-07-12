@@ -39,6 +39,8 @@ namespace 拍卖系统.Controllers
 				ThrowHttpResponseException("拍卖未开始");
 			if (auction.EndTime < DateTime.Now)
 				ThrowHttpResponseException("拍卖已结束");
+			if (auctionRecord.Money < auction.NowPrice + auction.StepSize)
+				ThrowHttpResponseException("出价少于步长");
 			if (auction.NowPrice >= auctionRecord.Money)
 				ThrowHttpResponseException("已经有人出价比你高，请重新出价");
 

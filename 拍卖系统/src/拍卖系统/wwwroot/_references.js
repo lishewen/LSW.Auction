@@ -2,6 +2,7 @@
 /// <reference path="../gulpfile.js" />
 /// <reference path="js/angular-signalr-hub.js" />
 /// <reference path="js/auctiondatetime.js" />
+/// <reference path="js/controllers/auctioncontroller.js" />
 /// <reference path="js/dialogs/emotion/emotion.js" />
 /// <reference path="js/dialogs/formula/formula.js" />
 /// <reference path="js/dialogs/image/image.js" />
