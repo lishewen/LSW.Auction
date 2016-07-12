@@ -1,1 +1,37 @@
-﻿
+﻿@model Auction 
+<div class="page-header">
+	<h1>@Model.Name <small>@Model.Bidnb</small></h1>
+</div>
+<div class="row" ng-controller="Auction.Controller">
+	<div class="col-md-12">
+		<div class="thumbnail">
+			<img src="@Model.Good.Picture" alt="@Model.Name">
+			<div class="caption">
+				<h3>@Model.Onset</h3>
+				<p>@Html.Raw(Model.Good.Content)</p>
+			</div>
+		</div>
+	</div>
+	<div class="media">
+		<div class="media-left">
+			<a href="#">
+				<img class="media-object" src="..." alt="...">
+			</a>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">出价</h4>
+			...
+		</div>
+	</div>
+	<form class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="exampleInputAmount">我要出价</label>
+			<div class="input-group">
+				<div class="input-group-addon">￥</div>
+				<input type="number" class="form-control" id="exampleInputAmount" placeholder="@Model.Price">
+				<div class="input-group-addon">.00</div>
+			</div>
+		</div>
+		<button type="button" class="btn btn-primary">出价</button>
+	</form>
+</div>

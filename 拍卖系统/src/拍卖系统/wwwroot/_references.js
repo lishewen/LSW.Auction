@@ -9,6 +9,7 @@
 /// <reference path="js/dialogs/video/video.js" />
 /// <reference path="js/lang/en/en.js" />
 /// <reference path="js/lang/zh-cn/zh-cn.js" />
+/// <reference path="js/models/models.js" />
 /// <reference path="js/site.js" />
 /// <reference path="js/umeditor.config.js" />
 /// <reference path="js/umeditor.js" />

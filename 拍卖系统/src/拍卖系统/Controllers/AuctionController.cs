@@ -19,11 +19,11 @@ namespace 拍卖系统.Controllers
 			if (member == null)
 				return RedirectToAction("BindMemberCard", "Weixin");
 
-			var auction = await db.Auctions.SingleOrDefaultAsync(a => a.Id == id);
+			var auction = await db.Auctions.Include(a => a.Good).SingleOrDefaultAsync(a => a.Id == id);
 			if (auction == null)
 				return NotFound();
 
-			return View();
+			return View(auction);
 		}
 	}
 }

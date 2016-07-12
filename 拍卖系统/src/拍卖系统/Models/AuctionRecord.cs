@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace 拍卖系统.Models
 {
@@ -16,6 +17,7 @@ namespace 拍卖系统.Models
 		/// </summary>
 		public int Gid { get; set; }
 		[ForeignKey("Gid")]
+		[JsonIgnore]
 		public virtual Auction Auction { get; set; }
 		/// <summary>
 		/// 用户id
