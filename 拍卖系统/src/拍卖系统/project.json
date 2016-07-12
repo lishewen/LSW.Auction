@@ -79,13 +79,13 @@
 	},
 
 	"publishOptions": {
-		"include": [
-			"wwwroot",
-			"Views",
-			"Areas/**/Views",
-			"appsettings.json",
-			"web.config"
-		]
+			"include": [
+				"wwwroot",
+				"Views",
+				"Areas/**/*.cshtml",
+				"appsettings.json",
+				"web.config"
+			]
 	},
 
 	"scripts": {
