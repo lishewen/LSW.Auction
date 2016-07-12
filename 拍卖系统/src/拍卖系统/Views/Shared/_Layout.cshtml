@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="lswapp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,14 +7,17 @@
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="~/lib/weui/dist/style/weui.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+		<link rel="stylesheet" href="~/lib/weui/dist/style/weui.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+	<link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,6 +34,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+					<li><a asp-controller="Member" asp-action="Index">会员中心</a></li>
                 </ul>
             </div>
         </div>
@@ -57,7 +61,23 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
     </environment>
-
+	<script src="~/lib/signalr/jquery.signalR.min.js"></script>
+	<script src="/signalr/js"></script>
+	<script src="~/lib/toastr/toastr.min.js"></script>
+	@if (ViewData["CommMessage"] != null)
+	{
+		<script type="text/javascript">
+		toastr.options.positionClass = 'toast-top-center';
+		toastr.success('@ViewData["CommMessage"]');
+		</script>
+	}
+	@if (@ViewData["ErrMessage"] != null)
+	{
+		<script type="text/javascript">
+		toastr.options.positionClass = 'toast-top-center';
+		toastr.error('@ViewData["ErrMessage"]');
+		</script>
+	}
     @RenderSection("scripts", required: false)
 </body>
 </html>

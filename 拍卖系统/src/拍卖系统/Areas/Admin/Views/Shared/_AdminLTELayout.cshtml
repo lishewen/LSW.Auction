@@ -76,7 +76,7 @@
 		</script>
 	}
 
-	@if (ViewBag.ErrMessage != null)
+	@if (@ViewData["ErrMessage"] != null)
 	{
 		<script type="text/javascript">
 		toastr.options.positionClass = 'toast-top-center';

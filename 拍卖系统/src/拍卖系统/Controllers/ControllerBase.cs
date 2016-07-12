@@ -49,6 +49,22 @@ namespace 拍卖系统.Controllers
 			//获取JS票据
 			JsapiTicket = JsApiTicketContainer.TryGetJsApiTicket(AppId, AppSecret);
 		}
+		/// <summary>
+		/// 全局提示信息方法
+		/// </summary>
+		/// <param name="msg"></param>
+		public void ShowCommMessage(string msg)
+		{
+			ViewData["CommMessage"] = msg;
+		}
+		/// <summary>
+		/// 全局错误提示方法
+		/// </summary>
+		/// <param name="msg"></param>
+		public void ShowErrMessage(string msg)
+		{
+			ViewData["ErrMessage"] = msg;
+		}
 		protected override void Dispose(bool disposing)
 		{
 			if (db != null)
