@@ -15,7 +15,7 @@
 	@if (Model.StartTime <= DateTime.Now && Model.EndTime > DateTime.Now)
 	{
 		<div class="col-md-12">
-			<h4>出价记录：</h4>
+			<h4>出价记录(TOP5)：</h4>
 			<div class="media" ng-repeat="r in auctionrecords|limitTo:5">
 				<div class="media-left">
 					<a href="#">
