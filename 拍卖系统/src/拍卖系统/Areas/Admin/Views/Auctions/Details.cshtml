@@ -1,108 +1,129 @@
 @model 拍卖系统.Models.Auction
 
 @{
-    ViewData["Title"] = "Details";
+	ViewData["Title"] = "拍卖详情";
 }
+<section class="content-header">
+	<h2>拍卖详情</h2>
+</section>
+<section class="content" ng-controller="Auction.Controller">
+	<div>
+		<dl class="dl-horizontal">
+			<dt>
+				@Html.DisplayNameFor(model => model.BidCount)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.BidCount)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Bidnb)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Bidnb)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.CreateTime)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.CreateTime)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.EndStatus)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.EndStatus)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.EndTime)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.EndTime)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Gid)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Gid)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.IsDelete)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.IsDelete)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Mid)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Mid)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Name)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Name)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.NowPrice)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.NowPrice)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Onset)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Onset)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Price)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Price)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.StartTime)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.StartTime)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Status)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Status)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.StepSize)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.StepSize)
+			</dd>
+		</dl>
+	</div>
+	<div class="col-md-12">
+		<h4>出价记录：</h4>
+		<div class="media" ng-repeat="r in auctionrecords">
+			<div class="media-left">
+				<a href="#">
+					<img class="media-object" ng-src="{{r.member.avatar}}" style="width:64px;height:64px;">
+				</a>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading">{{r.member.nickName}} 出价</h4>
+				￥{{r.money}}   <small>{{r.createTime|date:'yyyy-MM-dd HH:mm:ss'}}</small>
+			</div>
+		</div>
+	</div>
+</section>
 
-<h2>Details</h2>
-
-<div>
-    <h4>Auction</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BidCount)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BidCount)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Bidnb)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Bidnb)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CreateTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EndStatus)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EndStatus)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EndTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EndTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Gid)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Gid)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDelete)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsDelete)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Mid)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Mid)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NowPrice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NowPrice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Onset)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Onset)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StartTime)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.StepSize)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StepSize)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+@section scripts{
+	<script>
+		var id=@Model.Id;
+		var mid=0;
+	</script>
+	<script src="~/lib/angular/angular.min.js"></script>
+	<script src="~/js/angular-signalr-hub.min.js"></script>
+	<script src="~/js/models/models.js"></script>
+	<script src="~/js/controllers/auctioncontroller.js"></script>
+}

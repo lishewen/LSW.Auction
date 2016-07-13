@@ -16,5 +16,10 @@ namespace 拍卖系统.Hubs
 		{
 			db = context;
 		}
+
+		public void RefreshAuctionRecords(string msg)
+		{
+			Clients.All.refreshauctionrecords(msg);
+		}
 	}
 }

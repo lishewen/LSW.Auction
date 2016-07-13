@@ -7,6 +7,35 @@ var Auction;
             this.refreshAuctionRecords($scope);
             this.Init($scope);
             var controller = this;
+            this.hub = new Hub('auction', {
+                // client-side methods
+                listeners: {
+                    'refreshauctionrecords': function (msg) {
+                        controller.refreshAuctionRecords($scope);
+                        toastr.success(msg);
+                    }
+                },
+                //handle connection error
+                errorHandler: function (error) {
+                    console.error(error);
+                },
+                stateChanged: function (state) {
+                    switch (state.newState) {
+                        case $.signalR.connectionState.connecting:
+                            console.log('连接中');
+                            break;
+                        case $.signalR.connectionState.connected:
+                            console.log('已连接');
+                            break;
+                        case $.signalR.connectionState.reconnecting:
+                            console.log('重新连接');
+                            break;
+                        case $.signalR.connectionState.disconnected:
+                            console.log('断开');
+                            break;
+                    }
+                }
+            });
             $scope.dobid = function () {
                 controller.postAuctionRecords($scope.myauctionrecord, function () {
                     controller.Init($scope);
@@ -22,9 +51,9 @@ var Auction;
         }
         Controller.prototype.Init = function (scope) {
             scope.myauctionrecord = new Models.AuctionRecord;
-            scope.myauctionrecord.Mid = mid;
-            scope.myauctionrecord.Gid = id;
-            scope.myauctionrecord.Name = '我的出价';
+            scope.myauctionrecord.mid = mid;
+            scope.myauctionrecord.gid = id;
+            scope.myauctionrecord.name = '我的出价';
         };
         Controller.prototype.refreshAuctionRecords = function (scope) {
             this.getAuctionRecords(function (data) {

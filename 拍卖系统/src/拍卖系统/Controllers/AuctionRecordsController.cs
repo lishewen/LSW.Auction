@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using 拍卖系统.Data;
 using 拍卖系统.Models;
+using Microsoft.AspNetCore.SignalR.Infrastructure;
+using 拍卖系统.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace 拍卖系统.Controllers
 {
@@ -14,13 +17,17 @@ namespace 拍卖系统.Controllers
 	[Route("api/AuctionRecords")]
 	public class AuctionRecordsController : ControllerBase
 	{
-		public AuctionRecordsController(ApplicationDbContext context) : base(context) { }
+		private readonly IHubContext _hub;
+		public AuctionRecordsController(ApplicationDbContext context, IConnectionManager signalRConnectionManager) : base(context)
+		{
+			_hub = signalRConnectionManager.GetHubContext<AuctionHub>();
+		}
 
 		// GET: api/AuctionRecords
 		[HttpGet("{id}")]
 		public IEnumerable<AuctionRecord> GetAuctionRecords(int id)
 		{
-			return db.AuctionRecords.Where(a => a.Gid == id).OrderByDescending(a => a.Id);
+			return db.AuctionRecords.Include(a => a.Member).Where(a => a.Gid == id).OrderByDescending(a => a.Id);
 		}
 
 		// POST: api/AuctionRecords
@@ -65,6 +72,8 @@ namespace 拍卖系统.Controllers
 					throw;
 				}
 			}
+			var member = await db.Members.SingleOrDefaultAsync(m => m.Id == auctionRecord.Mid);
+			RefreshAuctionRecords($"{member.NickName} 拍品编号 {auction.Bidnb} 出价 ￥{auctionRecord.Money} 有效");
 
 			return Ok();
 		}
@@ -72,6 +81,11 @@ namespace 拍卖系统.Controllers
 		private bool AuctionRecordExists(int id)
 		{
 			return db.AuctionRecords.Any(e => e.Id == id);
+		}
+
+		private void RefreshAuctionRecords(string msg)
+		{
+			_hub.Clients.All.refreshauctionrecords(msg);
 		}
 	}
 }

@@ -19,12 +19,12 @@
 			<div class="media" ng-repeat="r in auctionrecords|limitTo:5">
 				<div class="media-left">
 					<a href="#">
-						<img class="media-object" ng-src="r.Member.Avatar">
+						<img class="media-object" ng-src="{{r.member.avatar}}" style="width:64px;height:64px;">
 					</a>
 				</div>
 				<div class="media-body">
-					<h4 class="media-heading">{{r.Member.NickName}}出价</h4>
-					￥{{r.Money}}<small>{{r.CreateTime}}</small>
+					<h4 class="media-heading">{{r.member.nickName}} 出价</h4>
+					￥{{r.money}}   <small>{{r.createTime|date:'yyyy-MM-dd HH:mm:ss'}}</small>
 				</div>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
 					<label class="sr-only" for="exampleInputAmount">我要出价</label>
 					<div class="input-group">
 						<div class="input-group-addon">￥</div>
-						<input type="number" class="form-control" id="exampleInputAmount" placeholder="@Model.Price" ng-model="myauctionrecord.Money">
+						<input type="number" class="form-control" id="exampleInputAmount" placeholder="@Model.Price" ng-model="myauctionrecord.money">
 						<div class="input-group-addon">.00</div>
 					</div>
 				</div>

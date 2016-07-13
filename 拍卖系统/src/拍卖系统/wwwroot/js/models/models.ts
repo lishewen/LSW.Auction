@@ -1,31 +1,31 @@
 ﻿namespace Models {
 	export class EntityBase {
-		Id: number;
-		Name: string;
-		CreateTime: Date;
+		id: number;
+		name: string;
+		createTime: Date;
 	}
 	export class AuctionRecord extends EntityBase {
-		Gid: number;
-		Mid: number;
-		Money: number;
-		Member: Member;
+		gid: number;
+		mid: number;
+		money: number;
+		member: Member;
 	}
 	export class Auction extends EntityBase {
-		Gid: number;
-		Bidnb: string;
-		Onset: number;
-		NowPrice: number;
-		StartTime: Date;
-		EndTime: Date;
-		StepSize: number;
-		Mid: number;
-		BidCount: number;
-		EndStatus: EndStatus;
-		AuctionRecords: Array<AuctionRecord>;
+		gid: number;
+		bidnb: string;
+		onset: number;
+		nowPrice: number;
+		startTime: Date;
+		endTime: Date;
+		stepSize: number;
+		mid: number;
+		bidCount: number;
+		endStatus: EndStatus;
+		auctionRecords: Array<AuctionRecord>;
 	}
 	export class Member extends EntityBase {
-		NickName: string;
-		Avatar: string;
+		nickName: string;
+		avatar: string;
 	}
 	export enum EndStatus {
 		未开始,

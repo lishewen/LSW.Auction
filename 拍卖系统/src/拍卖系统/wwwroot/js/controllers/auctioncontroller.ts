@@ -20,6 +20,36 @@ namespace Auction {
 
 			var controller = this;
 
+			this.hub = new Hub('auction', {
+				// client-side methods
+				listeners: {
+					'refreshauctionrecords': (msg: string) => {
+						controller.refreshAuctionRecords($scope);
+						toastr.success(msg);
+					}
+				},
+				//handle connection error
+				errorHandler: function (error) {
+					console.error(error);
+				},
+				stateChanged: (state: SignalR.StateChanged) => {
+					switch (state.newState) {
+						case $.signalR.connectionState.connecting:
+							console.log('连接中');
+							break;
+						case $.signalR.connectionState.connected:
+							console.log('已连接');
+							break;
+						case $.signalR.connectionState.reconnecting:
+							console.log('重新连接');
+							break;
+						case $.signalR.connectionState.disconnected:
+							console.log('断开');
+							break;
+					}
+				}
+			});
+
 			$scope.dobid = () => {
 				controller.postAuctionRecords($scope.myauctionrecord, () => {
 					controller.Init($scope);
@@ -36,9 +66,9 @@ namespace Auction {
 
 		Init(scope: Scope) {
 			scope.myauctionrecord = new Models.AuctionRecord;
-			scope.myauctionrecord.Mid = mid;
-			scope.myauctionrecord.Gid = id;
-			scope.myauctionrecord.Name = '我的出价';
+			scope.myauctionrecord.mid = mid;
+			scope.myauctionrecord.gid = id;
+			scope.myauctionrecord.name = '我的出价';
 		}
 
 		refreshAuctionRecords(scope: Scope) {
