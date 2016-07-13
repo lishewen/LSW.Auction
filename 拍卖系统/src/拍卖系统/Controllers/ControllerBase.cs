@@ -74,7 +74,7 @@ namespace 拍卖系统.Controllers
 		/// <param name="msg">错误信息</param>
 		protected void ThrowHttpResponseException(string msg)
 		{
-			throw new Exception(msg);
+			throw new JsonException(msg);
 		}
 		protected override void Dispose(bool disposing)
 		{

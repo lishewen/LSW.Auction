@@ -81,7 +81,28 @@ namespace 拍卖系统
 			}
 			else
 			{
-				app.UseExceptionHandler("/Home/Error");
+				//app.UseExceptionHandler("/Home/Error");
+				app.UseExceptionHandler(errorApp =>
+				{
+					errorApp.Run(async context =>
+					{
+						context.Response.StatusCode = 500; // or another Status accordingly to Exception Type
+						context.Response.ContentType = "application/json";
+
+						var error = context.Features.Get<IExceptionHandlerFeature>();
+						if (error != null)
+						{
+							var ex = error.Error;
+
+							await context.Response.WriteAsync(new ErrorDto()
+							{
+								Code = ex.GetHashCode(),
+								Message = ex.Message // or your custom message
+													 // other custom data
+							}.ToString(), Encoding.UTF8);
+						}
+					});
+				});
 			}
 
 			app.UseSession();
@@ -101,28 +122,6 @@ namespace 拍卖系统
 				routes.MapRoute(
 					name: "default",
 					template: "{controller=Home}/{action=Index}/{id?}");
-			});
-
-			app.UseExceptionHandler(errorApp =>
-			{
-				errorApp.Run(async context =>
-				{
-					context.Response.StatusCode = 500; // or another Status accordingly to Exception Type
-					context.Response.ContentType = "application/json";
-
-					var error = context.Features.Get<IExceptionHandlerFeature>();
-					if (error != null)
-					{
-						var ex = error.Error;
-
-						await context.Response.WriteAsync(new ErrorDto()
-						{
-							Code = ex.GetHashCode(),
-							Message = ex.Message // or your custom message
-												 // other custom data
-						}.ToString(), Encoding.UTF8);
-					}
-				});
 			});
 		}
 	}
