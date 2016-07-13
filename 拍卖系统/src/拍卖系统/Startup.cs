@@ -12,6 +12,9 @@ using Microsoft.Extensions.Logging;
 using 拍卖系统.Data;
 using 拍卖系统.Models;
 using 拍卖系统.Services;
+using Microsoft.AspNetCore.Diagnostics;
+using System.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace 拍卖系统
 {
@@ -98,6 +101,28 @@ namespace 拍卖系统
 				routes.MapRoute(
 					name: "default",
 					template: "{controller=Home}/{action=Index}/{id?}");
+			});
+
+			app.UseExceptionHandler(errorApp =>
+			{
+				errorApp.Run(async context =>
+				{
+					context.Response.StatusCode = 500; // or another Status accordingly to Exception Type
+					context.Response.ContentType = "application/json";
+
+					var error = context.Features.Get<IExceptionHandlerFeature>();
+					if (error != null)
+					{
+						var ex = error.Error;
+
+						await context.Response.WriteAsync(new ErrorDto()
+						{
+							Code = ex.GetHashCode(),
+							Message = ex.Message // or your custom message
+												 // other custom data
+						}.ToString(), Encoding.UTF8);
+					}
+				});
 			});
 		}
 	}

@@ -74,9 +74,7 @@ namespace 拍卖系统.Controllers
 		/// <param name="msg">错误信息</param>
 		protected void ThrowHttpResponseException(string msg)
 		{
-			var ex = new HttpResponseException(HttpStatusCode.InternalServerError);
-			ex.Response.Content = new StringContent(msg);
-			throw ex;
+			throw new Exception(msg);
 		}
 		protected override void Dispose(bool disposing)
 		{
