@@ -25,8 +25,24 @@ namespace 拍卖系统.Controllers
 
 		// GET: api/AuctionRecords
 		[HttpGet("{id}")]
-		public IEnumerable<AuctionRecord> GetAuctionRecords(int id)
+		public async Task<IEnumerable<AuctionRecord>> GetAuctionRecords(int id)
 		{
+			var auction = await db.Auctions.SingleOrDefaultAsync(a => a.Id == id);
+			if (auction.EndTime <= DateTime.Now)
+			{
+				if (auction.EndStatus == EndStatus.进行中)
+				{
+					if (auction.NowPrice > 0 && auction.Mid > 0)
+					{
+						auction.EndStatus = EndStatus.成交;
+					}
+					else
+					{
+						auction.EndStatus = EndStatus.流拍;
+					}
+					await db.SaveChangesAsync();
+				}
+			}
 			return db.AuctionRecords.Include(a => a.Member).Where(a => a.Gid == id).OrderByDescending(a => a.Id);
 		}
 
@@ -44,8 +60,22 @@ namespace 拍卖系统.Controllers
 				return NotFound();
 			if (auction.StartTime > DateTime.Now)
 				ThrowHttpResponseException("拍卖未开始");
-			if (auction.EndTime < DateTime.Now)
+			if (auction.EndTime <= DateTime.Now)
+			{
+				if (auction.EndStatus == EndStatus.进行中)
+				{
+					if (auction.NowPrice > 0 && auction.Mid > 0)
+					{
+						auction.EndStatus = EndStatus.成交;
+					}
+					else
+					{
+						auction.EndStatus = EndStatus.流拍;
+					}
+					await db.SaveChangesAsync();
+				}
 				ThrowHttpResponseException("拍卖已结束");
+			}
 			if (auction.NowPrice >= auctionRecord.Money)
 				ThrowHttpResponseException("已经有人出价比你高，请重新出价");
 			if (auctionRecord.Money < auction.NowPrice + auction.StepSize)
