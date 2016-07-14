@@ -103,7 +103,9 @@ namespace 拍卖系统.Controllers
 				}
 			}
 			var member = await db.Members.SingleOrDefaultAsync(m => m.Id == auctionRecord.Mid);
-			RefreshAuctionRecordsWithRoom("room" + auction.Id, $"{member.NickName} 拍品编号 {auction.Bidnb} 出价 ￥{auctionRecord.Money} 有效");
+			string msg = $"{member.NickName} 拍品编号 {auction.Bidnb} 出价 ￥{auctionRecord.Money} 有效";
+			RefreshAuctionRecordsWithRoom("room" + auction.Id, msg);
+			RefreshAuctions(msg);
 
 			return Ok();
 		}
@@ -113,9 +115,9 @@ namespace 拍卖系统.Controllers
 			return db.AuctionRecords.Any(e => e.Id == id);
 		}
 
-		private void RefreshAuctionRecords(string msg)
+		private void RefreshAuctions(string msg)
 		{
-			_hub.Clients.All.refreshauctionrecords(msg);
+			_hub.Clients.All.refreshauctions(msg);
 		}
 
 		private void RefreshAuctionRecordsWithRoom(string roomName, string msg)
