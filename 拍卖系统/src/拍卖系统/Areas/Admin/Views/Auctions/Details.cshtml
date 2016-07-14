@@ -122,7 +122,12 @@
 		var id=@Model.Id;
 		var mid=0;
 	</script>
-	<script src="~/lib/angular/angular.min.js"></script>
+	<environment names="Development">
+		<script src="~/lib/angular/angular.js"></script>
+	</environment>
+	<environment names="Staging,Production">
+		<script src="~/lib/angular/angular.min.js"></script>
+	</environment>
 	<script src="~/js/angular-signalr-hub.min.js"></script>
 	<script src="~/js/models/models.js"></script>
 	<script src="~/js/controllers/auctioncontroller.js"></script>

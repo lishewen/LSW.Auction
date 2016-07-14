@@ -2,6 +2,7 @@ var Auction;
 (function (Auction) {
     var Controller = (function () {
         function Controller($scope, $http, $filter, Hub) {
+            var _this = this;
             this.httpService = $http;
             this.scope = $scope;
             this.refreshAuctionRecords($scope);
@@ -16,7 +17,7 @@ var Auction;
                     }
                 },
                 //server side methods
-                methods: ['joinRoom'],
+                methods: ['JoinRoom'],
                 //handle connection error
                 errorHandler: function (error) {
                     console.error(error);
@@ -28,6 +29,7 @@ var Auction;
                             break;
                         case $.signalR.connectionState.connected:
                             console.log('已连接');
+                            _this.joinroom();
                             break;
                         case $.signalR.connectionState.reconnecting:
                             console.log('重新连接');
@@ -50,10 +52,9 @@ var Auction;
                     controller.Init($scope);
                 });
             };
-            this.joinroom();
         }
         Controller.prototype.joinroom = function () {
-            this.hub.invoke('joinRoom', 'room' + id);
+            this.hub.invoke('JoinRoom', 'room' + id);
         };
         Controller.prototype.Init = function (scope) {
             scope.myauctionrecord = new Models.AuctionRecord;

@@ -29,7 +29,7 @@ namespace Auction {
 					}
 				},
 				//server side methods
-				methods: ['joinRoom'],
+				methods: ['JoinRoom'],
 				//handle connection error
 				errorHandler: function (error) {
 					console.error(error);
@@ -41,6 +41,7 @@ namespace Auction {
 							break;
 						case $.signalR.connectionState.connected:
 							console.log('已连接');
+							this.joinroom();
 							break;
 						case $.signalR.connectionState.reconnecting:
 							console.log('重新连接');
@@ -64,12 +65,10 @@ namespace Auction {
 					controller.Init($scope);
 				});
 			}
-
-			this.joinroom()
 		}
 
 		public joinroom() {
-			this.hub.invoke('joinRoom', 'room' + id);
+			this.hub.invoke('JoinRoom', 'room' + id);
 		}
 
 		Init(scope: Scope) {
