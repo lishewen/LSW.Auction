@@ -15,6 +15,8 @@ var Auction;
                         toastr.success(msg);
                     }
                 },
+                //server side methods
+                methods: ['joinRoom'],
                 //handle connection error
                 errorHandler: function (error) {
                     console.error(error);
@@ -48,7 +50,11 @@ var Auction;
                     controller.Init($scope);
                 });
             };
+            this.joinroom();
         }
+        Controller.prototype.joinroom = function () {
+            this.hub.invoke('joinRoom', 'room' + id);
+        };
         Controller.prototype.Init = function (scope) {
             scope.myauctionrecord = new Models.AuctionRecord;
             scope.myauctionrecord.mid = mid;

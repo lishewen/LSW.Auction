@@ -28,6 +28,8 @@ namespace Auction {
 						toastr.success(msg);
 					}
 				},
+				//server side methods
+				methods: ['joinRoom'],
 				//handle connection error
 				errorHandler: function (error) {
 					console.error(error);
@@ -62,6 +64,12 @@ namespace Auction {
 					controller.Init($scope);
 				});
 			}
+
+			this.joinroom()
+		}
+
+		public joinroom() {
+			this.hub.invoke('joinRoom', 'room' + id);
 		}
 
 		Init(scope: Scope) {

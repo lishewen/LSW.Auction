@@ -21,5 +21,10 @@ namespace 拍卖系统.Hubs
 		{
 			Clients.All.refreshauctionrecords(msg);
 		}
+
+		public Task JoinRoom(string roomName)
+		{
+			return Groups.Add(Context.ConnectionId, roomName);
+		}
 	}
 }
