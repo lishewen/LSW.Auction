@@ -17,7 +17,11 @@ var Auction;
                     }
                 },
                 //server side methods
-                methods: ['JoinRoom'],
+                methods: ['JoinRoom', 'LeaveRoom'],
+                //query params sent on initial connection
+                queryParams: {
+                    'mid': id.toString()
+                },
                 //handle connection error
                 errorHandler: function (error) {
                     console.error(error);
@@ -36,6 +40,7 @@ var Auction;
                             break;
                         case $.signalR.connectionState.disconnected:
                             console.log('断开');
+                            _this.leaveroom();
                             break;
                     }
                 }
@@ -55,6 +60,9 @@ var Auction;
         }
         Controller.prototype.joinroom = function () {
             this.hub.invoke('JoinRoom', 'room' + id);
+        };
+        Controller.prototype.leaveroom = function () {
+            this.hub.invoke('LeaveRoom', 'room' + id);
         };
         Controller.prototype.Init = function (scope) {
             scope.myauctionrecord = new Models.AuctionRecord;

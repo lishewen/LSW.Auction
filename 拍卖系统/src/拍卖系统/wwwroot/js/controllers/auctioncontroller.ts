@@ -29,7 +29,11 @@ namespace Auction {
 					}
 				},
 				//server side methods
-				methods: ['JoinRoom'],
+				methods: ['JoinRoom', 'LeaveRoom'],
+				//query params sent on initial connection
+				queryParams: {
+					'mid': id.toString()
+				},
 				//handle connection error
 				errorHandler: function (error) {
 					console.error(error);
@@ -48,6 +52,7 @@ namespace Auction {
 							break;
 						case $.signalR.connectionState.disconnected:
 							console.log('断开');
+							this.leaveroom();
 							break;
 					}
 				}
@@ -69,6 +74,10 @@ namespace Auction {
 
 		public joinroom() {
 			this.hub.invoke('JoinRoom', 'room' + id);
+		}
+
+		public leaveroom() {
+			this.hub.invoke('LeaveRoom', 'room' + id);
 		}
 
 		Init(scope: Scope) {
