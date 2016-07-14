@@ -15,6 +15,10 @@
 	@if (Model.StartTime <= DateTime.Now && Model.EndTime > DateTime.Now)
 	{
 		<div class="col-md-12">
+			<h4>CountDown:</h4>
+			<p id="countdown"></p>
+		</div>
+		<div class="col-md-12">
 			<h4>出价记录(TOP5)：</h4>
 			<div class="media" ng-repeat="r in auctionrecords|limitTo:5">
 				<div class="media-left">
@@ -33,6 +37,7 @@
 			<form class="form-inline">
 				<div class="form-group">
 					<label class="sr-only" for="exampleInputAmount">我要出价</label>
+					<p>每次加价至少为：@Model.StepSize 元</p>
 					<div class="input-group">
 						<div class="input-group-addon">￥</div>
 						<input type="number" class="form-control" id="exampleInputAmount" placeholder="@Model.Price" ng-model="myauctionrecord.money">
@@ -43,18 +48,38 @@
 			</form>
 		</div>
 	}
-	else
+	else if (Model.EndTime > DateTime.Now)
 	{
 		<h3>拍卖将于 @Model.StartTime 开始，请稍后刷新页面</h3>
+		<h4>CountDown:</h4>
+		<p id="countdown"></p>
+	}
+	else
+	{
+		<h3>拍卖已结束</h3>
 	}
 </div>
 @section scripts{
 	<script>
 		var id=@Model.Id;
 		var mid=@ViewData["Mid"];
+		@if(Model.StartTime <= DateTime.Now && Model.EndTime > DateTime.Now)
+		{
+			@:var endtime='@Model.EndTime';
+		}
+		else
+		{
+			@:var endtime='@Model.StartTime';
+		}
 	</script>
 	<script src="~/lib/angular/angular.min.js"></script>
 	<script src="~/js/angular-signalr-hub.min.js"></script>
 	<script src="~/js/models/models.js"></script>
 	<script src="~/js/controllers/auctioncontroller.js"></script>
+	<script src="~/lib/jquery.countdown/dist/jquery.countdown.min.js"></script>
+	<script>
+		$('#countdown').countdown(endtime, function(event) {
+			$(this).text(event.strftime('%d 天 %H 时 %M 分 %S 秒'));
+		});
+	</script>
 }

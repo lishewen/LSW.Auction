@@ -21,7 +21,7 @@
 			<div class="thumbnail">
 				<a asp-controller="Auction" asp-action="Index" asp-route-id="@a.Id"><img src="@a.Good.Picture" alt="@a.Name"></a>
 				<div class="caption">
-					<h3>@a.Name</h3>
+					<h3>@a.Name</h3><small>起拍价：￥@a.Onset</small>
 					<p>@a.Good.Description</p>
 					<p><a asp-controller="Auction" asp-action="Index" asp-route-id="@a.Id" class="btn btn-primary" role="button">参与拍卖</a></p>
 				</div>
