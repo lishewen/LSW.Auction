@@ -92,14 +92,21 @@ namespace 拍卖系统
 						var error = context.Features.Get<IExceptionHandlerFeature>();
 						if (error != null)
 						{
-							var ex = error.Error;
-
-							await context.Response.WriteAsync(new ErrorDto()
+							if (context.Request.ContentType == "application/json")
 							{
-								Code = ex.GetHashCode(),
-								Message = ex.Message // or your custom message
-													 // other custom data
-							}.ToString(), Encoding.UTF8);
+								var ex = error.Error;
+
+								await context.Response.WriteAsync(new ErrorDto()
+								{
+									Code = ex.GetHashCode(),
+									Message = ex.Message // or your custom message
+														 // other custom data
+								}.ToString(), Encoding.UTF8);
+							}
+							else
+							{
+								context.Response.Redirect("/Home/Error");
+							}
 						}
 					});
 				});
