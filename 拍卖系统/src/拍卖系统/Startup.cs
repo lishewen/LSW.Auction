@@ -44,7 +44,7 @@ namespace 拍卖系统
 		{
 			// Add framework services.
 			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+				options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
 			//配置密码规则
 			services.AddIdentity<ApplicationUser, ApplicationRole>(options =>

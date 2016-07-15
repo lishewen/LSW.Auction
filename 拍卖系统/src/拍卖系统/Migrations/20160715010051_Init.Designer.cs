@@ -8,14 +8,13 @@ using 拍卖系统.Data;
 namespace 拍卖系统.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160708234300_Role")]
-    partial class Role
+    [Migration("20160715010051_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
@@ -269,6 +268,8 @@ namespace 拍卖系统.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Gid");
+
                     b.ToTable("Auctions");
                 });
 
@@ -295,6 +296,10 @@ namespace 拍卖系统.Migrations
                     b.Property<int>("Type");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Gid");
+
+                    b.HasIndex("Mid");
 
                     b.ToTable("AuctionRecords");
                 });
@@ -437,6 +442,27 @@ namespace 拍卖系统.Migrations
                     b.HasOne("拍卖系统.Areas.Admin.Models.Menu", "Menu")
                         .WithMany("MenuItems")
                         .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("拍卖系统.Models.Auction", b =>
+                {
+                    b.HasOne("拍卖系统.Models.Good", "Good")
+                        .WithMany()
+                        .HasForeignKey("Gid")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("拍卖系统.Models.AuctionRecord", b =>
+                {
+                    b.HasOne("拍卖系统.Models.Auction", "Auction")
+                        .WithMany("AuctionRecords")
+                        .HasForeignKey("Gid")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("拍卖系统.Models.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("Mid")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }
