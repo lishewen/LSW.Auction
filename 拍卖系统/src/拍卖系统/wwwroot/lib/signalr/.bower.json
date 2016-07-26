@@ -1,6 +1,6 @@
 {
   "name": "signalr",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "homepage": "http://www.asp.net/signalr",
   "authors": [
     "Microsoft"
@@ -19,14 +19,13 @@
   "dependencies": {
     "jquery": ">=1.6.4"
   },
-  "_release": "2.2.0",
+  "_release": "2.2.1",
   "_resolution": {
     "type": "version",
-    "tag": "v2.2.0",
-    "commit": "26092205231972de4b3db966e5689ddbee971ef9"
+    "tag": "v2.2.1",
+    "commit": "2838a30555f988793beef7055a21acc02ab440be"
   },
   "_source": "https://github.com/SignalR/bower-signalr.git",
-  "_target": "^2.2.0",
-  "_originalSource": "signalr",
-  "_direct": true
+  "_target": "2.2.1",
+  "_originalSource": "signalr"
 }
