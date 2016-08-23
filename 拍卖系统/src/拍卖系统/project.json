@@ -44,7 +44,8 @@
 		"LSW.Weixin.MP.MvcExtension": "1.2.3",
 		"Microsoft.AspNetCore.Session": "1.0.0",
 		"Microsoft.AspNetCore.Mvc.WebApiCompatShim": "1.0.0",
-		"Pomelo.AspNetCore.TimedJob": "1.0.0-prerelease-*"
+		"Pomelo.AspNetCore.TimedJob": "1.0.0-prerelease-*",
+		"Z.EntityFramework.Plus.EFCore": "1.3.9"
 	},
 
 	"tools": {

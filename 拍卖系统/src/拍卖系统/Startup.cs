@@ -65,6 +65,9 @@ namespace 拍卖系统
 			services.AddTransient<IEmailSender, AuthMessageSender>();
 			services.AddTransient<ISmsSender, AuthMessageSender>();
 			services.AddTransient<IWeixinSender, AuthMessageSender>();
+
+			services.AddTimedJob()
+				.AddEntityFrameworkDynamicTimedJob<ApplicationDbContext>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -117,7 +120,7 @@ namespace 拍卖系统
 			app.UseWebSockets();
 			app.UseSignalR();
 			app.UseIdentity();
-
+			app.UseTimedJob();
 			// Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
 			app.UseMvc(routes =>

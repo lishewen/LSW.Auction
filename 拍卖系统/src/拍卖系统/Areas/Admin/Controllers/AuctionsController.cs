@@ -7,12 +7,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using 拍卖系统.Data;
 using 拍卖系统.Models;
+using Microsoft.Extensions.DependencyInjection;
+using Pomelo.AspNetCore.TimedJob;
 
 namespace 拍卖系统.Areas.Admin.Controllers
 {
 	public class AuctionsController : ControllerBase
 	{
-		public AuctionsController(ApplicationDbContext context) : base(context) { }
+		IServiceProvider services;
+		public AuctionsController(ApplicationDbContext context, IServiceProvider services) : base(context)
+		{
+			this.services = services;
+		}
 
 		// GET: Auctions
 		public async Task<IActionResult> Index()
@@ -59,7 +65,34 @@ namespace 拍卖系统.Areas.Admin.Controllers
 			if (ModelState.IsValid)
 			{
 				db.Add(auction);
+
+				var TimedJobService = services.GetRequiredService<TimedJobService>();
+
+				if (db.TimedJobs.Any(j => j.Id != "拍卖系统.Jobs.NoticeJob.Start"))
+				{
+					db.TimedJobs.Add(new Pomelo.AspNetCore.TimedJob.EntityFramework.TimedJob
+					{
+						Id = "拍卖系统.Jobs.NoticeJob.Start",
+						Begin = auction.StartTime.AddMinutes(-15),
+						Interval = int.MaxValue,
+						IsEnabled = true
+					});
+				}
+				if (db.TimedJobs.Any(j => j.Id != "拍卖系统.Jobs.NoticeJob.End"))
+				{
+					db.TimedJobs.Add(new Pomelo.AspNetCore.TimedJob.EntityFramework.TimedJob
+					{
+						Id = "拍卖系统.Jobs.NoticeJob.End",
+						Begin = auction.StartTime.AddMinutes(-15),
+						Interval = int.MaxValue,
+						IsEnabled = true
+					});
+				}
+
 				await db.SaveChangesAsync();
+
+				TimedJobService.RestartDynamicTimers();
+
 				return RedirectToAction("Index");
 			}
 			return View(auction);
