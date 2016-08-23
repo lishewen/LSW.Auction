@@ -43,7 +43,7 @@
           }
         }
       },
-      "LSW.Weixin/1.2.3": {
+      "LSW.Weixin/1.2.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
@@ -60,10 +60,10 @@
           "lib/netstandard1.6/LSW.Weixin.dll": {}
         }
       },
-      "LSW.Weixin.MP/1.5.1": {
+      "LSW.Weixin.MP/1.5.2": {
         "type": "package",
         "dependencies": {
-          "LSW.Weixin": "1.2.3",
+          "LSW.Weixin": "1.2.4",
           "Microsoft.AspNetCore.Http": "1.0.0",
           "NETStandard.Library": "1.6.0",
           "System.Collections.NonGeneric": "4.0.1",
@@ -78,10 +78,10 @@
           "lib/netstandard1.6/LSW.Weixin.MP.dll": {}
         }
       },
-      "LSW.Weixin.MP.MvcExtension/1.2.2": {
+      "LSW.Weixin.MP.MvcExtension/1.2.3": {
         "type": "package",
         "dependencies": {
-          "LSW.Weixin": "1.2.3",
+          "LSW.Weixin": "1.2.4",
           "Microsoft.AspNetCore.Mvc.Core": "1.0.0"
         },
         "compile": {
@@ -2443,6 +2443,23 @@
           "lib/netstandard1.0/NuGet.Versioning.dll": {}
         }
       },
+      "Pomelo.AspNetCore.TimedJob/1.0.0-prerelease-20160813": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Hosting": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "1.0.0",
+          "Microsoft.Extensions.DependencyModel": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Timer": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/Pomelo.AspNetCore.TimedJob.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Pomelo.AspNetCore.TimedJob.dll": {}
+        }
+      },
       "Remotion.Linq/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -4711,34 +4728,34 @@
         "runtimes/win7-x86/native/libuv.dll"
       ]
     },
-    "LSW.Weixin/1.2.3": {
-      "sha512": "iKLop3008GI4Gfx+S/i+E60GOgG2toc7OuVkaalDFcLHxTJc1s4i4xmQnbinjDcyLCe0UWfYzCRWetsPaxxcLQ==",
+    "LSW.Weixin/1.2.4": {
+      "sha512": "2PnjmnuItqUNwaGvlzSvGLVVWXWGd7DD9T3KcOpSn23e4nCPSeUg2WOurWZ2VzHMc6r2lkX676GIpYuG0XElNg==",
       "type": "package",
-      "path": "LSW.Weixin/1.2.3",
+      "path": "LSW.Weixin/1.2.4",
       "files": [
-        "LSW.Weixin.1.2.3.nupkg.sha512",
+        "LSW.Weixin.1.2.4.nupkg.sha512",
         "LSW.Weixin.nuspec",
         "lib/net461/LSW.Weixin.dll",
         "lib/netstandard1.6/LSW.Weixin.dll"
       ]
     },
-    "LSW.Weixin.MP/1.5.1": {
-      "sha512": "DRTvQcuai5NurjPEEFnDIjpqtptza5e94ysK85/D0jk//EVvcVlJ+rmor5WBDNhWPADpq2dJeCfYyOZiNgklNw==",
+    "LSW.Weixin.MP/1.5.2": {
+      "sha512": "osYu7XFz9znVAh9/lcbMQkHqEv1MUgLqK52dbGblr8b6PDAfKhj35879iQ06kQr3VIApPi4i72QW8RRPtwXScA==",
       "type": "package",
-      "path": "LSW.Weixin.MP/1.5.1",
+      "path": "LSW.Weixin.MP/1.5.2",
       "files": [
-        "LSW.Weixin.MP.1.5.1.nupkg.sha512",
+        "LSW.Weixin.MP.1.5.2.nupkg.sha512",
         "LSW.Weixin.MP.nuspec",
         "lib/net461/LSW.Weixin.MP.dll",
         "lib/netstandard1.6/LSW.Weixin.MP.dll"
       ]
     },
-    "LSW.Weixin.MP.MvcExtension/1.2.2": {
-      "sha512": "2zLnPQJt2dgK59Ej0FiLm+cxmb7eWUQD+ITjBDNvqRrtgq2QIcCRb3Tatq2I1uLNUNEvRrk2wPLQBhjm7Xi6JA==",
+    "LSW.Weixin.MP.MvcExtension/1.2.3": {
+      "sha512": "ob/vHjk2ru17DIxAcVfhSUOm1bYGXN3jO1aZw1PBSEtpeGqbyTcS3J45X9VP46W1xiEnBEa8HX1+KNFY3q1YJg==",
       "type": "package",
-      "path": "LSW.Weixin.MP.MvcExtension/1.2.2",
+      "path": "LSW.Weixin.MP.MvcExtension/1.2.3",
       "files": [
-        "LSW.Weixin.MP.MvcExtension.1.2.2.nupkg.sha512",
+        "LSW.Weixin.MP.MvcExtension.1.2.3.nupkg.sha512",
         "LSW.Weixin.MP.MvcExtension.nuspec",
         "lib/net461/LSW.Weixin.MP.MvcExtension.dll",
         "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll"
@@ -6877,6 +6894,17 @@
         "lib/net45/NuGet.Versioning.xml",
         "lib/netstandard1.0/NuGet.Versioning.dll",
         "lib/netstandard1.0/NuGet.Versioning.xml"
+      ]
+    },
+    "Pomelo.AspNetCore.TimedJob/1.0.0-prerelease-20160813": {
+      "sha512": "mzuzm59ZnAMxB/b+A4CMBtiUdzJo1OeCiZ1r4AhSIkKDrTHtqeeQCS27/EWqJBgg7RCz03QqMS5IbNjmlg6bCQ==",
+      "type": "package",
+      "path": "Pomelo.AspNetCore.TimedJob/1.0.0-prerelease-20160813",
+      "files": [
+        "Pomelo.AspNetCore.TimedJob.1.0.0-prerelease-20160813.nupkg.sha512",
+        "Pomelo.AspNetCore.TimedJob.nuspec",
+        "lib/net451/Pomelo.AspNetCore.TimedJob.dll",
+        "lib/netstandard1.6/Pomelo.AspNetCore.TimedJob.dll"
       ]
     },
     "Remotion.Linq/2.1.1": {
@@ -11855,8 +11883,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "LSW.Weixin.MP >= 1.5.1",
-      "LSW.Weixin.MP.MvcExtension >= 1.2.2",
+      "LSW.Weixin.MP >= 1.5.2",
+      "LSW.Weixin.MP.MvcExtension >= 1.2.3",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.0.0",
@@ -11881,13 +11909,14 @@
       "Microsoft.NETCore.App >= 1.0.0",
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.0.0-preview2-final",
-      "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-final"
+      "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-final",
+      "Pomelo.AspNetCore.TimedJob >= 1.0.0-prerelease-*"
     ],
     ".NETCoreApp,Version=v1.0": []
   },
   "tools": {
     ".NETCoreApp,Version=v1.0": {
-      "BundlerMinifier.Core/2.1.258": {
+      "BundlerMinifier.Core/2.2.281": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.App": "1.0.0",
@@ -11988,7 +12017,7 @@
   },
   "projectFileToolGroups": {
     ".NETCoreApp,Version=v1.0": [
-      "BundlerMinifier.Core >= 2.1.258",
+      "BundlerMinifier.Core >= 2.2.281",
       "Microsoft.AspNetCore.Razor.Tools >= 1.0.0-preview2-final",
       "Microsoft.AspNetCore.Server.IISIntegration.Tools >= 1.0.0-preview2-final",
       "Microsoft.EntityFrameworkCore.Tools >= 1.0.0-preview2-final",
