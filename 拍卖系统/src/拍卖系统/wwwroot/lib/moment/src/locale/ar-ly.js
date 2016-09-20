@@ -1,33 +1,20 @@
 //! moment.js locale configuration
-//! locale : Arabic [ar]
-//! author : Abdel Said: https://github.com/abdelsaid
-//! author : Ahmed Elkhatib
-//! author : forabi https://github.com/forabi
+//! locale : Arabic (Lybia) [ar-ly]
+//! author : Ali Hmer: https://github.com/kikoanis
 
 import moment from '../moment';
 
 var symbolMap = {
-    '1': '١',
-    '2': '٢',
-    '3': '٣',
-    '4': '٤',
-    '5': '٥',
-    '6': '٦',
-    '7': '٧',
-    '8': '٨',
-    '9': '٩',
-    '0': '٠'
-}, numberMap = {
-    '١': '1',
-    '٢': '2',
-    '٣': '3',
-    '٤': '4',
-    '٥': '5',
-    '٦': '6',
-    '٧': '7',
-    '٨': '8',
-    '٩': '9',
-    '٠': '0'
+    '1': '1',
+    '2': '2',
+    '3': '3',
+    '4': '4',
+    '5': '5',
+    '6': '6',
+    '7': '7',
+    '8': '8',
+    '9': '9',
+    '0': '0'
 }, pluralForm = function (n) {
     return n === 0 ? 0 : n === 1 ? 1 : n === 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5;
 }, plurals = {
@@ -47,21 +34,21 @@ var symbolMap = {
         return str.replace(/%d/i, number);
     };
 }, months = [
-    'كانون الثاني يناير',
-    'شباط فبراير',
-    'آذار مارس',
-    'نيسان أبريل',
-    'أيار مايو',
-    'حزيران يونيو',
-    'تموز يوليو',
-    'آب أغسطس',
-    'أيلول سبتمبر',
-    'تشرين الأول أكتوبر',
-    'تشرين الثاني نوفمبر',
-    'كانون الأول ديسمبر'
+    'يناير',
+    'فبراير',
+    'مارس',
+    'أبريل',
+    'مايو',
+    'يونيو',
+    'يوليو',
+    'أغسطس',
+    'سبتمبر',
+    'أكتوبر',
+    'نوفمبر',
+    'ديسمبر'
 ];
 
-export default moment.defineLocale('ar', {
+export default moment.defineLocale('ar-ly', {
     months : months,
     monthsShort : months,
     weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
@@ -111,9 +98,7 @@ export default moment.defineLocale('ar', {
         yy : pluralize('y')
     },
     preparse: function (string) {
-        return string.replace(/\u200f/g, '').replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
-            return numberMap[match];
-        }).replace(/،/g, ',');
+        return string.replace(/\u200f/g, '').replace(/،/g, ',');
     },
     postformat: function (string) {
         return string.replace(/\d/g, function (match) {
@@ -125,4 +110,3 @@ export default moment.defineLocale('ar', {
         doy : 12  // The week that contains Jan 1st is the first week of the year.
     }
 });
-
