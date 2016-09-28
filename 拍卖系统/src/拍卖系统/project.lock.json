@@ -43,54 +43,6 @@
           }
         }
       },
-      "LSW.Weixin/1.2.4": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "NETStandard.Library": "1.6.0",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Dynamic.Runtime": "4.0.11",
-          "System.Threading.Thread": "4.0.0",
-          "System.Xml.XmlSerializer": "4.0.11"
-        },
-        "compile": {
-          "lib/netstandard1.6/LSW.Weixin.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/LSW.Weixin.dll": {}
-        }
-      },
-      "LSW.Weixin.MP/1.5.2": {
-        "type": "package",
-        "dependencies": {
-          "LSW.Weixin": "1.2.4",
-          "Microsoft.AspNetCore.Http": "1.0.0",
-          "NETStandard.Library": "1.6.0",
-          "System.Collections.NonGeneric": "4.0.1",
-          "System.ComponentModel.Annotations": "4.1.0",
-          "System.Xml.XPath.XmlDocument": "4.0.1",
-          "System.Xml.XmlDocument": "4.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/LSW.Weixin.MP.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/LSW.Weixin.MP.dll": {}
-        }
-      },
-      "LSW.Weixin.MP.MvcExtension/1.2.3": {
-        "type": "package",
-        "dependencies": {
-          "LSW.Weixin": "1.2.4",
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll": {}
-        }
-      },
       "Microsoft.AspNet.WebApi.Client/5.2.2": {
         "type": "package",
         "dependencies": {
@@ -2572,6 +2524,56 @@
           }
         }
       },
+      "Senparc.Weixin/4.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Threading.Thread": "4.0.0",
+          "System.Xml.XmlSerializer": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.6/Senparc.Weixin.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Senparc.Weixin.dll": {}
+        }
+      },
+      "Senparc.Weixin.MP/14.3.100": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Senparc.Weixin": "4.8.0",
+          "System.Collections.NonGeneric": "4.0.1",
+          "System.ComponentModel.Annotations": "4.1.0",
+          "System.ComponentModel.Primitives": "4.1.0",
+          "System.Xml.XPath.XmlDocument": "4.0.1",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/Senparc.Weixin.MP.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Senparc.Weixin.MP.dll": {}
+        }
+      },
+      "Senparc.Weixin.MP.MvcExtension/4.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
+          "Senparc.Weixin": "4.8.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.dll": {}
+        }
+      },
       "SQLite/3.12.2": {
         "type": "package",
         "dependencies": {
@@ -4725,54 +4727,6 @@
         },
         "native": {
           "runtimes/win7-x64/native/libuv.dll": {}
-        }
-      },
-      "LSW.Weixin/1.2.4": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "NETStandard.Library": "1.6.0",
-          "Newtonsoft.Json": "9.0.1",
-          "System.Dynamic.Runtime": "4.0.11",
-          "System.Threading.Thread": "4.0.0",
-          "System.Xml.XmlSerializer": "4.0.11"
-        },
-        "compile": {
-          "lib/netstandard1.6/LSW.Weixin.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/LSW.Weixin.dll": {}
-        }
-      },
-      "LSW.Weixin.MP/1.5.2": {
-        "type": "package",
-        "dependencies": {
-          "LSW.Weixin": "1.2.4",
-          "Microsoft.AspNetCore.Http": "1.0.0",
-          "NETStandard.Library": "1.6.0",
-          "System.Collections.NonGeneric": "4.0.1",
-          "System.ComponentModel.Annotations": "4.1.0",
-          "System.Xml.XPath.XmlDocument": "4.0.1",
-          "System.Xml.XmlDocument": "4.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/LSW.Weixin.MP.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/LSW.Weixin.MP.dll": {}
-        }
-      },
-      "LSW.Weixin.MP.MvcExtension/1.2.3": {
-        "type": "package",
-        "dependencies": {
-          "LSW.Weixin": "1.2.4",
-          "Microsoft.AspNetCore.Mvc.Core": "1.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.2": {
@@ -7605,6 +7559,56 @@
           "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll": {}
         }
       },
+      "Senparc.Weixin/4.8.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Threading.Thread": "4.0.0",
+          "System.Xml.XmlSerializer": "4.0.11"
+        },
+        "compile": {
+          "lib/netstandard1.6/Senparc.Weixin.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Senparc.Weixin.dll": {}
+        }
+      },
+      "Senparc.Weixin.MP/14.3.100": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Senparc.Weixin": "4.8.0",
+          "System.Collections.NonGeneric": "4.0.1",
+          "System.ComponentModel.Annotations": "4.1.0",
+          "System.ComponentModel.Primitives": "4.1.0",
+          "System.Xml.XPath.XmlDocument": "4.0.1",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/Senparc.Weixin.MP.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Senparc.Weixin.MP.dll": {}
+        }
+      },
+      "Senparc.Weixin.MP.MvcExtension/4.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.1",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
+          "Senparc.Weixin": "4.8.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.dll": {}
+        }
+      },
       "SQLite/3.12.2": {
         "type": "package",
         "dependencies": {
@@ -9617,39 +9621,6 @@
         "runtimes/win7-arm/native/libuv.dll",
         "runtimes/win7-x64/native/libuv.dll",
         "runtimes/win7-x86/native/libuv.dll"
-      ]
-    },
-    "LSW.Weixin/1.2.4": {
-      "sha512": "2PnjmnuItqUNwaGvlzSvGLVVWXWGd7DD9T3KcOpSn23e4nCPSeUg2WOurWZ2VzHMc6r2lkX676GIpYuG0XElNg==",
-      "type": "package",
-      "path": "LSW.Weixin/1.2.4",
-      "files": [
-        "LSW.Weixin.1.2.4.nupkg.sha512",
-        "LSW.Weixin.nuspec",
-        "lib/net461/LSW.Weixin.dll",
-        "lib/netstandard1.6/LSW.Weixin.dll"
-      ]
-    },
-    "LSW.Weixin.MP/1.5.2": {
-      "sha512": "osYu7XFz9znVAh9/lcbMQkHqEv1MUgLqK52dbGblr8b6PDAfKhj35879iQ06kQr3VIApPi4i72QW8RRPtwXScA==",
-      "type": "package",
-      "path": "LSW.Weixin.MP/1.5.2",
-      "files": [
-        "LSW.Weixin.MP.1.5.2.nupkg.sha512",
-        "LSW.Weixin.MP.nuspec",
-        "lib/net461/LSW.Weixin.MP.dll",
-        "lib/netstandard1.6/LSW.Weixin.MP.dll"
-      ]
-    },
-    "LSW.Weixin.MP.MvcExtension/1.2.3": {
-      "sha512": "ob/vHjk2ru17DIxAcVfhSUOm1bYGXN3jO1aZw1PBSEtpeGqbyTcS3J45X9VP46W1xiEnBEa8HX1+KNFY3q1YJg==",
-      "type": "package",
-      "path": "LSW.Weixin.MP.MvcExtension/1.2.3",
-      "files": [
-        "LSW.Weixin.MP.MvcExtension.1.2.3.nupkg.sha512",
-        "LSW.Weixin.MP.MvcExtension.nuspec",
-        "lib/net461/LSW.Weixin.MP.MvcExtension.dll",
-        "lib/netstandard1.6/LSW.Weixin.MP.MvcExtension.dll"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.2": {
@@ -12541,6 +12512,45 @@
         "runtime.win7.System.Private.Uri.nuspec",
         "runtimes/aot/lib/netcore50/System.Private.Uri.dll",
         "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll"
+      ]
+    },
+    "Senparc.Weixin/4.8.0": {
+      "sha512": "tiC40R8ZAiSXDs38hNUV06MMFGXYd0qwXZmFy5dNu9Q9yQhdHtMqIiERgaQ29Eh85Zt6OMbU81kGaBD5WPugwQ==",
+      "type": "package",
+      "path": "Senparc.Weixin/4.8.0",
+      "files": [
+        "Senparc.Weixin.4.8.0.nupkg.sha512",
+        "Senparc.Weixin.nuspec",
+        "lib/net461/Senparc.Weixin.dll",
+        "lib/net461/Senparc.Weixin.xml",
+        "lib/netstandard1.6/Senparc.Weixin.dll",
+        "lib/netstandard1.6/Senparc.Weixin.xml"
+      ]
+    },
+    "Senparc.Weixin.MP/14.3.100": {
+      "sha512": "EzPBepE47T8OIasUshTZVzAmxrsaiGkdEOrAAqTZK6mqDqHeL+ZJFsJLi+WLE548ijqQM5VtB8PHWF7/lfKv4A==",
+      "type": "package",
+      "path": "Senparc.Weixin.MP/14.3.100",
+      "files": [
+        "Senparc.Weixin.MP.14.3.100.nupkg.sha512",
+        "Senparc.Weixin.MP.nuspec",
+        "lib/net461/Senparc.Weixin.MP.dll",
+        "lib/net461/Senparc.Weixin.MP.xml",
+        "lib/netstandard1.6/Senparc.Weixin.MP.dll",
+        "lib/netstandard1.6/Senparc.Weixin.MP.xml"
+      ]
+    },
+    "Senparc.Weixin.MP.MvcExtension/4.1.1": {
+      "sha512": "zcZNDdD4VQ33JPUfXZAw8ZPQtGwJ/QSAreeUgCSeH3Jqdzyk1PxQ4C4YFX8/EY4ZYBketg7ub0JjwhquBfXKUg==",
+      "type": "package",
+      "path": "Senparc.Weixin.MP.MvcExtension/4.1.1",
+      "files": [
+        "Senparc.Weixin.MP.MvcExtension.4.1.1.nupkg.sha512",
+        "Senparc.Weixin.MP.MvcExtension.nuspec",
+        "lib/net461/Senparc.Weixin.MP.MvcExtension.dll",
+        "lib/net461/Senparc.Weixin.MP.MvcExtension.xml",
+        "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.dll",
+        "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.xml"
       ]
     },
     "SQLite/3.12.2": {
@@ -17428,8 +17438,6 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "LSW.Weixin.MP >= 1.5.2",
-      "LSW.Weixin.MP.MvcExtension >= 1.2.3",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.0.0",
@@ -17456,6 +17464,8 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.0.0-preview2-update1",
       "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.0.0-preview2-update1",
       "Pomelo.AspNetCore.TimedJob >= 1.0.0-prerelease-*",
+      "Senparc.Weixin.MP >= 14.3.100",
+      "Senparc.Weixin.MP.MvcExtension >= 4.1.1",
       "Z.EntityFramework.Plus.EFCore >= 1.4.1"
     ],
     ".NETCoreApp,Version=v1.0": []

@@ -1,5 +1,5 @@
-﻿using LSW.Weixin.Context;
-using LSW.Weixin.MP.Entities;
+﻿using Senparc.Weixin.Context;
+using Senparc.Weixin.MP.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace 拍卖系统.Controllers
 {
-    public class CustomMessageContext : MessageContext<IRequestMessageBase, IResponseMessageBase>
+	public class CustomMessageContext : MessageContext<IRequestMessageBase, IResponseMessageBase>
 	{
 		public CustomMessageContext()
 		{

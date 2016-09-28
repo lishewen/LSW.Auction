@@ -1,12 +1,12 @@
-﻿using LSW.Weixin.MP.MessageHandlers;
+﻿using Senparc.Weixin.MP.MessageHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LSW.Weixin.MP.Entities;
+using Senparc.Weixin.MP.Entities;
 using 拍卖系统.Data;
 using System.IO;
-using LSW.Weixin.MP.Entities.Request;
+using Senparc.Weixin.MP.Entities.Request;
 
 namespace 拍卖系统.Controllers
 {

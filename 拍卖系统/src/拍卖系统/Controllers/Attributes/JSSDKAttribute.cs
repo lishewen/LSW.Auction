@@ -1,4 +1,4 @@
-﻿using LSW.Weixin.MP.Helpers;
+﻿using Senparc.Weixin.MP.Helpers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;

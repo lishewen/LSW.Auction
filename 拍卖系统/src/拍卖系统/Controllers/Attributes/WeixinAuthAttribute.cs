@@ -1,6 +1,6 @@
-﻿using LSW.Weixin.MP;
-using LSW.Weixin.MP.AdvancedAPIs;
-using LSW.Weixin.MP.AdvancedAPIs.OAuth;
+﻿using Senparc.Weixin.MP;
+using Senparc.Weixin.MP.AdvancedAPIs;
+using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;

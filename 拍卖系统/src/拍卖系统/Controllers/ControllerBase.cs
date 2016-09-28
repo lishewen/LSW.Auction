@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using 拍卖系统.Data;
 using Microsoft.Extensions.Configuration;
-using LSW.Weixin.MP.CommonAPIs;
-using LSW.Weixin.MP.AdvancedAPIs.OAuth;
+using Senparc.Weixin.MP.CommonAPIs;
+using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using System.Web.Http;
 using System.Net;
 using System.Net.Http;
+using Senparc.Weixin.MP.Containers;
 
 namespace 拍卖系统.Controllers
 {

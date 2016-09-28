@@ -1,4 +1,4 @@
-﻿using LSW.Weixin.MP.AdvancedAPIs;
+﻿using Senparc.Weixin.MP.AdvancedAPIs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
