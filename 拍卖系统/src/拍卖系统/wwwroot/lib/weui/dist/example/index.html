@@ -87,6 +87,12 @@
                             </div>
                             <div class="weui-cell__ft"></div>
                         </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="grid" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Grid</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
                         <a class="weui-cell weui-cell_access js_item" data-id="icons" href="javascript:;">
                             <div class="weui-cell__bd">
                                 <p>Icons</p>
@@ -204,6 +210,49 @@
         <a href="javascript:home()"><img src="./images/icon_footer.png" /></a>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        var winH = $(window).height();
+        var categorySpace = 10;
+
+        $('.js_item').on('click', function(){
+            var id = $(this).data('id');
+            window.pageManager.go(id);
+        });
+        $('.js_category').on('click', function(){
+            var $this = $(this),
+                $inner = $this.next('.js_categoryInner'),
+                $page = $this.parents('.page'),
+                $parent = $(this).parent('li');
+            var innerH = $inner.data('height');
+            bear = $page;
+
+            if(!innerH){
+                $inner.css('height', 'auto');
+                innerH = $inner.height();
+                $inner.removeAttr('style');
+                $inner.data('height', innerH);
+            }
+
+            if($parent.hasClass('js_show')){
+                $parent.removeClass('js_show');
+            }else{
+                $parent.siblings().removeClass('js_show');
+
+                $parent.addClass('js_show');
+                if(this.offsetTop + this.offsetHeight + innerH > $page.scrollTop() + winH){
+                    var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;
+
+                    if(scrollTop > this.offsetTop){
+                        scrollTop = this.offsetTop - categorySpace;
+                    }
+
+                    $page.scrollTop(scrollTop);
+                }
+            }
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_button">
 <div class="page">
@@ -527,6 +576,23 @@
         <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        var $tooltips = $('.js_tooltips');
+
+        $('#showTooltips').on('click', function(){
+            if ($tooltips.css('display') != 'none') return;
+
+            // toptips的fixed, 如果有`animation`, `position: fixed`不生效
+            $('.page.cell').removeClass('slideIn');
+
+            $tooltips.css('display', 'block');
+            setTimeout(function () {
+                $tooltips.css('display', 'none');
+            }, 2000);
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_toast">
 <div class="page">
@@ -561,6 +627,33 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    // toast
+    $(function(){
+        var $toast = $('#toast');
+        $('#showToast').on('click', function(){
+            if ($toast.css('display') != 'none') return;
+
+            $toast.fadeIn(100);
+            setTimeout(function () {
+                $toast.fadeOut(100);
+            }, 2000);
+        });
+    });
+
+    // loading
+    $(function(){
+        var $loadingToast = $('#loadingToast');
+        $('#showLoadingToast').on('click', function(){
+            if ($loadingToast.css('display') != 'none') return;
+
+            $loadingToast.fadeIn(100);
+            setTimeout(function () {
+                $loadingToast.fadeOut(100);
+            }, 2000);
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_dialog">
 <div class="page">
@@ -569,69 +662,96 @@
         <p class="page__desc">对话框</p>
     </div>
     <div class="page__bd page__bd_spacing">
-        <a href="javascript:;" class="weui-btn weui-btn_default" id="showDialog1">iOS Dialog样式一</a>
-        <a href="javascript:;" class="weui-btn weui-btn_default" id="showDialog2">iOS Dialog样式二</a>
-        <a href="javascript:;" class="weui-btn weui-btn_default" id="showDialog3">Android Dialog样式一</a>
-        <a href="javascript:;" class="weui-btn weui-btn_default" id="showDialog4">Android Dialog样式二</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showIOSDialog1">iOS Dialog样式一</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showIOSDialog2">iOS Dialog样式二</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showAndroidDialog1">Android Dialog样式一</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showAndroidDialog2">Android Dialog样式二</a>
     </div>
     <div class="page__ft">
         <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
     </div>
 
-    <!--BEGIN dialog1-->
-    <div id="dialog1" style="display: none;">
-        <div class="weui-mask"></div>
-        <div class="weui-dialog">
-            <div class="weui-dialog__hd"><strong class="weui-dialog__title">弹窗标题</strong></div>
-            <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
-            <div class="weui-dialog__ft">
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">主操作</a>
+    <div id="dialogs">
+        <!--BEGIN dialog1-->
+        <div class="js_dialog" id="iosDialog1" style="display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">弹窗标题</strong></div>
+                <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">主操作</a>
+                </div>
             </div>
         </div>
-    </div>
-    <!--END dialog1-->
-    <!--BEGIN dialog2-->
-    <div id="dialog2" style="display: none;">
-        <div class="weui-mask"></div>
-        <div class="weui-dialog">
-            <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
-            <div class="weui-dialog__ft">
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
+        <!--END dialog1-->
+        <!--BEGIN dialog2-->
+        <div class="js_dialog" id="iosDialog2" style="display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
+                </div>
             </div>
         </div>
-    </div>
-    <!--END dialog2-->
-    <!--BEGIN dialog3-->
-    <div id="dialog3" style="display: none;">
-        <div class="weui-mask"></div>
-        <div class="weui-dialog weui-skin_android">
-            <div class="weui-dialog__hd"><strong class="weui-dialog__title">弹窗标题</strong></div>
-            <div class="weui-dialog__bd">
-                弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内
-            </div>
-            <div class="weui-dialog__ft">
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">主操作</a>
-            </div>
-        </div>
-    </div>
-    <!--END dialog3-->
-    <!--BEGIN dialog4-->
-    <div id="dialog4" style="display: none;">
-        <div class="weui-mask"></div>
-        <div class="weui-dialog weui-skin_android">
-            <div class="weui-dialog__bd">
-                弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内
-            </div>
-            <div class="weui-dialog__ft">
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">主操作</a>
+        <!--END dialog2-->
+        <!--BEGIN dialog3-->
+        <div class="js_dialog" id="androidDialog1" style="display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog weui-skin_android">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">弹窗标题</strong></div>
+                <div class="weui-dialog__bd">
+                    弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内
+                </div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">主操作</a>
+                </div>
             </div>
         </div>
+        <!--END dialog3-->
+        <!--BEGIN dialog4-->
+        <div class="js_dialog" id="androidDialog2" style="display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog weui-skin_android">
+                <div class="weui-dialog__bd">
+                    弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内
+                </div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">辅助操作</a>
+                    <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">主操作</a>
+                </div>
+            </div>
+        </div>
+        <!--END dialog4-->
     </div>
-    <!--END dialog4-->
 </div>
+<script type="text/javascript">
+    $(function(){
+        var $iosDialog1 = $('#iosDialog1'),
+            $iosDialog2 = $('#iosDialog2'),
+            $androidDialog1 = $('#androidDialog1'),
+            $androidDialog2 = $('#androidDialog2');
+
+        $('#dialogs').on('click', '.weui-dialog__btn', function(){
+            $(this).parents('.js_dialog').fadeOut(200);
+        });
+
+        $('#showIOSDialog1').on('click', function(){
+            $iosDialog1.fadeIn(200);
+        });
+        $('#showIOSDialog2').on('click', function(){
+            $iosDialog2.fadeIn(200);
+        });
+        $('#showAndroidDialog1').on('click', function(){
+            $androidDialog1.fadeIn(200);
+        });
+        $('#showAndroidDialog2').on('click', function(){
+            $androidDialog2.fadeIn(200);
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_progress">
 <div class="page">
@@ -667,13 +787,38 @@
             </a>
         </div>
         <div class="weui-btn-area">
-            <a href="javascript:;" class="weui-btn weui-btn_primary" id="btnStartProgress">上传</a>
+            <a href="javascript:;" class="weui-btn weui-btn_primary" id="btnUpload">上传</a>
         </div>
     </div>
     <div class="page__ft">
         <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        var $progress = $('.js_progress'),
+            $btnUpload = $('#btnUpload');
+        var progress = 0;
+
+        function next() {
+            if(progress > 100){
+                progress = 0;
+                $btnUpload.removeClass('weui-btn_disabled');
+                return;
+            }
+            $progress.css({width: progress + '%'});
+            progress = ++progress;
+            setTimeout(next, 20);
+        }
+
+        $btnUpload.on('click', function(){
+            if ($btnUpload.hasClass('weui-btn_disabled')) return;
+
+            $btnUpload.addClass('weui-btn_disabled');
+            next();
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_msg">
 <div class="page">
@@ -802,6 +947,13 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $('.weui-navbar__item').on('click', function () {
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_tabbar">
 <div class="page">
@@ -831,6 +983,13 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $('.weui-tabbar__item').on('click', function () {
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_panel">
 <div class="page">
@@ -941,9 +1100,9 @@
         <a href="javascript:;" class="weui-btn weui-btn_default" id="showAndroidActionSheet">Android ActionSheet</a>
     </div>
     <!--BEGIN actionSheet-->
-    <div id="actionSheet_wrap">
-        <div class="weui-mask_transparent actionsheet__mask" id="mask"></div>
-        <div class="weui-actionsheet" id="weui-actionsheet">
+    <div>
+        <div class="weui-mask" id="iosMask" style="display: none"></div>
+        <div class="weui-actionsheet" id="iosActionsheet">
             <div class="weui-actionsheet__menu">
                 <div class="weui-actionsheet__cell">示例菜单</div>
                 <div class="weui-actionsheet__cell">示例菜单</div>
@@ -951,26 +1110,58 @@
                 <div class="weui-actionsheet__cell">示例菜单</div>
             </div>
             <div class="weui-actionsheet__action">
-                <div class="weui-actionsheet__cell" id="actionsheet_cancel">取消</div>
+                <div class="weui-actionsheet__cell" id="iosActionsheetCancel">取消</div>
             </div>
         </div>
-
-        <div class="weui-skin_android" id="weui-android-actionsheet" style="display: none">
-            <div class="weui-mask"></div>
-            <div class="weui-actionsheet">
-                <div class="weui-actionsheet__menu">
-                    <div class="weui-actionsheet__cell">示例菜单</div>
-                    <div class="weui-actionsheet__cell">示例菜单</div>
-                    <div class="weui-actionsheet__cell">示例菜单</div>
-                </div>
-            </div>
-        </div>
-        <!--END actionSheet-->
     </div>
+
+    <div class="weui-skin_android" id="androidActionsheet" style="display: none">
+        <div class="weui-mask"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell">示例菜单</div>
+            </div>
+        </div>
+    </div>
+    <!--END actionSheet-->
     <div class="page__ft">
         <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
     </div>
 </div>
+<script type="text/javascript">
+    // ios
+    $(function(){
+        var $iosActionsheet = $('#iosActionsheet');
+        var $iosMask = $('#iosMask');
+
+        function hideActionSheet() {
+            $iosActionsheet.removeClass('weui-actionsheet_toggle');
+            $iosMask.fadeOut(200);
+        }
+
+        $iosMask.on('click', hideActionSheet);
+        $('#iosActionsheetCancel').on('click', hideActionSheet);
+        $("#showIOSActionSheet").on("click", function(){
+            $iosActionsheet.addClass('weui-actionsheet_toggle');
+            $iosMask.fadeIn(200);
+        });
+    });
+
+    // android
+    $(function(){
+        var $androidActionSheet = $('#androidActionsheet');
+        var $androidMask = $androidActionSheet.find('.weui-mask');
+
+        $("#showAndroidActionSheet").on('click', function(){
+            $androidActionSheet.fadeIn(200);
+            $androidMask.on('click',function () {
+                $androidActionSheet.fadeOut(200);
+            });
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_icons">
 <div class="page">
@@ -1023,7 +1214,6 @@
             <i class="weui-icon-info-circle"></i>
             <i class="weui-icon-cancel"></i>
             <i class="weui-icon-search"></i>
-            <i class="weui-icon-clear"></i>
         </div>
     </div>
     <div class="page__ft">
@@ -1039,37 +1229,37 @@
     </div>
     <div class="page__bd">
         <!--<a href="javascript:;" class="weui-btn weui-btn_primary">点击展现searchBar</a>-->
-        <div class="weui-search-bar" id="search_bar">
+        <div class="weui-search-bar" id="searchBar">
             <form class="weui-search-bar__form">
                 <div class="weui-search-bar__box">
                     <i class="weui-icon-search"></i>
-                    <input type="search" class="weui-search-bar__input" id="search_input" placeholder="搜索" required/>
-                    <a href="javascript:" class="weui-icon-clear" id="search_clear"></a>
+                    <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required/>
+                    <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
                 </div>
-                <label for="search_input" class="weui-search-bar__label" id="search_text">
+                <label class="weui-search-bar__label" id="searchText">
                     <i class="weui-icon-search"></i>
                     <span>搜索</span>
                 </label>
             </form>
-            <a href="javascript:" class="weui-search-bar__cancel-btn" id="search_cancel">取消</a>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
         </div>
-        <div class="weui-cells weui-cells_access search_show" id="search_show">
-            <div class="weui-cell">
+        <div class="weui-cells searchbar-result" id="searchResult">
+            <div class="weui-cell weui-cell_access">
                 <div class="weui-cell__bd weui-cell_primary">
                     <p>实时搜索文本</p>
                 </div>
             </div>
-            <div class="weui-cell">
+            <div class="weui-cell weui-cell_access">
                 <div class="weui-cell__bd weui-cell_primary">
                     <p>实时搜索文本</p>
                 </div>
             </div>
-            <div class="weui-cell">
+            <div class="weui-cell weui-cell_access">
                 <div class="weui-cell__bd weui-cell_primary">
                     <p>实时搜索文本</p>
                 </div>
             </div>
-            <div class="weui-cell">
+            <div class="weui-cell weui-cell_access">
                 <div class="weui-cell__bd weui-cell_primary">
                     <p>实时搜索文本</p>
                 </div>
@@ -1080,6 +1270,51 @@
         <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        var $searchBar = $('#searchBar'),
+            $searchResult = $('#searchResult'),
+            $searchText = $('#searchText'),
+            $searchInput = $('#searchInput'),
+            $searchClear = $('#searchClear'),
+            $searchCancel = $('#searchCancel');
+
+        function hideSearchResult(){
+            $searchResult.hide();
+            $searchInput.val('');
+        }
+        function cancelSearch(){
+            hideSearchResult();
+            $searchBar.removeClass('weui-search-bar_focusing');
+            $searchText.show();
+        }
+
+        $searchText.on('click', function(){
+            $searchBar.addClass('weui-search-bar_focusing');
+            $searchInput.focus();
+        });
+        $searchInput
+            .on('blur', function () {
+                if(!this.value.length) cancelSearch();
+            })
+            .on('input', function(){
+                if(this.value.length) {
+                    $searchResult.show();
+                } else {
+                    $searchResult.hide();
+                }
+            })
+        ;
+        $searchClear.on('click', function(){
+            hideSearchResult();
+            $searchInput.focus();
+        });
+        $searchCancel.on('click', function(){
+            cancelSearch();
+            $searchInput.blur();
+        });
+    });
+</script>
 </script>
     <script type="text/html" id="tpl_picker">
 <div class="page">
@@ -1417,22 +1652,24 @@
     <div class="page__bd">
         <div class="weui-form-preview">
             <div class="weui-form-preview__hd">
-                <label class="weui-form-preview__label">付款金额</label>
-                <em class="weui-form-preview__value">¥2400.00</em>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">付款金额</label>
+                    <em class="weui-form-preview__value">¥2400.00</em>
+                </div>
             </div>
             <div class="weui-form-preview__bd">
-                <p>
+                <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">商品</label>
                     <span class="weui-form-preview__value">电动打蛋机</span>
-                </p>
-                <p>
+                </div>
+                <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">标题标题</label>
                     <span class="weui-form-preview__value">名字名字名字</span>
-                </p>
-                <p>
+                </div>
+                <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">标题标题</label>
                     <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
-                </p>
+                </div>
             </div>
             <div class="weui-form-preview__ft">
                 <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</a>
@@ -1445,27 +1682,91 @@
                 <em class="weui-form-preview__value">¥2400.00</em>
             </div>
             <div class="weui-form-preview__bd">
-                <p>
+                <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">商品</label>
                     <span class="weui-form-preview__value">电动打蛋机</span>
-                </p>
-                <p>
+                </div>
+                <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">标题标题</label>
                     <span class="weui-form-preview__value">名字名字名字</span>
-                </p>
-                <p>
+                </div>
+                <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">标题标题</label>
                     <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
-                </p>
+                </div>
             </div>
             <div class="weui-form-preview__ft">
                 <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">辅助操作</a>
-                <button class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</button>
+                <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</button>
             </div>
         </div>
     </div>
     <div class="page__ft">
         <a href="javascript:home()"><img src="./images/icon_footer_link.png" /></a>
+    </div>
+</div>
+</script>
+    <script type="text/html" id="tpl_grid">
+<div class="page">
+    <div class="page__hd">
+        <h1 class="page__title">Grid</h1>
+        <p class="page__desc">九宫格</p>
+    </div>
+    <div class="weui-grids">
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
+        <a href="javascript:;" class="weui-grid">
+            <div class="weui-grid__icon">
+                <img src="./images/icon_tabbar.png" alt="">
+            </div>
+            <p class="weui-grid__label">Grid</p>
+        </a>
     </div>
 </div>
 </script>

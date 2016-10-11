@@ -6,7 +6,7 @@
   },
   "description": "wechat mobile ui",
   "main": "dist/style/weui.css",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "authors": [
     "wechat ui team"
   ],
@@ -19,13 +19,13 @@
   ],
   "homepage": "https://github.com/weui/weui",
   "ignore": [],
-  "_release": "1.0.1",
+  "_release": "1.0.2",
   "_resolution": {
     "type": "version",
-    "tag": "v1.0.1",
-    "commit": "dc5ece9de78d6bcd290e57bcbc698ebb49639779"
+    "tag": "v1.0.2",
+    "commit": "78a17c1c2e8155bc848d0ec4e03246f8f5d53f52"
   },
   "_source": "https://github.com/weui/weui.git",
-  "_target": "1.0.1",
+  "_target": "1.0.2",
   "_originalSource": "weui"
 }
