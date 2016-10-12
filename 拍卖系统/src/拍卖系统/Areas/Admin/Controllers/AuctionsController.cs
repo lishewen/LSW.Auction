@@ -83,7 +83,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 					db.TimedJobs.Add(new Pomelo.AspNetCore.TimedJob.EntityFramework.TimedJob
 					{
 						Id = "拍卖系统.Jobs.NoticeJob.End",
-						Begin = auction.StartTime.AddMinutes(-15),
+						Begin = auction.EndTime.AddMinutes(-15),
 						Interval = int.MaxValue,
 						IsEnabled = true
 					});
