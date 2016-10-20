@@ -15,6 +15,7 @@ using 拍卖系统.Services;
 using Microsoft.AspNetCore.Diagnostics;
 using System.Text;
 using Microsoft.AspNetCore.Http;
+using Exceptionless;
 
 namespace 拍卖系统
 {
@@ -133,6 +134,12 @@ namespace 拍卖系统
 					name: "default",
 					template: "{controller=Home}/{action=Index}/{id?}");
 			});
+
+			app.UseExceptionless(new ExceptionlessClient(c =>
+			{
+				c.ApiKey = "Tjm23nL4W7CiZ9bjgmcdQluz2EphIZuKblLmbPLN";
+				c.ServerUrl = "http://exceptions.lishewen.com";
+			}));
 		}
 	}
 }

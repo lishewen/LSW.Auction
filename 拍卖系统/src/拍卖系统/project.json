@@ -1,7 +1,6 @@
 {
 	"userSecretsId": "aspnet-拍卖系统-a4fa3744-3e1e-404f-95df-259705684532",
 	"dependencies": {
-		"Microsoft.NETCore.App": "1.0.1",
 		"Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
 		"Microsoft.AspNetCore.Diagnostics": "1.0.0",
 		"Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
@@ -52,12 +51,10 @@
 		}
 	},
 	"frameworks": {
-		"netcoreapp1.0": {
-			"imports": [
-				"dotnet5.6",
-				"portable-net45+win8"
-			]
-		}
+		"net461": {}
+	},
+	"runtimes": {
+		"win10-x64": {}
 	},
 	"buildOptions": {
 		"emitEntryPoint": true,
