@@ -21,12 +21,12 @@
     "package.json"
   ],
   "homepage": "https://github.com/moment/moment",
-  "version": "2.15.1",
-  "_release": "2.15.1",
+  "version": "2.15.2",
+  "_release": "2.15.2",
   "_resolution": {
     "type": "version",
-    "tag": "2.15.1",
-    "commit": "d3f9a749f0e27ea7ec6e8de3719247d132b357a7"
+    "tag": "2.15.2",
+    "commit": "857b134cce96c8e83e72e61138c3e9589e39a0bb"
   },
   "_source": "https://github.com/moment/moment.git",
   "_target": ">=2.9.0",
