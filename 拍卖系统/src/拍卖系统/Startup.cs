@@ -123,7 +123,11 @@ namespace 拍卖系统
 			app.UseIdentity();
 
 			app.UseHangfireServer();
-			app.UseHangfireDashboard();
+			var options = new DashboardOptions
+			{
+				Authorization = new[] { new CustomAuthorizationFilter() }
+			};
+			app.UseHangfireDashboard("/hangfire", options);
 
 			// Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
