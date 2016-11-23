@@ -17,7 +17,6 @@ namespace 拍卖系统.Models
 		/// 主键Id (主键类型根据继承时确定)
 		/// </summary>
 		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public TKey Id { get; set; }
 		/// <summary>
 		/// 名称

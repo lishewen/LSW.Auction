@@ -9,7 +9,7 @@ using 拍卖系统.Models;
 namespace 拍卖系统.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161123030112_Init")]
+    [Migration("20161123031001_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,8 +105,7 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Menu", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ControllerName");
 
@@ -131,8 +130,7 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Menuitem", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ActionName");
 
@@ -238,8 +236,7 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Models.Auction", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("BidCount");
 
@@ -282,8 +279,7 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Models.AuctionRecord", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<decimal>("Bided");
 
@@ -314,8 +310,7 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Models.Good", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Content");
 
@@ -344,8 +339,7 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Models.Member", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AgentId");
 
