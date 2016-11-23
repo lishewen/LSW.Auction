@@ -3,6 +3,35 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.0": {
+      "Dapper/1.50.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Collections.NonGeneric": "4.0.1",
+          "System.Data.SqlClient": "4.1.0",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Emit": "4.0.1",
+          "System.Reflection.Emit.Lightweight": "4.0.1",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Xml.XDocument": "4.0.11",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Dapper.dll": {}
+        }
+      },
       "Exceptionless/4.0.1919": {
         "type": "package",
         "dependencies": {
@@ -49,6 +78,73 @@
         },
         "runtime": {
           "lib/netstandard1.5/Exceptionless.AspNetCore.dll": {}
+        }
+      },
+      "Hangfire/1.6.6": {
+        "type": "package",
+        "dependencies": {
+          "Hangfire.AspNetCore": "[1.6.6]",
+          "Hangfire.Core": "[1.6.6]",
+          "Hangfire.SqlServer": "[1.6.6]"
+        }
+      },
+      "Hangfire.AspNetCore/1.6.6": {
+        "type": "package",
+        "dependencies": {
+          "Hangfire.Core": "[1.6.6]",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+          "NETStandard.Library": "1.6.0",
+          "System.ComponentModel": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Hangfire.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Hangfire.AspNetCore.dll": {}
+        }
+      },
+      "Hangfire.Core/1.6.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Threading.Thread": "4.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Hangfire.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Hangfire.Core.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.3/es/Hangfire.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.3/zh/Hangfire.Core.resources.dll": {
+            "locale": "zh"
+          }
+        }
+      },
+      "Hangfire.SqlServer/1.6.6": {
+        "type": "package",
+        "dependencies": {
+          "Dapper": "1.50.1",
+          "Hangfire.Core": "[1.6.6]",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+          "NETStandard.Library": "1.6.0",
+          "System.Data.Common": "4.1.0",
+          "System.Data.SqlClient": "4.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Hangfire.SqlServer.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Hangfire.SqlServer.dll": {}
         }
       },
       "Libuv/1.9.1": {
@@ -1171,20 +1267,6 @@
           "lib/netstandard1.3/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.Data.Sqlite/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "SQLite": "3.13.0",
-          "System.Data.Common": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.Data.Sqlite.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.Data.Sqlite.dll": {}
-        }
-      },
       "Microsoft.DotNet.Cli.Utils/1.0.0-preview2-003121": {
         "type": "package",
         "dependencies": {
@@ -1383,20 +1465,6 @@
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Sqlite/1.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Data.Sqlite": "1.1.0",
-          "Microsoft.EntityFrameworkCore.Relational": "1.1.0",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
-        }
-      },
       "Microsoft.EntityFrameworkCore.SqlServer/1.1.0": {
         "type": "package",
         "dependencies": {
@@ -1412,16 +1480,31 @@
           "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
+      "Microsoft.EntityFrameworkCore.SqlServer.Design/1.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "1.1.0"
+          "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+          "NETStandard.Library": "1.6.1"
         },
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/_._": {}
+          "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools.DotNet/1.1.0-preview4-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.DotNet.Cli.Utils": "1.0.0-preview2-003121",
+          "Microsoft.NETCore.App": "1.1.0"
+        },
+        "compile": {
+          "lib/netcoreapp1.0/dotnet-ef.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp1.0/dotnet-ef.dll": {}
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/1.1.0": {
@@ -1934,6 +2017,41 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
+        },
+        "compile": {
+          "ref/netstandard1.0/System.ComponentModel.DataAnnotations.dll": {},
+          "ref/netstandard1.0/System.Core.dll": {},
+          "ref/netstandard1.0/System.Net.dll": {},
+          "ref/netstandard1.0/System.Numerics.dll": {},
+          "ref/netstandard1.0/System.Runtime.Serialization.dll": {},
+          "ref/netstandard1.0/System.ServiceModel.Web.dll": {},
+          "ref/netstandard1.0/System.ServiceModel.dll": {},
+          "ref/netstandard1.0/System.Windows.dll": {},
+          "ref/netstandard1.0/System.Xml.Linq.dll": {},
+          "ref/netstandard1.0/System.Xml.Serialization.dll": {},
+          "ref/netstandard1.0/System.Xml.dll": {},
+          "ref/netstandard1.0/System.dll": {},
+          "ref/netstandard1.0/mscorlib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ComponentModel.DataAnnotations.dll": {},
+          "lib/netstandard1.0/System.Core.dll": {},
+          "lib/netstandard1.0/System.Net.dll": {},
+          "lib/netstandard1.0/System.Numerics.dll": {},
+          "lib/netstandard1.0/System.Runtime.Serialization.dll": {},
+          "lib/netstandard1.0/System.ServiceModel.Web.dll": {},
+          "lib/netstandard1.0/System.ServiceModel.dll": {},
+          "lib/netstandard1.0/System.Windows.dll": {},
+          "lib/netstandard1.0/System.Xml.Linq.dll": {},
+          "lib/netstandard1.0/System.Xml.Serialization.dll": {},
+          "lib/netstandard1.0/System.Xml.dll": {},
+          "lib/netstandard1.0/System.dll": {}
+        }
+      },
       "Microsoft.NETCore.Runtime.CoreCLR/1.0.4": {
         "type": "package",
         "dependencies": {
@@ -2436,23 +2554,6 @@
           "lib/netstandard1.0/NuGet.Versioning.dll": {}
         }
       },
-      "Pomelo.AspNetCore.TimedJob/1.1.0-rtm-10026": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Hosting": "1.1.0-preview1-final",
-          "Microsoft.EntityFrameworkCore": "1.1.0-preview1-final",
-          "Microsoft.Extensions.DependencyModel": "1.1.0-preview1-001100",
-          "NETStandard.Library": "1.6.1",
-          "System.Threading": "4.3.0",
-          "System.Threading.Timer": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.6/Pomelo.AspNetCore.TimedJob.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Pomelo.AspNetCore.TimedJob.dll": {}
-        }
-      },
       "Remotion.Linq/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -2733,33 +2834,6 @@
         },
         "runtime": {
           "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.dll": {}
-        }
-      },
-      "SQLite/3.13.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard1.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/linux-x64/native/libsqlite3.so": {
-            "assetType": "native",
-            "rid": "linux-x64"
-          },
-          "runtimes/osx-x64/native/libsqlite3.dylib": {
-            "assetType": "native",
-            "rid": "osx-x64"
-          },
-          "runtimes/win7-x64/native/sqlite3.dll": {
-            "assetType": "native",
-            "rid": "win7-x64"
-          },
-          "runtimes/win7-x86/native/sqlite3.dll": {
-            "assetType": "native",
-            "rid": "win7-x86"
-          }
         }
       },
       "System.AppContext/4.3.0": {
@@ -4948,6 +5022,23 @@
     }
   },
   "libraries": {
+    "Dapper/1.50.1": {
+      "sha512": "UnvcSLoFOriBz9uMTwWmhhpvkPke91OfouxkWK+88zrFXbm38DP0MmQNjFYIsnPUnvPd/pC+nhgm+nM+mkdtTg==",
+      "type": "package",
+      "path": "Dapper/1.50.1",
+      "files": [
+        "Dapper.1.50.1.nupkg.sha512",
+        "Dapper.nuspec",
+        "lib/net40/Dapper.dll",
+        "lib/net40/Dapper.xml",
+        "lib/net45/Dapper.dll",
+        "lib/net45/Dapper.xml",
+        "lib/net451/Dapper.dll",
+        "lib/net451/Dapper.xml",
+        "lib/netstandard1.3/Dapper.dll",
+        "lib/netstandard1.3/Dapper.xml"
+      ]
+    },
     "Exceptionless/4.0.1919": {
       "sha512": "Tm6f1YcjCxANIcZKmuubfb/r+G3WA83YLL7+qwGKQSpDigQnsL8/de0wxIaIVvaME5BYWmhqUhrFeC3Uwp6fdg==",
       "type": "package",
@@ -4985,6 +5076,60 @@
         "lib/netstandard1.5/Exceptionless.AspNetCore.dll",
         "lib/netstandard1.5/Exceptionless.AspNetCore.xml",
         "readme.txt"
+      ]
+    },
+    "Hangfire/1.6.6": {
+      "sha512": "FT4jkjFx/J1cfFreQMXPd+crjI6jcCaT42t33NvOtSeE8ngTSUx6WKtET4VAypJGwxLegZw43iCqO7I/CJTnEg==",
+      "type": "package",
+      "path": "Hangfire/1.6.6",
+      "files": [
+        "Hangfire.1.6.6.nupkg.sha512",
+        "Hangfire.nuspec",
+        "readme.txt"
+      ]
+    },
+    "Hangfire.AspNetCore/1.6.6": {
+      "sha512": "RhLQW5DYBznKuAfVPumwooNy96B9BBmVTukiY6uB526NHtCJNlPrzFwV+Ee+USHmuyaZdF0hrdqjwYzRnPs5Cg==",
+      "type": "package",
+      "path": "Hangfire.AspNetCore/1.6.6",
+      "files": [
+        "Hangfire.AspNetCore.1.6.6.nupkg.sha512",
+        "Hangfire.AspNetCore.nuspec",
+        "lib/net451/Hangfire.AspNetCore.dll",
+        "lib/net451/Hangfire.AspNetCore.xml",
+        "lib/netstandard1.3/Hangfire.AspNetCore.dll",
+        "lib/netstandard1.3/Hangfire.AspNetCore.xml"
+      ]
+    },
+    "Hangfire.Core/1.6.6": {
+      "sha512": "x8dU1pSGo8UsGDKvs/I8f7UqhKvaNOHbui/cbxLcwtB9RekgUUeURxoAhbo/hgMar9jU9YpM9rwy9HB6Ersc6Q==",
+      "type": "package",
+      "path": "Hangfire.Core/1.6.6",
+      "files": [
+        "Hangfire.Core.1.6.6.nupkg.sha512",
+        "Hangfire.Core.nuspec",
+        "lib/net45/Hangfire.Core.dll",
+        "lib/net45/Hangfire.Core.xml",
+        "lib/net45/es/Hangfire.Core.resources.dll",
+        "lib/net45/zh/Hangfire.Core.resources.dll",
+        "lib/netstandard1.3/Hangfire.Core.dll",
+        "lib/netstandard1.3/Hangfire.Core.xml",
+        "lib/netstandard1.3/es/Hangfire.Core.resources.dll",
+        "lib/netstandard1.3/zh/Hangfire.Core.resources.dll"
+      ]
+    },
+    "Hangfire.SqlServer/1.6.6": {
+      "sha512": "usJ4g+7/1IHPFYWgXgQ+PoGgFjEu0lpHl2e4uJi72Pl07pqWS4TRM5goXk/JqizrVpyQlUl3Yc98RsVHeSVyJQ==",
+      "type": "package",
+      "path": "Hangfire.SqlServer/1.6.6",
+      "files": [
+        "Hangfire.SqlServer.1.6.6.nupkg.sha512",
+        "Hangfire.SqlServer.nuspec",
+        "lib/net45/Hangfire.SqlServer.dll",
+        "lib/net45/Hangfire.SqlServer.xml",
+        "lib/netstandard1.3/Hangfire.SqlServer.dll",
+        "lib/netstandard1.3/Hangfire.SqlServer.xml",
+        "tools/install.sql"
       ]
     },
     "Libuv/1.9.1": {
@@ -6012,19 +6157,6 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Microsoft.Data.Sqlite/1.1.0": {
-      "sha512": "T09U31d2uBe9bvECrz/5cgMPR3256D8SY/+bVDD+KqpX9kbLQuyunm8pR9aUDlsRrVOlSq5Gbg2vMOnBMRbJRQ==",
-      "type": "package",
-      "path": "Microsoft.Data.Sqlite/1.1.0",
-      "files": [
-        "Microsoft.Data.Sqlite.1.1.0.nupkg.sha512",
-        "Microsoft.Data.Sqlite.nuspec",
-        "lib/net451/Microsoft.Data.Sqlite.dll",
-        "lib/net451/Microsoft.Data.Sqlite.xml",
-        "lib/netstandard1.3/Microsoft.Data.Sqlite.dll",
-        "lib/netstandard1.3/Microsoft.Data.Sqlite.xml"
-      ]
-    },
     "Microsoft.DotNet.Cli.Utils/1.0.0-preview2-003121": {
       "sha512": "FLXqhQjkjj83Sh0TRlLEyMIMtAhDRJuPRWnDONtnCv5bozk1jPzflLEXYbk2xsnsOMpnYrUvKQbwUKUWyaXuFQ==",
       "type": "package",
@@ -6164,19 +6296,6 @@
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Relational.Design.xml"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Sqlite/1.1.0": {
-      "sha512": "hfbLTqGyGui9ZkvrE7BYjSMOWMLTwINqhg7yU0h13/SG1crLkf2rbH9lSpi17fRlcygasuJXJFgONqHTRFknQQ==",
-      "type": "package",
-      "path": "Microsoft.EntityFrameworkCore.Sqlite/1.1.0",
-      "files": [
-        "Microsoft.EntityFrameworkCore.Sqlite.1.1.0.nupkg.sha512",
-        "Microsoft.EntityFrameworkCore.Sqlite.nuspec",
-        "lib/net451/Microsoft.EntityFrameworkCore.Sqlite.dll",
-        "lib/net451/Microsoft.EntityFrameworkCore.Sqlite.xml",
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.dll",
-        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.Sqlite.xml"
-      ]
-    },
     "Microsoft.EntityFrameworkCore.SqlServer/1.1.0": {
       "sha512": "3Cg6izj0vvFBG4qenxeUMmFvhdW6bUBH9OqqK1s+f7IvEpgRuxz5vb1e5H15PodzxUziXOLG6je69JMC0Axuig==",
       "type": "package",
@@ -6190,27 +6309,31 @@
         "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.xml"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
-      "sha512": "n7g5JB4YxLYCl32XCmjXEHDF/9J/DSeNYGjxGAzG1xUi/IXOCWd6T3XyEnDXsub7iFDvpB2VgUlh6wHDqmTZgA==",
+    "Microsoft.EntityFrameworkCore.SqlServer.Design/1.1.0": {
+      "sha512": "xq27REzgNW5GVG9JLabi5DcRi7VQ/AARBYzTNflwMXi048D5Fm/JPCZTRkVlIy9XpVNAIQ8io1l3GlCu+oQh9w==",
       "type": "package",
-      "path": "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final",
+      "path": "Microsoft.EntityFrameworkCore.SqlServer.Design/1.1.0",
       "files": [
-        "Microsoft.EntityFrameworkCore.Tools.1.1.0-preview4-final.nupkg.sha512",
-        "Microsoft.EntityFrameworkCore.Tools.nuspec",
-        "lib/net451/_._",
-        "lib/netstandard1.3/_._",
-        "tools/EntityFrameworkCore.PowerShell2.psd1",
-        "tools/EntityFrameworkCore.PowerShell2.psm1",
-        "tools/EntityFrameworkCore.psd1",
-        "tools/EntityFrameworkCore.psm1",
-        "tools/Microsoft.EntityFrameworkCore.Tools.dll",
-        "tools/about_EntityFrameworkCore.help.txt",
-        "tools/init.ps1",
-        "tools/install.ps1",
+        "Microsoft.EntityFrameworkCore.SqlServer.Design.1.1.0.nupkg.sha512",
+        "Microsoft.EntityFrameworkCore.SqlServer.Design.nuspec",
+        "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.dll",
+        "lib/net451/Microsoft.EntityFrameworkCore.SqlServer.Design.xml",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.dll",
+        "lib/netstandard1.3/Microsoft.EntityFrameworkCore.SqlServer.Design.xml"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.Tools.DotNet/1.1.0-preview4-final": {
+      "sha512": "xA7TEhfWAZNdjkwSY+wIV/hEwxbPpjFabqXmu+TXlX6E1ORi/C399THdbj9Eh4VV/QagXwD0kbgR4ByGNHI5ww==",
+      "type": "package",
+      "path": "Microsoft.EntityFrameworkCore.Tools.DotNet/1.1.0-preview4-final",
+      "files": [
+        "Microsoft.EntityFrameworkCore.Tools.DotNet.1.1.0-preview4-final.nupkg.sha512",
+        "Microsoft.EntityFrameworkCore.Tools.DotNet.nuspec",
+        "lib/netcoreapp1.0/dotnet-ef.dll",
+        "lib/netcoreapp1.0/dotnet-ef.runtimeconfig.json",
         "tools/net451/ef.exe",
         "tools/net451/ef.x86.exe",
-        "tools/netcoreapp1.0/ef.dll",
-        "tools/netcoreapp1.0/ef.runtimeconfig.json"
+        "tools/netcoreapp1.0/ef.dll"
       ]
     },
     "Microsoft.Extensions.Caching.Abstractions/1.1.0": {
@@ -6705,6 +6828,88 @@
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
         "runtime.json"
+      ]
+    },
+    "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+      "sha512": "Vd+lvLcGwvkedxtKn0U8s9uR4p0Lm+0U2QvDsLaw7g4S1W4KfPDbaW+ROhhLCSOx/gMYC72/b+z+o4fqS/oxVg==",
+      "type": "package",
+      "path": "Microsoft.NETCore.Portable.Compatibility/1.0.1",
+      "files": [
+        "Microsoft.NETCore.Portable.Compatibility.1.0.1.nupkg.sha512",
+        "Microsoft.NETCore.Portable.Compatibility.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/net45/_._",
+        "lib/netcore50/System.ComponentModel.DataAnnotations.dll",
+        "lib/netcore50/System.Core.dll",
+        "lib/netcore50/System.Net.dll",
+        "lib/netcore50/System.Numerics.dll",
+        "lib/netcore50/System.Runtime.Serialization.dll",
+        "lib/netcore50/System.ServiceModel.Web.dll",
+        "lib/netcore50/System.ServiceModel.dll",
+        "lib/netcore50/System.Windows.dll",
+        "lib/netcore50/System.Xml.Linq.dll",
+        "lib/netcore50/System.Xml.Serialization.dll",
+        "lib/netcore50/System.Xml.dll",
+        "lib/netcore50/System.dll",
+        "lib/netstandard1.0/System.ComponentModel.DataAnnotations.dll",
+        "lib/netstandard1.0/System.Core.dll",
+        "lib/netstandard1.0/System.Net.dll",
+        "lib/netstandard1.0/System.Numerics.dll",
+        "lib/netstandard1.0/System.Runtime.Serialization.dll",
+        "lib/netstandard1.0/System.ServiceModel.Web.dll",
+        "lib/netstandard1.0/System.ServiceModel.dll",
+        "lib/netstandard1.0/System.Windows.dll",
+        "lib/netstandard1.0/System.Xml.Linq.dll",
+        "lib/netstandard1.0/System.Xml.Serialization.dll",
+        "lib/netstandard1.0/System.Xml.dll",
+        "lib/netstandard1.0/System.dll",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.ComponentModel.DataAnnotations.dll",
+        "ref/netcore50/System.Core.dll",
+        "ref/netcore50/System.Net.dll",
+        "ref/netcore50/System.Numerics.dll",
+        "ref/netcore50/System.Runtime.Serialization.dll",
+        "ref/netcore50/System.ServiceModel.Web.dll",
+        "ref/netcore50/System.ServiceModel.dll",
+        "ref/netcore50/System.Windows.dll",
+        "ref/netcore50/System.Xml.Linq.dll",
+        "ref/netcore50/System.Xml.Serialization.dll",
+        "ref/netcore50/System.Xml.dll",
+        "ref/netcore50/System.dll",
+        "ref/netcore50/mscorlib.dll",
+        "ref/netstandard1.0/System.ComponentModel.DataAnnotations.dll",
+        "ref/netstandard1.0/System.Core.dll",
+        "ref/netstandard1.0/System.Net.dll",
+        "ref/netstandard1.0/System.Numerics.dll",
+        "ref/netstandard1.0/System.Runtime.Serialization.dll",
+        "ref/netstandard1.0/System.ServiceModel.Web.dll",
+        "ref/netstandard1.0/System.ServiceModel.dll",
+        "ref/netstandard1.0/System.Windows.dll",
+        "ref/netstandard1.0/System.Xml.Linq.dll",
+        "ref/netstandard1.0/System.Xml.Serialization.dll",
+        "ref/netstandard1.0/System.Xml.dll",
+        "ref/netstandard1.0/System.dll",
+        "ref/netstandard1.0/mscorlib.dll",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "runtimes/aot/lib/netcore50/System.ComponentModel.DataAnnotations.dll",
+        "runtimes/aot/lib/netcore50/System.Core.dll",
+        "runtimes/aot/lib/netcore50/System.Net.dll",
+        "runtimes/aot/lib/netcore50/System.Numerics.dll",
+        "runtimes/aot/lib/netcore50/System.Runtime.Serialization.dll",
+        "runtimes/aot/lib/netcore50/System.ServiceModel.Web.dll",
+        "runtimes/aot/lib/netcore50/System.ServiceModel.dll",
+        "runtimes/aot/lib/netcore50/System.Windows.dll",
+        "runtimes/aot/lib/netcore50/System.Xml.Linq.dll",
+        "runtimes/aot/lib/netcore50/System.Xml.Serialization.dll",
+        "runtimes/aot/lib/netcore50/System.Xml.dll",
+        "runtimes/aot/lib/netcore50/System.dll",
+        "runtimes/aot/lib/netcore50/mscorlib.dll"
       ]
     },
     "Microsoft.NETCore.Runtime.CoreCLR/1.0.4": {
@@ -7214,17 +7419,6 @@
         "lib/netstandard1.0/NuGet.Versioning.xml"
       ]
     },
-    "Pomelo.AspNetCore.TimedJob/1.1.0-rtm-10026": {
-      "sha512": "3IhEmy4yaqIRX/OH/jsgdlchwATWOZz9577Ko2PWTDuj43ckWPF2RCgShvMVuUTZnPUsMULDtn/ibW/lxGgm7A==",
-      "type": "package",
-      "path": "Pomelo.AspNetCore.TimedJob/1.1.0-rtm-10026",
-      "files": [
-        "Pomelo.AspNetCore.TimedJob.1.1.0-rtm-10026.nupkg.sha512",
-        "Pomelo.AspNetCore.TimedJob.nuspec",
-        "lib/net451/Pomelo.AspNetCore.TimedJob.dll",
-        "lib/netstandard1.6/Pomelo.AspNetCore.TimedJob.dll"
-      ]
-    },
     "Remotion.Linq/2.1.1": {
       "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "type": "package",
@@ -7522,25 +7716,6 @@
         "lib/net461/Senparc.Weixin.MP.MvcExtension.xml",
         "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.dll",
         "lib/netstandard1.6/Senparc.Weixin.MP.MvcExtension.xml"
-      ]
-    },
-    "SQLite/3.13.0": {
-      "sha512": "MJfRiz2p6aMVOxrxGMdVzhpzI0oxTgZSwC8eVuOpV8L7yYaFUu8q/OFYwv9P0/aZ/pdEu24O6gma6wZJMTun9A==",
-      "type": "package",
-      "path": "SQLite/3.13.0",
-      "files": [
-        "SQLite.3.13.0.nupkg.sha512",
-        "SQLite.nuspec",
-        "build/net45/SQLite.props",
-        "lib/netstandard1.0/_._",
-        "runtimes/linux-x64/native/libsqlite3.so",
-        "runtimes/osx-x64/native/libsqlite3.dylib",
-        "runtimes/win10-arm/nativeassets/uap10.0/sqlite3.dll",
-        "runtimes/win10-x64/nativeassets/uap10.0/sqlite3.dll",
-        "runtimes/win10-x86/nativeassets/uap10.0/sqlite3.dll",
-        "runtimes/win7-x64/native/sqlite3.dll",
-        "runtimes/win7-x86/native/sqlite3.dll",
-        "sqlite-version.txt"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -12504,6 +12679,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Exceptionless.AspNetCore >= 4.0.1919",
+      "Hangfire >= 1.6.6",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.1.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.1.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.1.0",
@@ -12517,8 +12693,10 @@
       "Microsoft.AspNetCore.SignalR.Server >= 0.2.2",
       "Microsoft.AspNetCore.StaticFiles >= 1.1.0",
       "Microsoft.AspNetCore.WebSockets.Server >= 0.1.0",
-      "Microsoft.EntityFrameworkCore.Sqlite >= 1.1.0",
-      "Microsoft.EntityFrameworkCore.Tools >= 1.1.0-preview4-final",
+      "Microsoft.EntityFrameworkCore.Design >= 1.1.0",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 1.1.0",
+      "Microsoft.EntityFrameworkCore.SqlServer.Design >= 1.1.0",
+      "Microsoft.EntityFrameworkCore.Tools.DotNet >= 1.1.0-preview4-final",
       "Microsoft.Extensions.Configuration.EnvironmentVariables >= 1.1.0",
       "Microsoft.Extensions.Configuration.Json >= 1.1.0",
       "Microsoft.Extensions.Configuration.UserSecrets >= 1.1.0",
@@ -12529,7 +12707,6 @@
       "Microsoft.VisualStudio.Web.BrowserLink.Loader >= 14.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.1.0-preview4-final",
       "Microsoft.VisualStudio.Web.CodeGenerators.Mvc >= 1.1.0-preview4-final",
-      "Pomelo.AspNetCore.TimedJob >= 1.1.0-rtm-10026",
       "Senparc.Weixin >= 4.9.3.1",
       "Senparc.Weixin.MP >= 14.3.107.2",
       "Senparc.Weixin.MP.MvcExtension >= 4.1.3.1",
@@ -12586,16 +12763,17 @@
           "lib/netcoreapp1.0/dotnet-publish-iis.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/1.1.0-preview4-final": {
+      "Microsoft.EntityFrameworkCore.Tools.DotNet/1.1.0-preview4-final": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "1.1.0"
+          "Microsoft.DotNet.Cli.Utils": "1.0.0-preview2-003121",
+          "Microsoft.NETCore.App": "1.1.0"
         },
         "compile": {
-          "lib/netstandard1.3/_._": {}
+          "lib/netcoreapp1.0/dotnet-ef.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/_._": {}
+          "lib/netcoreapp1.0/dotnet-ef.dll": {}
         }
       },
       "Microsoft.Extensions.SecretManager.Tools/1.1.0-preview4-final": {
@@ -12636,7 +12814,7 @@
       "BundlerMinifier.Core >= 2.2.306",
       "Microsoft.AspNetCore.Razor.Tools >= 1.1.0-preview4-final",
       "Microsoft.AspNetCore.Server.IISIntegration.Tools >= 1.1.0-preview4-final",
-      "Microsoft.EntityFrameworkCore.Tools >= 1.1.0-preview4-final",
+      "Microsoft.EntityFrameworkCore.Tools.DotNet >= 1.1.0-preview4-final",
       "Microsoft.Extensions.SecretManager.Tools >= 1.1.0-preview4-final",
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 1.1.0-preview4-final"
     ]

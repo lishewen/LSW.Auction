@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using 拍卖系统.Data;
+using 拍卖系统.Models;
 
 namespace 拍卖系统.Migrations
 {
@@ -13,7 +14,8 @@ namespace 拍卖系统.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431");
+                .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
@@ -81,8 +83,6 @@ namespace 拍卖系统.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("AspNetUserRoles");
                 });
 
@@ -101,33 +101,11 @@ namespace 拍卖系统.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Pomelo.AspNetCore.TimedJob.DynamicTimedJob", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasAnnotation("MaxLength", 512);
-
-                    b.Property<DateTime>("Begin");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
-                    b.Property<int>("Interval");
-
-                    b.Property<bool>("IsEnabled");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsEnabled");
-
-                    b.ToTable("DynamicTimedJob");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("DynamicTimedJob");
-                });
-
             modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Menu", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ControllerName");
 
@@ -152,7 +130,8 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Areas.Admin.Models.Menuitem", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ActionName");
 
@@ -184,20 +163,22 @@ namespace 拍卖系统.Migrations
 
             modelBuilder.Entity("拍卖系统.Models.ApplicationRole", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
                     b.Property<string>("Name")
-                        .HasAnnotation("MaxLength", 256);
+                        .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
-                        .HasAnnotation("MaxLength", 256);
+                        .HasMaxLength(256);
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
+                        .IsUnique()
                         .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
@@ -205,7 +186,8 @@ namespace 拍卖系统.Migrations
 
             modelBuilder.Entity("拍卖系统.Models.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
 
@@ -213,7 +195,7 @@ namespace 拍卖系统.Migrations
                         .IsConcurrencyToken();
 
                     b.Property<string>("Email")
-                        .HasAnnotation("MaxLength", 256);
+                        .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
@@ -222,10 +204,10 @@ namespace 拍卖系统.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasAnnotation("MaxLength", 256);
+                        .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
-                        .HasAnnotation("MaxLength", 256);
+                        .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash");
 
@@ -238,7 +220,7 @@ namespace 拍卖系统.Migrations
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
-                        .HasAnnotation("MaxLength", 256);
+                        .HasMaxLength(256);
 
                     b.HasKey("Id");
 
@@ -255,7 +237,8 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Models.Auction", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BidCount");
 
@@ -298,7 +281,8 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Models.AuctionRecord", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Bided");
 
@@ -329,7 +313,8 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Models.Good", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Content");
 
@@ -358,7 +343,8 @@ namespace 拍卖系统.Migrations
             modelBuilder.Entity("拍卖系统.Models.Member", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AgentId");
 
@@ -420,16 +406,6 @@ namespace 拍卖系统.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Members");
-                });
-
-            modelBuilder.Entity("Pomelo.AspNetCore.TimedJob.EntityFramework.TimedJob", b =>
-                {
-                    b.HasBaseType("Pomelo.AspNetCore.TimedJob.DynamicTimedJob");
-
-
-                    b.ToTable("AspNetTimedJobs");
-
-                    b.HasDiscriminator().HasValue("TimedJob");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

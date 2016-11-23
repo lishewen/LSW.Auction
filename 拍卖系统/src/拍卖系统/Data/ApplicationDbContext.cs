@@ -6,11 +6,10 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using 拍卖系统.Models;
 using 拍卖系统.Areas.Admin.Models;
-using Pomelo.AspNetCore.TimedJob.EntityFramework;
 
 namespace 拍卖系统.Data
 {
-	public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>, ITimedJobContext
+	public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
 			: base(options)
@@ -23,7 +22,6 @@ namespace 拍卖系统.Data
 			// Customize the ASP.NET Identity model and override the defaults if needed.
 			// For example, you can rename the ASP.NET Identity table names and more.
 			// Add your customizations after calling base.OnModelCreating(builder);
-			builder.SetupTimedJobs();
 		}
 		/// <summary>
 		/// 商品表
@@ -49,6 +47,5 @@ namespace 拍卖系统.Data
 		/// 二级菜单表
 		/// </summary>
 		public DbSet<Menuitem> MenuItems { get; set; }
-		public DbSet<TimedJob> TimedJobs { get; set; }
 	}
 }

@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Exceptionless;
+using Hangfire;
 
 namespace 拍卖系统
 {
@@ -45,7 +46,7 @@ namespace 拍卖系统
 		{
 			// Add framework services.
 			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 			//配置密码规则
 			services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -67,8 +68,7 @@ namespace 拍卖系统
 			services.AddTransient<ISmsSender, AuthMessageSender>();
 			services.AddTransient<IWeixinSender, AuthMessageSender>();
 
-			services.AddTimedJob()
-				.AddEntityFrameworkDynamicTimedJob<ApplicationDbContext>();
+			services.AddHangfire(r => r.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -121,7 +121,10 @@ namespace 拍卖系统
 			app.UseWebSockets();
 			app.UseSignalR();
 			app.UseIdentity();
-			app.UseTimedJob();
+
+			app.UseHangfireServer();
+			app.UseHangfireDashboard();
+
 			// Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
 			app.UseMvc(routes =>

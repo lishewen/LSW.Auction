@@ -8,16 +8,17 @@ using Microsoft.EntityFrameworkCore;
 using 拍卖系统.Data;
 using 拍卖系统.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Pomelo.AspNetCore.TimedJob;
+using Hangfire;
+using 拍卖系统.Services;
 
 namespace 拍卖系统.Areas.Admin.Controllers
 {
 	public class AuctionsController : ControllerBase
 	{
-		IServiceProvider services;
-		public AuctionsController(ApplicationDbContext context, IServiceProvider services) : base(context)
+		IWeixinSender weixinsender;
+		public AuctionsController(ApplicationDbContext context, IWeixinSender weixinsender) : base(context)
 		{
-			this.services = services;
+			this.weixinsender = weixinsender;
 		}
 
 		// GET: Auctions
@@ -66,32 +67,13 @@ namespace 拍卖系统.Areas.Admin.Controllers
 			{
 				db.Add(auction);
 
-				var TimedJobService = services.GetRequiredService<TimedJobService>();
+				var beginTime = auction.StartTime.AddMinutes(-15);
+				var endTime = auction.EndTime.AddMinutes(-15);
 
-				if (db.TimedJobs.Any(j => j.Id != "拍卖系统.Jobs.NoticeJob.Start"))
-				{
-					db.TimedJobs.Add(new Pomelo.AspNetCore.TimedJob.EntityFramework.TimedJob
-					{
-						Id = "拍卖系统.Jobs.NoticeJob.Start",
-						Begin = auction.StartTime.AddMinutes(-15),
-						Interval = int.MaxValue,
-						IsEnabled = true
-					});
-				}
-				if (db.TimedJobs.Any(j => j.Id != "拍卖系统.Jobs.NoticeJob.End"))
-				{
-					db.TimedJobs.Add(new Pomelo.AspNetCore.TimedJob.EntityFramework.TimedJob
-					{
-						Id = "拍卖系统.Jobs.NoticeJob.End",
-						Begin = auction.EndTime.AddMinutes(-15),
-						Interval = int.MaxValue,
-						IsEnabled = true
-					});
-				}
-
+				RecurringJob.AddOrUpdate($"开始通知——{auction.Name}", () => SendStartMsg(auction.Name), Cron.Yearly(beginTime.Month, beginTime.Day, beginTime.Hour, beginTime.Minute), TimeZoneInfo.Local);
+				RecurringJob.AddOrUpdate($"结束通知——{auction.Name}", () => SendStartMsg(auction.Name), Cron.Yearly(endTime.Month, endTime.Day, endTime.Hour, endTime.Minute), TimeZoneInfo.Local);
+				
 				await db.SaveChangesAsync();
-
-				TimedJobService.RestartDynamicTimers();
 
 				return RedirectToAction("Index");
 			}
@@ -189,6 +171,26 @@ namespace 拍卖系统.Areas.Admin.Controllers
 		private bool AuctionExists(int id)
 		{
 			return db.Auctions.Any(e => e.Id == id);
+		}
+
+		private void SendALL(string msg)
+		{
+			foreach (var m in db.Members)
+			{
+				weixinsender.SendWeixinAsync(m.OpenId, msg);
+			}
+		}
+
+		private void SendStartMsg(string name)
+		{
+			SendALL($"{name}拍卖即将开始");
+			RecurringJob.RemoveIfExists($"开始通知——{name}");
+		}
+
+		private void SendEndMsg(string name)
+		{
+			SendALL($"{name}拍卖即将结束");
+			RecurringJob.RemoveIfExists($"结束通知——{name}");
 		}
 	}
 }

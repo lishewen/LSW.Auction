@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace 拍卖系统.Models
 		/// 主键Id (主键类型根据继承时确定)
 		/// </summary>
 		[Key]
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public TKey Id { get; set; }
 		/// <summary>
 		/// 名称

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace 拍卖系统.Migrations
 {
@@ -27,7 +28,7 @@ namespace 拍卖系统.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ControllerName = table.Column<string>(nullable: true),
                     CreateTime = table.Column<DateTime>(nullable: false),
                     GroupICO = table.Column<string>(nullable: true),
@@ -85,7 +86,7 @@ namespace 拍卖系统.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Content = table.Column<string>(nullable: true),
                     CreateTime = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
@@ -106,7 +107,7 @@ namespace 拍卖系统.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AgentId = table.Column<int>(nullable: false),
                     AgentLevelId = table.Column<int>(nullable: false),
                     AgentTime = table.Column<DateTime>(nullable: false),
@@ -146,7 +147,7 @@ namespace 拍卖系统.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ActionName = table.Column<string>(nullable: true),
                     CreateTime = table.Column<DateTime>(nullable: false),
                     IsDelete = table.Column<bool>(nullable: false),
@@ -174,7 +175,7 @@ namespace 拍卖系统.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
                     RoleId = table.Column<string>(nullable: false)
@@ -195,7 +196,7 @@ namespace 拍卖系统.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
@@ -260,7 +261,7 @@ namespace 拍卖系统.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     BidCount = table.Column<int>(nullable: false),
                     Bidnb = table.Column<string>(nullable: true),
                     CreateTime = table.Column<DateTime>(nullable: false),
@@ -293,7 +294,7 @@ namespace 拍卖系统.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Autoincrement", true),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Bided = table.Column<decimal>(nullable: false),
                     CreateTime = table.Column<DateTime>(nullable: false),
                     Gid = table.Column<int>(nullable: false),
@@ -341,11 +342,6 @@ namespace 拍卖系统.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetUserRoles_UserId",
-                table: "AspNetUserRoles",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_MenuItems_MenuId",
                 table: "MenuItems",
                 column: "MenuId");
@@ -353,7 +349,8 @@ namespace 拍卖系统.Migrations
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
-                column: "NormalizedName");
+                column: "NormalizedName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
