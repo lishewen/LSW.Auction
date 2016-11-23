@@ -23,12 +23,12 @@
     "typing-tests"
   ],
   "homepage": "https://github.com/moment/moment",
-  "version": "2.16.0",
-  "_release": "2.16.0",
+  "version": "2.17.0",
+  "_release": "2.17.0",
   "_resolution": {
     "type": "version",
-    "tag": "2.16.0",
-    "commit": "56f18c4cfe7a119c6d4c5a828127b8f9dd02df20"
+    "tag": "2.17.0",
+    "commit": "c78bd0450fc4689da28cbc54328245b613cd3bcc"
   },
   "_source": "https://github.com/moment/moment.git",
   "_target": ">=2.9.0",
