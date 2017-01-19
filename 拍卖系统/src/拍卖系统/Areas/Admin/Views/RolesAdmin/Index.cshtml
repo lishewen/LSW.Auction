@@ -36,8 +36,8 @@
 							@Html.DisplayFor(modelItem => item.Name)
 						</td>
 						<td>
-							<a href="/RolesAdmin/Edit?id=@item.Id" class="btn btn-danger btn-sm">修改</a>
-							<a href="/RolesAdmin/Delete?id=@item.Id" class="btn btn-default btn-sm">删除</a>
+							<a asp-action="Edit" asp-controller="RolesAdmin" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-danger btn-sm">修改</a>
+							<a asp-action="Delete" asp-controller="RolesAdmin" asp-area="Admin" asp-route-id="@item.Id" class="btn btn-default btn-sm">删除</a>
 						</td>
 					</tr>
 				}
