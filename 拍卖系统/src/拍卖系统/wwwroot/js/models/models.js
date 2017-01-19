@@ -14,7 +14,7 @@ var Models;
     var AuctionRecord = (function (_super) {
         __extends(AuctionRecord, _super);
         function AuctionRecord() {
-            _super.apply(this, arguments);
+            return _super.apply(this, arguments) || this;
         }
         return AuctionRecord;
     }(EntityBase));
@@ -22,7 +22,7 @@ var Models;
     var Auction = (function (_super) {
         __extends(Auction, _super);
         function Auction() {
-            _super.apply(this, arguments);
+            return _super.apply(this, arguments) || this;
         }
         return Auction;
     }(EntityBase));
@@ -30,16 +30,16 @@ var Models;
     var Member = (function (_super) {
         __extends(Member, _super);
         function Member() {
-            _super.apply(this, arguments);
+            return _super.apply(this, arguments) || this;
         }
         return Member;
     }(EntityBase));
     Models.Member = Member;
+    var EndStatus;
     (function (EndStatus) {
-        EndStatus[EndStatus["未开始"] = 0] = "未开始";
-        EndStatus[EndStatus["进行中"] = 1] = "进行中";
-        EndStatus[EndStatus["成交"] = 2] = "成交";
-        EndStatus[EndStatus["流拍"] = 3] = "流拍";
-    })(Models.EndStatus || (Models.EndStatus = {}));
-    var EndStatus = Models.EndStatus;
+        EndStatus[EndStatus["\u672A\u5F00\u59CB"] = 0] = "\u672A\u5F00\u59CB";
+        EndStatus[EndStatus["\u8FDB\u884C\u4E2D"] = 1] = "\u8FDB\u884C\u4E2D";
+        EndStatus[EndStatus["\u6210\u4EA4"] = 2] = "\u6210\u4EA4";
+        EndStatus[EndStatus["\u6D41\u62CD"] = 3] = "\u6D41\u62CD";
+    })(EndStatus = Models.EndStatus || (Models.EndStatus = {}));
 })(Models || (Models = {}));
