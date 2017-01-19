@@ -71,7 +71,7 @@ namespace 拍卖系统.Areas.Admin.Controllers
 				var endTime = auction.EndTime.AddMinutes(-15);
 
 				RecurringJob.AddOrUpdate($"开始通知——{auction.Name}", () => SendStartMsg(auction.Name), Cron.Yearly(beginTime.Month, beginTime.Day, beginTime.Hour, beginTime.Minute), TimeZoneInfo.Local);
-				RecurringJob.AddOrUpdate($"结束通知——{auction.Name}", () => SendStartMsg(auction.Name), Cron.Yearly(endTime.Month, endTime.Day, endTime.Hour, endTime.Minute), TimeZoneInfo.Local);
+				RecurringJob.AddOrUpdate($"结束通知——{auction.Name}", () => SendEndMsg(auction.Name), Cron.Yearly(endTime.Month, endTime.Day, endTime.Hour, endTime.Minute), TimeZoneInfo.Local);
 				
 				await db.SaveChangesAsync();
 
@@ -180,14 +180,14 @@ namespace 拍卖系统.Areas.Admin.Controllers
 				weixinsender.SendWeixinAsync(m.OpenId, msg);
 			}
 		}
-
-		private void SendStartMsg(string name)
+		[NonAction]
+		public void SendStartMsg(string name)
 		{
 			SendALL($"{name}拍卖即将开始");
 			RecurringJob.RemoveIfExists($"开始通知——{name}");
 		}
-
-		private void SendEndMsg(string name)
+		[NonAction]
+		public void SendEndMsg(string name)
 		{
 			SendALL($"{name}拍卖即将结束");
 			RecurringJob.RemoveIfExists($"结束通知——{name}");
