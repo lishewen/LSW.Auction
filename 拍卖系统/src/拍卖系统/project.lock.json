@@ -32,7 +32,7 @@
           "lib/netstandard1.3/Dapper.dll": {}
         }
       },
-      "Exceptionless/4.0.1919": {
+      "Exceptionless/4.0.1927": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
@@ -59,10 +59,10 @@
           "lib/netstandard1.5/Exceptionless.dll": {}
         }
       },
-      "Exceptionless.AspNetCore/4.0.1919": {
+      "Exceptionless.AspNetCore/4.0.1927": {
         "type": "package",
         "dependencies": {
-          "Exceptionless": "4.0.1919",
+          "Exceptionless": "4.0.1927",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Http": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
@@ -80,18 +80,18 @@
           "lib/netstandard1.5/Exceptionless.AspNetCore.dll": {}
         }
       },
-      "Hangfire/1.6.6": {
+      "Hangfire/1.6.8": {
         "type": "package",
         "dependencies": {
-          "Hangfire.AspNetCore": "[1.6.6]",
-          "Hangfire.Core": "[1.6.6]",
-          "Hangfire.SqlServer": "[1.6.6]"
+          "Hangfire.AspNetCore": "[1.6.8]",
+          "Hangfire.Core": "[1.6.8]",
+          "Hangfire.SqlServer": "[1.6.8]"
         }
       },
-      "Hangfire.AspNetCore/1.6.6": {
+      "Hangfire.AspNetCore/1.6.8": {
         "type": "package",
         "dependencies": {
-          "Hangfire.Core": "[1.6.6]",
+          "Hangfire.Core": "[1.6.8]",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
@@ -107,7 +107,7 @@
           "lib/netstandard1.3/Hangfire.AspNetCore.dll": {}
         }
       },
-      "Hangfire.Core/1.6.6": {
+      "Hangfire.Core/1.6.8": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
@@ -130,11 +130,11 @@
           }
         }
       },
-      "Hangfire.SqlServer/1.6.6": {
+      "Hangfire.SqlServer/1.6.8": {
         "type": "package",
         "dependencies": {
           "Dapper": "1.50.1",
-          "Hangfire.Core": "[1.6.6]",
+          "Hangfire.Core": "[1.6.8]",
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
           "NETStandard.Library": "1.6.0",
           "System.Data.Common": "4.1.0",
@@ -5010,7 +5010,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "Z.EntityFramework.Plus.EFCore/1.4.10": {
+      "Z.EntityFramework.Plus.EFCore/1.4.23": {
         "type": "package",
         "compile": {
           "lib/netstandard1.3/Z.EntityFramework.Plus.EFCore.dll": {}
@@ -5039,12 +5039,12 @@
         "lib/netstandard1.3/Dapper.xml"
       ]
     },
-    "Exceptionless/4.0.1919": {
-      "sha512": "Tm6f1YcjCxANIcZKmuubfb/r+G3WA83YLL7+qwGKQSpDigQnsL8/de0wxIaIVvaME5BYWmhqUhrFeC3Uwp6fdg==",
+    "Exceptionless/4.0.1927": {
+      "sha512": "fwrLGwrc8QKZL4Ddavf628vDP+2jPj4mp9biVTfiQ4sc2FvfUJ+5Fi88y3/6TW+w4rLrs0T/Rrlq3OKLdNAcvQ==",
       "type": "package",
-      "path": "Exceptionless/4.0.1919",
+      "path": "Exceptionless/4.0.1927",
       "files": [
-        "Exceptionless.4.0.1919.nupkg.sha512",
+        "Exceptionless.4.0.1927.nupkg.sha512",
         "Exceptionless.nuspec",
         "lib/net45/Exceptionless.dll",
         "lib/net45/Exceptionless.xml",
@@ -5064,12 +5064,12 @@
         "tools/uninstall.ps1"
       ]
     },
-    "Exceptionless.AspNetCore/4.0.1919": {
-      "sha512": "vz1wmNxHOxuJUZA64gEECgRQ3WXbIGxWzdaOjwHzmBZ+11cQu+UvdaKdOMY3a0uSSLc5bLcJaRwwx1MeYTy7jg==",
+    "Exceptionless.AspNetCore/4.0.1927": {
+      "sha512": "pqfmrUzIBMIecmA/rXg4VtH6sAsA5aQ1Gj9piq9dAd6FC/FqD6+T36Y+KKYJYYol5TqKSzkV9neDDR/Km0ym/w==",
       "type": "package",
-      "path": "Exceptionless.AspNetCore/4.0.1919",
+      "path": "Exceptionless.AspNetCore/4.0.1927",
       "files": [
-        "Exceptionless.AspNetCore.4.0.1919.nupkg.sha512",
+        "Exceptionless.AspNetCore.4.0.1927.nupkg.sha512",
         "Exceptionless.AspNetCore.nuspec",
         "lib/net451/Exceptionless.AspNetCore.dll",
         "lib/net451/Exceptionless.AspNetCore.xml",
@@ -5078,22 +5078,22 @@
         "readme.txt"
       ]
     },
-    "Hangfire/1.6.6": {
-      "sha512": "FT4jkjFx/J1cfFreQMXPd+crjI6jcCaT42t33NvOtSeE8ngTSUx6WKtET4VAypJGwxLegZw43iCqO7I/CJTnEg==",
+    "Hangfire/1.6.8": {
+      "sha512": "O5CQiLbCkFYIci9ZYnVTSF0MVY1z6GrjYmsIsw+rcynPLEsbHiinfED/jsGiKqKnrpj10TftTqhSbr4Tpq43QQ==",
       "type": "package",
-      "path": "Hangfire/1.6.6",
+      "path": "Hangfire/1.6.8",
       "files": [
-        "Hangfire.1.6.6.nupkg.sha512",
+        "Hangfire.1.6.8.nupkg.sha512",
         "Hangfire.nuspec",
         "readme.txt"
       ]
     },
-    "Hangfire.AspNetCore/1.6.6": {
-      "sha512": "RhLQW5DYBznKuAfVPumwooNy96B9BBmVTukiY6uB526NHtCJNlPrzFwV+Ee+USHmuyaZdF0hrdqjwYzRnPs5Cg==",
+    "Hangfire.AspNetCore/1.6.8": {
+      "sha512": "9NXQjlHqcl+W2iFEsuT+cPP7xRXGhB6e2xoK4gXZkThBUPzw4Z0cSg80V57ov/xRppaVMO3eV8DAkaG2gq21FA==",
       "type": "package",
-      "path": "Hangfire.AspNetCore/1.6.6",
+      "path": "Hangfire.AspNetCore/1.6.8",
       "files": [
-        "Hangfire.AspNetCore.1.6.6.nupkg.sha512",
+        "Hangfire.AspNetCore.1.6.8.nupkg.sha512",
         "Hangfire.AspNetCore.nuspec",
         "lib/net451/Hangfire.AspNetCore.dll",
         "lib/net451/Hangfire.AspNetCore.xml",
@@ -5101,12 +5101,12 @@
         "lib/netstandard1.3/Hangfire.AspNetCore.xml"
       ]
     },
-    "Hangfire.Core/1.6.6": {
-      "sha512": "x8dU1pSGo8UsGDKvs/I8f7UqhKvaNOHbui/cbxLcwtB9RekgUUeURxoAhbo/hgMar9jU9YpM9rwy9HB6Ersc6Q==",
+    "Hangfire.Core/1.6.8": {
+      "sha512": "c9au0lu14wOX7Zpm1dhjVIzXrlzotEe2mJHoM1n0E/erZrTUtIlruhDThkTO6QIRO1e6vklhXRhzYfQ4mnExHg==",
       "type": "package",
-      "path": "Hangfire.Core/1.6.6",
+      "path": "Hangfire.Core/1.6.8",
       "files": [
-        "Hangfire.Core.1.6.6.nupkg.sha512",
+        "Hangfire.Core.1.6.8.nupkg.sha512",
         "Hangfire.Core.nuspec",
         "lib/net45/Hangfire.Core.dll",
         "lib/net45/Hangfire.Core.xml",
@@ -5118,12 +5118,12 @@
         "lib/netstandard1.3/zh/Hangfire.Core.resources.dll"
       ]
     },
-    "Hangfire.SqlServer/1.6.6": {
-      "sha512": "usJ4g+7/1IHPFYWgXgQ+PoGgFjEu0lpHl2e4uJi72Pl07pqWS4TRM5goXk/JqizrVpyQlUl3Yc98RsVHeSVyJQ==",
+    "Hangfire.SqlServer/1.6.8": {
+      "sha512": "Y/844Kj/xOgmr39XFaqj20YTiZr+tQe6IuPisTfFyQZSlEnlc5f2RtslTwCVAfMBw9lXFI971F5l3ERwSz2vug==",
       "type": "package",
-      "path": "Hangfire.SqlServer/1.6.6",
+      "path": "Hangfire.SqlServer/1.6.8",
       "files": [
-        "Hangfire.SqlServer.1.6.6.nupkg.sha512",
+        "Hangfire.SqlServer.1.6.8.nupkg.sha512",
         "Hangfire.SqlServer.nuspec",
         "lib/net45/Hangfire.SqlServer.dll",
         "lib/net45/Hangfire.SqlServer.xml",
@@ -12664,12 +12664,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Z.EntityFramework.Plus.EFCore/1.4.10": {
-      "sha512": "lGy9FP4Lmyp5bFftTYLOB1ZkSGlrYSp7ht8Mz+8lGaG/aMCUrPwyMbmJ5jPQWbjfPQ6d18nEDA1Ww3plVnDVtw==",
+    "Z.EntityFramework.Plus.EFCore/1.4.23": {
+      "sha512": "bh7JHQtZEH6JUzHGlO1TZm/xv8SGWq/zpqIMnnliFNhVP9eoWwerRIrtVgRwO0cTzrSoBx/9dL8OWg+ewZca2A==",
       "type": "package",
-      "path": "Z.EntityFramework.Plus.EFCore/1.4.10",
+      "path": "Z.EntityFramework.Plus.EFCore/1.4.23",
       "files": [
-        "Z.EntityFramework.Plus.EFCore.1.4.10.nupkg.sha512",
+        "Z.EntityFramework.Plus.EFCore.1.4.23.nupkg.sha512",
         "Z.EntityFramework.Plus.EFCore.nuspec",
         "lib/net451/Z.EntityFramework.Plus.EFCore.dll",
         "lib/netstandard1.3/Z.EntityFramework.Plus.EFCore.dll"
@@ -12678,8 +12678,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Exceptionless.AspNetCore >= 4.0.1919",
-      "Hangfire >= 1.6.6",
+      "Exceptionless.AspNetCore >= 4.0.1927",
+      "Hangfire >= 1.6.8",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.1.0",
       "Microsoft.AspNetCore.Diagnostics >= 1.1.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.1.0",
@@ -12710,7 +12710,7 @@
       "Senparc.Weixin >= 4.9.3.1",
       "Senparc.Weixin.MP >= 14.3.107.2",
       "Senparc.Weixin.MP.MvcExtension >= 4.1.3.1",
-      "Z.EntityFramework.Plus.EFCore >= 1.4.10"
+      "Z.EntityFramework.Plus.EFCore >= 1.4.23"
     ],
     ".NETCoreApp,Version=v1.0": []
   },
