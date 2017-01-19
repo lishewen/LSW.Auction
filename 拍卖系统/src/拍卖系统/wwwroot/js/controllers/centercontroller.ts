@@ -54,8 +54,8 @@
 		}
 
 		getAuctions(successCallback: Function): void {
-			this.httpService.get('/api/Auctions/').success(function (data, status) {
-				successCallback(data);
+			this.httpService.get('/api/Auctions/').then((response) => {
+				successCallback(response.data);
 			});
 		}
 	}

@@ -44,8 +44,8 @@ var Center;
             });
         };
         Controller.prototype.getAuctions = function (successCallback) {
-            this.httpService.get('/api/Auctions/').success(function (data, status) {
-                successCallback(data);
+            this.httpService.get('/api/Auctions/').then(function (response) {
+                successCallback(response.data);
             });
         };
         return Controller;

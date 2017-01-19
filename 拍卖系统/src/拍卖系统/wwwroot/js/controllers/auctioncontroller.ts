@@ -96,16 +96,16 @@ namespace Auction {
 		}
 
 		getAuctionRecords(successCallback: Function): void {
-			this.httpService.get('/api/AuctionRecords/' + id).success(function (data, status) {
-				successCallback(data);
+			this.httpService.get('/api/AuctionRecords/' + id).then((response) => {
+				successCallback(response.data);
 			});
 		}
 
 		postAuctionRecords(model: Models.AuctionRecord, successCallback: Function, errorCallback: Function): void {
-			this.httpService.post('/api/AuctionRecords', model).success(function (data, status) {
-				successCallback(data);
-			}).error(function (data) {
-				errorCallback(data);
+			this.httpService.post('/api/AuctionRecords', model).then((response) => {
+				successCallback(response.data);
+			}, (reason) => {
+				errorCallback(reason);
 			});
 		}
 	}

@@ -78,15 +78,15 @@ var Auction;
             });
         };
         Controller.prototype.getAuctionRecords = function (successCallback) {
-            this.httpService.get('/api/AuctionRecords/' + id).success(function (data, status) {
-                successCallback(data);
+            this.httpService.get('/api/AuctionRecords/' + id).then(function (response) {
+                successCallback(response.data);
             });
         };
         Controller.prototype.postAuctionRecords = function (model, successCallback, errorCallback) {
-            this.httpService.post('/api/AuctionRecords', model).success(function (data, status) {
-                successCallback(data);
-            }).error(function (data) {
-                errorCallback(data);
+            this.httpService.post('/api/AuctionRecords', model).then(function (response) {
+                successCallback(response.data);
+            }, function (reason) {
+                errorCallback(reason);
             });
         };
         return Controller;
