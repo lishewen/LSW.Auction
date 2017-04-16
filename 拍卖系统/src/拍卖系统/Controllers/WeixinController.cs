@@ -8,7 +8,6 @@ using Senparc.Weixin.MP.Entities.Request;
 using Senparc.Weixin.MP;
 using System.Text;
 using System.IO;
-using Senparc.Weixin.MP.MvcExtension;
 using Senparc.Weixin.MP.Entities.Menu;
 using Senparc.Weixin.MP.AdvancedAPIs;
 using Senparc.Weixin.MP.CommonAPIs;
@@ -65,9 +64,9 @@ namespace 拍卖系统.Controllers
 
 			messageHandler.Execute();//执行微信处理过程
 
-			//return Content(messageHandler.ResponseDocument.ToString());//v0.7-
+			return Content(messageHandler.ResponseDocument.ToString());//v0.7-
 			//return new WeixinResult(messageHandler);//v0.8+ with MvcExtension
-			return new FixWeixinBugWeixinResult(messageHandler);//为了解决官方微信5.0以后软件换行bug暂时添加的方法，平时用上面一个方法即可
+			//return new FixWeixinBugWeixinResult(messageHandler);//为了解决官方微信5.0以后软件换行bug暂时添加的方法，平时用上面一个方法即可
 		}
 		public IActionResult SetCustomMenu()
 		{
